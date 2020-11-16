@@ -63,35 +63,17 @@ public class Menu {
             default:
         }
     }
-
-    //Read data from file, this method must be called when application starts
-    public static ArrayList<Module> DownloadModuleList() {
-        // Data Column
-        // index,coursecode,coursename,AU,day,starttime,endtime,classtype,vacancy
-        ArrayList<Module> fullmodulelist = new ArrayList<Module>();
-        Controller ctrl = new Controller();
-        ArrayList<String> data = ctrl.ImportData();
-
-        // Insert into module's arraylist
-        for (String i : data) {
-            String[] splitdata = i.split(",");
-            fullmodulelist.add(new Module(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
-                    Integer.parseInt(splitdata[3]), splitdata[4], splitdata[5], splitdata[6], splitdata[7],
-                    Integer.parseInt(splitdata[8])));
-        }
-        return fullmodulelist;
-        //Testing Purpose
-        // for (Module x : fullmodulelist) {
-        //     System.out.println(x.coursename);
-        // }
-
-    }
-
     public static void main(String[] args) {
 
         System.out.println("Welcome to MySTARs System");
         Login loginObject = new Login();
         loginObject.LoginMenu();
+
+        //To Zhenwei
+        //These import all module data from file
+        // Controller ctrl = new Controller();
+        // ArrayList<Module> fullModuleList = ctrl.ImportAllModules();
+
         if (loginObject.GetLoginStatus()) {
             // if is staff show staff menu
             if (loginObject.ReturnUser().getStaff()) {
