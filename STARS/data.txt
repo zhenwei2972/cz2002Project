@@ -1,0 +1,3 @@
+10214,CZ2003,Computer Graphics,3,Wednesday,08:30:00,09:30:00,Tutorial,5
+10215,CZ2003,Computer Graphics,3,Tuesday,08:30:00,09:30:00,Tutorial,3
+10240,CZ2002,Object Oriented Programming,3,Tuesday,08:30:00,09:30:00,Tutorial,3
