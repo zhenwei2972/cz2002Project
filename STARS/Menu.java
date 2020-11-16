@@ -2,6 +2,7 @@ package STARS;
 
 import java.io.Console;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Menu {
     public static void AdminMenuLogic() {
@@ -78,11 +79,11 @@ public class Menu {
 
         //Filter System Parameters
         // Invoke(ArrayList<Module> list, String value); [If it's int put '.toString()' at the back]
-        // Filter filters = new Filter();
-        // List<Module> filterResult = new ArrayList<Module>();
+        Filter filters = new Filter();
+        List<Module> filterResult = new ArrayList<Module>();
 
-        // filterResult = filters.byModuleCode.Invoke(fullModuleList, "CZ2002");
-        // filters.toDisplayResult.Display(filterResult);
+        filterResult = filters.byModuleCode.Invoke(fullModuleList, "CZ2002");
+        filters.toDisplayResult.Display(filterResult);
 
         
         // filterResult = filters.byIndex.Invoke(fullModuleList, "10214");
