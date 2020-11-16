@@ -1,7 +1,5 @@
-import java.io.*;
-
 public class Module {
-    // Time Format 20:15:40
+    // Time Format 20:15:40 hh:mm:ss
     // data column
     // index,coursecode,coursename,AU,day,starttime,endtime,classtype,vacancy
     int index = 0, au = 0, vacancy = 0;
@@ -45,6 +43,30 @@ public class Module {
     }
     public int getVacancy(){
         return this.vacancy;
+    }
+    public void setIndex(int newIndex){
+        this.index = newIndex;
+    }
+    public void setCourseCode(String newCourseCode){
+        this.coursecode = newCourseCode;
+    }
+    public void setCourseName(String newCouseName){
+        this.coursename = newCouseName;
+    }
+    public void setAU(int newAU){
+        this.au = newAU;
+    }
+    public void setDay(String newDay){
+        this.day = newDay;
+    }
+    public void setStartTime(String newStartTime){
+        this.starttime = newStartTime;
+    }
+    public void setEndTime(String newEndTime){
+        this.endtime = newEndTime;
+    }
+    public void setClassType(String newClassType){
+        this.classtype = newClassType;
     }
     public void setVacancy(int newVacancy){
         this.vacancy = newVacancy;
