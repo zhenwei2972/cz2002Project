@@ -74,16 +74,18 @@ public class Menu {
         // To Zhenwei
         // Column format
         // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
-        Controller ctrl = new Controller();
-        ArrayList<Module> fullModuleList = ctrl.ImportAllModules();
+        // Controller ctrl = new Controller();
+        // ArrayList<Module> fullModuleList = ctrl.ModuleListDatabase();
+        // ArrayList<Admin> fullAdminList = ctrl.AdminUserDatabase();
+        // ArrayList<Student> fullStudentList = ctrl.StudentDatabase();
 
         //Filter System Parameters
         // Invoke(ArrayList<Module> list, String value); [If it's int put '.toString()' at the back]
-        Filter filters = new Filter();
-        List<Module> filterResult = new ArrayList<Module>();
+        // Filter filters = new Filter();
+        // List<Module> filterResult = new ArrayList<Module>();
 
-        filterResult = filters.byModuleCode.Invoke(fullModuleList, "CZ2002");
-        filters.toDisplayResult.Display(filterResult);
+        // filterResult = filters.byModuleCode.Invoke(fullModuleList, "CZ2002");
+        // filters.toDisplayResult.Display(filterResult);
 
         
         // filterResult = filters.byIndex.Invoke(fullModuleList, "10214");

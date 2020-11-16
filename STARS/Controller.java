@@ -4,11 +4,55 @@ import java.util.Scanner;
 
 public class Controller {
 
-    public ArrayList<Module> ImportAllModules() {
+    public ArrayList<Module> ModuleListDatabase() {
         ArrayList<Module> fullmodulelist = new ArrayList<Module>();
         ArrayList<String> list = new ArrayList<String>();
         try {
-            FileInputStream fis = new FileInputStream("data.txt");
+            FileInputStream fis = new FileInputStream("Database\\courseList.txt");
+            Scanner sc = new Scanner(fis);
+            while (sc.hasNextLine()) {
+                list.add(sc.nextLine());
+            }
+            sc.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
+        for (String i : list) {
+            String[] splitdata = i.split(",");
+            fullmodulelist.add(new Module(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
+                    Integer.parseInt(splitdata[3]), splitdata[4], splitdata[5], splitdata[6], splitdata[7],
+                    Integer.parseInt(splitdata[8])));
+        }
+        return fullmodulelist;
+    }
+
+    public ArrayList<Admin> AdminUserDatabase() {
+        ArrayList<Admin> fullAdminList = new ArrayList<Admin>();
+        ArrayList<String> list = new ArrayList<String>();
+        try {
+            FileInputStream fis = new FileInputStream("Database\\admin.txt");
+            Scanner sc = new Scanner(fis);
+            while (sc.hasNextLine()) {
+                list.add(sc.nextLine());
+            }
+            sc.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // username, password
+        for (String i : list) {
+            String[] splitdata = i.split(",");
+            fullAdminList.add(new Admin(splitdata[0], splitdata[1]));
+        }
+        return fullAdminList;
+    }
+
+    public ArrayList<Student> StudentDatabase() {
+        ArrayList<Student> fullAdminList = new ArrayList<Student>();
+        ArrayList<String> list = new ArrayList<String>();
+        try {
+            FileInputStream fis = new FileInputStream("Database\\student.txt");
             Scanner sc = new Scanner(fis);
             while (sc.hasNextLine()) {
                 list.add(sc.nextLine());
@@ -19,10 +63,8 @@ public class Controller {
         }
         for (String i : list) {
             String[] splitdata = i.split(",");
-            fullmodulelist.add(new Module(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
-                    Integer.parseInt(splitdata[3]), splitdata[4], splitdata[5], splitdata[6], splitdata[7],
-                    Integer.parseInt(splitdata[8])));
+            fullAdminList.add(new Student());
         }
-        return fullmodulelist;
+        return fullAdminList;
     }
 }
