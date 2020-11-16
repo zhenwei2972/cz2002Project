@@ -63,16 +63,34 @@ public class Menu {
             default:
         }
     }
+
     public static void main(String[] args) {
 
         System.out.println("Welcome to MySTARs System");
         Login loginObject = new Login();
         loginObject.LoginMenu();
 
-        //To Zhenwei
-        //These import all module data from file
-        // Controller ctrl = new Controller();
-        // ArrayList<Module> fullModuleList = ctrl.ImportAllModules();
+        // To Zhenwei
+        // Column format
+        // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
+        Controller ctrl = new Controller();
+        ArrayList<Module> fullModuleList = ctrl.ImportAllModules();
+
+        //Filter System Parameters
+        // Invoke(ArrayList<Module> list, String value); [If it's int put '.toString()' at the back]
+        // Filter filters = new Filter();
+        // List<Module> filterResult = new ArrayList<Module>();
+
+        // filterResult = filters.byModuleCode.Invoke(fullModuleList, "CZ2002");
+        // filters.toDisplayResult.Display(filterResult);
+
+        
+        // filterResult = filters.byIndex.Invoke(fullModuleList, "10214");
+        // filters.toDisplayResult.Display(filterResult);
+
+
+        // filterResult = filters.byDays.Invoke(fullModuleList, "Wednesday");
+        // filters.toDisplayResult.Display(filterResult);
 
         if (loginObject.GetLoginStatus()) {
             // if is staff show staff menu
