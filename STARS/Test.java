@@ -12,7 +12,7 @@ public class Test {
         ArrayList<Admin> fullAdminList = ctrl.AdminUserDatabase();
         
         Authentication loginAuthentication = (adminList, username, password) -> {
-            List<Admin> checkLogin = adminList.stream().filter(x -> username.equals(x.getUsername()) && password.equals(x.getPassword())).collect(Collectors.toList());
+            List<Admin> checkLgogin = adminList.stream().filter(x -> username.equals(x.getUsername()) && password.equals(x.getPassword())).collect(Collectors.toList());
             return (checkLogin.size() > 0) ? true : false;
         };
 
