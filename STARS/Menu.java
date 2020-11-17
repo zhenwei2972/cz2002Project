@@ -75,9 +75,9 @@ public class Menu {
         // Column format
         // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
         // Controller ctrl = new Controller();
-        // ArrayList<Module> fullModuleList = ctrl.ModuleListDatabase();
-        // ArrayList<Admin> fullAdminList = ctrl.AdminUserDatabase();
-        // ArrayList<Student> fullStudentList = ctrl.StudentDatabase();
+        // List<Module> fullModuleList = ctrl.ModuleListDatabase();
+        // List<Admin> fullAdminList = ctrl.AdminUserDatabase();
+        // List<Student> fullStudentList = ctrl.StudentDatabase();
 
         //Filter System Parameters
         // Invoke(ArrayList<Module> list, String value); [If it's int put '.toString()' at the back]

@@ -1,11 +1,12 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
 
-    public ArrayList<Module> ModuleListDatabase() {
-        ArrayList<Module> fullmodulelist = new ArrayList<Module>();
+    public List<Module> ModuleListDatabase() {
+        List<Module> fullmodulelist = new ArrayList<Module>();
         ArrayList<String> list = new ArrayList<String>();
         try {
             FileInputStream fis = new FileInputStream("Database\\courseList.txt");
@@ -27,8 +28,8 @@ public class Controller {
         return fullmodulelist;
     }
 
-    public ArrayList<Admin> AdminUserDatabase() {
-        ArrayList<Admin> fullAdminList = new ArrayList<Admin>();
+    public List<Admin> AdminUserDatabase() {
+        List<Admin> fullAdminList = new ArrayList<Admin>();
         ArrayList<String> list = new ArrayList<String>();
         try {
             FileInputStream fis = new FileInputStream("Database\\admin.txt");
@@ -48,8 +49,8 @@ public class Controller {
         return fullAdminList;
     }
 
-    public ArrayList<Student> StudentDatabase() {
-        ArrayList<Student> fullAdminList = new ArrayList<Student>();
+    public List<Student> StudentDatabase() {
+        List<Student> fullAdminList = new ArrayList<Student>();
         ArrayList<String> list = new ArrayList<String>();
         try {
             FileInputStream fis = new FileInputStream("Database\\student.txt");

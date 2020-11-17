@@ -1,18 +1,17 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Test {
     interface Authentication {
-        public boolean Invoke(ArrayList<Admin> list ,String username, String password);
+        public boolean Invoke(List<Admin> list ,String username, String password);
     }
 
     public static void main(String args[]) {
         Controller ctrl = new Controller();
-        ArrayList<Admin> fullAdminList = ctrl.AdminUserDatabase();
+        List<Admin> fullAdminList = ctrl.AdminUserDatabase();
         
         Authentication loginAuthentication = (adminList, username, password) -> {
-            List<Admin> checkLgogin = adminList.stream().filter(x -> username.equals(x.getUsername()) && password.equals(x.getPassword())).collect(Collectors.toList());
+            List<Admin> checkLogin = adminList.stream().filter(x -> username.equals(x.getUsername()) && password.equals(x.getPassword())).collect(Collectors.toList());
             return (checkLogin.size() > 0) ? true : false;
         };
 
