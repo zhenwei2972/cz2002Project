@@ -8,7 +8,7 @@ public class Filter {
     //This method only works on Java 8 onwards 
     @FunctionalInterface
     interface DataFiltering {
-        public List<Module> Invoke(ArrayList<Module> list, String value);
+        public List<Module> Invoke(List<Module> list, String value);
     }
     @FunctionalInterface
     interface ResultDisplay {
