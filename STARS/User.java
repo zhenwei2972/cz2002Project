@@ -1,4 +1,4 @@
-package STARS;
+
 
 public class User {
     String username ="test";

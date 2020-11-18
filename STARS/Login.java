@@ -1,7 +1,12 @@
-package STARS;
-import java.io.Console;
 
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 public class Login {
+    interface Authentication {
+        public boolean Invoke(List<Admin> list ,String username, String password);
+    }
     Console console = System.console();
     String ID ="";
     String PW ="";
@@ -25,27 +30,17 @@ public class Login {
     {
        return loginUser;
     }
-    
     public boolean Attempt_Login(String input_id, String input_pw){
-        if(input_id.equals(loginUser.getUsername()))
-        {
-            if(input_pw.equals(loginUser.getPassword()))
-            {
-                System.out.println("Login Success");
-            
-                return true;
-            }
-            else
-            {
-                System.out.println("Wrong PW");
-                return false;
-            }
-        }
-        else
-        {
-            System.out.println("Wrong ID");
-            return false;
-        }
+        Controller ctrl = new Controller();
+        List<Admin> fullAdminList = ctrl.AdminUserDatabase();
+        List<Module> fullModuleList = ctrl.ModuleListDatabase();
+        
+         Authentication loginAuthentication = (adminList, username, password) -> {
+             List<Admin> checkLogin = adminList.stream().filter(x -> username.equals(x.getUsername()) && password.equals(x.getPassword())).collect(Collectors.toList());
+             return (checkLogin.size() > 0) ? true : false;
+         };
+
+         return  loginAuthentication.Invoke(fullAdminList, input_id, input_pw);
 
     }
     public boolean GetLoginStatus(){

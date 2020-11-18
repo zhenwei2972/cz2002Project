@@ -1,4 +1,4 @@
-package STARS;
+
 
 import java.io.Console;
 import java.util.ArrayList;
@@ -74,9 +74,15 @@ public class Menu {
         // To Zhenwei
         // Column format
         // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
-        // Controller ctrl = new Controller();
-        // List<Module> fullModuleList = ctrl.ModuleListDatabase();
-        // List<Admin> fullAdminList = ctrl.AdminUserDatabase();
+        /*
+        Controller ctrl = new Controller();
+         List<Module> fullModuleList = ctrl.ModuleListDatabase();
+         List<Admin> fullAdminList = ctrl.AdminUserDatabase();
+         for(Admin admin : fullAdminList)
+         {
+         System.out.println(admin.username+" "+admin.password);
+         }
+         */
         // List<Student> fullStudentList = ctrl.StudentDatabase();
 
         //Filter System Parameters
@@ -95,6 +101,7 @@ public class Menu {
         // filterResult = filters.byDays.Invoke(fullModuleList, "Wednesday");
         // filters.toDisplayResult.Display(filterResult);
 
+        
         if (loginObject.GetLoginStatus()) {
             // if is staff show staff menu
             if (loginObject.ReturnUser().getStaff()) {
@@ -106,6 +113,7 @@ public class Menu {
                 StudentMenuLogic();
             }
         }
+        
     }
 
 }
