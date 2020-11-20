@@ -41,6 +41,9 @@ public class Student {
     public ArrayList<Module> getmodules(){
         return this.modlist;
     }
+    public Boolean getStudentStatus(){
+        return this.fullorPart;
+    }
     //----------setter--------------------//
     public void setpassword(String password){
         this.password = password;
