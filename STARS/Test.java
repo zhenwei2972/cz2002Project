@@ -30,12 +30,8 @@ public class Test {
         // filters.toDisplayResult.Display(filterResult);
         
         Student a = new Student("U1920129E","chienyq","12345");
-        Module test = new Module("10214","CZ2003","Computer Graphics","3","Wednesday","08:30:00","09:30:00","Tutorial","5");
-        System.out.println(a.getPassword);
-        System.out.println(a.getUsername);
-        System.out.println(a.getMatid);
+        Module test = new Module(10214,"CZ2003","Computer Graphics",3,"Wednesday","08:30:00","09:30:00","Tutorial",5);
         a.setmodule(test);
-        System.out.println(a.getmodules)
 
     }
 }
