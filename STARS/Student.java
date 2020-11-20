@@ -40,7 +40,7 @@ public class Student implements User{
     public String getMatid(){
         return this.matricID;
     }
-    public ArrayList<Course> getmodules(){
+    public ArrayList<Course> getCourse(){
         return this.modlist;
     }
     public Boolean getStudentStatus(){

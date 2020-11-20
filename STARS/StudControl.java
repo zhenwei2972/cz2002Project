@@ -10,7 +10,7 @@ public class StudControl {
     public void SwapCourse(Student a , Student b , Course m , int modid){
 
         List<Course> result = new ArrayList<Course>();
-        List<Course> courselist =  b.getmodules();
+        List<Course> courselist =  b.getCourse();
         result = filter.byIndex.Invoke(courselist, Integer.toString(modid));
         if (result.isEmpty()){
             System.out.println("Student B does not have " + m.getCourseName() + ":" + modid);

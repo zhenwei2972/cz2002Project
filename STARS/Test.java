@@ -32,16 +32,34 @@ public class Test {
         // filterResult = filters.byModuleCode.Invoke(fullModuleList, "CZ2002");
         // filters.toDisplayResult.Display(filterResult);
         
-        // Student a = new Student("U1920129E","chienyq","12345");
-        // Module test = new Module(10214,"CZ2003","Computer Graphics",3,"Wednesday","08:30:00","09:30:00","Tutorial",5);
-        // a.setmodule(test);
-        // ArrayList<Module> mods= a.getmodules();
-        // System.out.println(a.getStudentStatus());
-        // for (Module m: mods){
-        //     System.out.println(m.getCourseName());
-        // }
+        Student a = new Student("U1920129E","chienyq","12345");
+        Student b = new Student("U5856210F","student3","12345");
+        Course test = new Course(10214,"CZ2003","Computer Graphics",3,"Wednesday",1030,1230,"Tutorial",5,0);
+        Course test2 = new Course(10218,"CZ2003","Computer Graphics",3,"Wednesday",1030,1230,"Tutorial",5,0);
+        StudControl studcontrol = new StudControl();
+        a.AddCourse(test);
+        b.AddCourse(test2);
+        for (Course c: a.getCourse()){
+            System.out.println(c.index + " | " + a.getUsername());
+        }
+        for (Course c: b.getCourse()){
+            System.out.println(c.index + " | " + b.getUsername());
+        }
+        studcontrol.SwapCourse(a, b, test, 10218);
+        
+        for (Course c: a.getCourse()){
+            System.out.println(c.index + " | " + a.getUsername());
+        }
+        for (Course c: b.getCourse()){
+            System.out.println(c.index + " | " + b.getUsername());
+        }
 
+
+    //    String strTime = "20:15:40";
+    //    DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
+    //    Date d = dateFormat.parse(strTime);
+    //    System.out.println("Resultant Date and Time = " + d);
+
+            
     }
-
-
 }
