@@ -1,9 +1,11 @@
-public abstract class Student {
-    private String matircid;
-    private List<Module> modlist;
-    private String username;
-    private String password;
-    private Boolean fullorPart; //true for part time , default false for full time
+import java.util.ArrayList;
+
+public class Student {
+    private String matircid = "";
+    private ArrayList<Module> modlist[];
+    private String username = "";
+    private String password = "";
+    private Boolean fullorPart = false; //true for part time , default false for full time
 
     public Student() {
         System.out.println("Constructing an empty Student");
@@ -15,7 +17,6 @@ public abstract class Student {
         this.matircid = matircid;
         this.username = username;
         this.password = password;
-        this.fullorPart = false;
         this.modlist = new ArrayList<Module>();
     }
     //self determine fulltime/parttime student constructor
