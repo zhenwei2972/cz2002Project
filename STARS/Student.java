@@ -3,14 +3,14 @@ import java.util.ArrayList;
 public class Student implements User{
     //parameters for students
     private String matricID = "";
-    private ArrayList<Module> modlist;
+    private ArrayList<Course> modlist;
     private String username = "";
     private String password = "";
     private Boolean fullorPart = false; //true for part time , default false for full time
 
     public Student() {
         System.out.println("Constructing an empty Student");
-        this.modlist = new ArrayList<Module>();
+        this.modlist = new ArrayList<Course>();
     }
     //default fulltime student constructor
     public Student(String matricID, String username, String password) {
@@ -18,7 +18,7 @@ public class Student implements User{
         this.matricID = matricID;
         this.username = username;
         this.password = password;
-        this.modlist = new ArrayList<Module>();
+        this.modlist = new ArrayList<Course>();
     }
     //self determine fulltime/parttime student constructor
     public Student(String matricID, String username, String password, Boolean fullorPart) {
@@ -27,7 +27,7 @@ public class Student implements User{
         this.username = username;
         this.password = password;
         this.fullorPart = fullorPart;
-        this.modlist = new ArrayList<Module>();
+        this.modlist = new ArrayList<Course>();
     }
     
     //---------Getters----------//
@@ -40,8 +40,7 @@ public class Student implements User{
     public String getMatid(){
         return this.matricID;
     }
-
-    public ArrayList<Module> getmodules(){
+    public ArrayList<Course> getmodules(){
         return this.modlist;
     }
     public Boolean getStudentStatus(){
@@ -55,7 +54,11 @@ public class Student implements User{
     public void setUsername(String username){
         this.username = username;
     }
-    public void setmodule(Module mod){
+    public void AddCourse(Course mod){
         this.modlist.add(mod);
+    }
+    //---------delete------------------//
+    public void RemoveModule(Course mod){
+        this.modlist.remove(mod);
     }
 }
