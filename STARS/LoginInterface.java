@@ -33,6 +33,10 @@ public class LoginInterface{
             StudentInterface homePage = new StudentInterface();
             homePage.StudentMenuLogic();
         }
+        else{
+            System.out.println("Wrong Username or password! Please enter details again");
+            StudentLoginInterface();
+        }
         sc.close();
     }
 
@@ -49,6 +53,10 @@ public class LoginInterface{
         if(login){
             AdminInterface homePage = new AdminInterface();
             homePage.AdminMenuLogic();
+        }
+        else{
+            System.out.println("Wrong Username or password! Please enter details again");
+            AdminLoginInterface();
         }
         sc.close();
     }
