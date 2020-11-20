@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Student {
+    //parameters for students
     private String matircid = "";
     private ArrayList<Module> modlist;
     private String username = "";
@@ -13,7 +14,7 @@ public class Student {
     }
     //default fulltime student constructor
     public Student(String matircid, String username, String password) {
-        System.out.println("Constructing a Student");
+        System.out.println("Constructing a Default Student");
         this.matircid = matircid;
         this.username = username;
         this.password = password;
@@ -28,6 +29,7 @@ public class Student {
         this.fullorPart = fullorPart;
         this.modlist = new ArrayList<Module>();
     }
+    
     //---------Getters----------//
     public String getpassword(){
         return this.password;
@@ -44,6 +46,7 @@ public class Student {
     public Boolean getStudentStatus(){
         return this.fullorPart;
     }
+
     //----------setter--------------------//
     public void setpassword(String password){
         this.password = password;
@@ -54,5 +57,4 @@ public class Student {
     public void setmodule(Module mod){
         this.modlist.add(mod);
     }
-
 }
