@@ -1,12 +1,12 @@
-public class Module {
+public class Course {
     // Time Format 20:15:40 hh:mm:ss
     // data column
-    // index,coursecode,coursename,AU,day,starttime,endtime,classtype,vacancy
-    int index = 0, au = 0, vacancy = 0;
+    // index,coursecode,coursename,AU,day,starttime,endtime,classtype,vacancy,waitlist
+    int index = 0, au = 0, vacancy = 0, waitlist = 0;
     String coursecode = "", coursename = "", day = "", classtype = "";
     int starttime = 0, endtime = 0;
     
-    public Module(int index, String coursecode, String coursename, int au, String day, int starttime, int endtime,String classtype,int vacancy){
+    public Course(int index, String coursecode, String coursename, int au, String day, int starttime, int endtime,String classtype,int vacancy, int waitlist){
         this.index = index;
         this.coursecode = coursecode;
         this.coursename = coursename;
@@ -16,6 +16,7 @@ public class Module {
         this.endtime = endtime;
         this.classtype = classtype;
         this.vacancy = vacancy;
+        this.waitlist = waitlist;
     }
     public int getIndex(){
         return this.index;
@@ -44,6 +45,9 @@ public class Module {
     public int getVacancy(){
         return this.vacancy;
     }
+    public int getWaitlist(){
+        return this.waitlist;
+    }
     public void setIndex(int newIndex){
         this.index = newIndex;
     }
@@ -70,5 +74,8 @@ public class Module {
     }
     public void setVacancy(int newVacancy){
         this.vacancy = newVacancy;
+    }
+    public void setWaitlist(int newWaitlist){
+        this.waitlist = newWaitlist;
     }
 }

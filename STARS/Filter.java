@@ -8,11 +8,11 @@ public class Filter {
     //This method only works on Java 8 onwards 
     @FunctionalInterface
     interface DataFiltering {
-        public List<Module> Invoke(List<Module> list, String value);
+        public List<Course> Invoke(List<Course> list, String value);
     }
     @FunctionalInterface
     interface ResultDisplay {
-        public void Display(List<Module> list);
+        public void Display(List<Course> list);
     } 
     // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
     ResultDisplay toDisplayResult = (result) -> result.forEach(x -> System.out.println("Index: " + x.index + " Course Code: " + x.coursecode + " Day of Lesson: " + x.day + " Vacancy: " + x.vacancy));
@@ -29,8 +29,5 @@ public class Filter {
         return fullModuleList.stream().filter(x -> value.equals(x.getDay())).collect(Collectors.toList());
     };
 
-    DataFiltering BeforeEndTime = (fullModuleList, value) -> {
-        return fullModuleList.stream().filter(x -> value.equals(x.getEndTime())).collect(Collectors.toList());
-    };
 
 }

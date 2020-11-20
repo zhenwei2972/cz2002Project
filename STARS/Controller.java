@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Controller {
 
-    public List<Module> ModuleListDatabase() {
-        List<Module> fullmodulelist = new ArrayList<Module>();
+    public List<Course> ModuleListDatabase() {
+        List<Course> fullmodulelist = new ArrayList<Course>();
         ArrayList<String> list = new ArrayList<String>();
         try {
             FileInputStream fis = new FileInputStream("Database\\courseList.txt");
@@ -21,9 +21,9 @@ public class Controller {
         // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
         for (String i : list) {
             String[] splitdata = i.split(",");
-            fullmodulelist.add(new Module(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
+            fullmodulelist.add(new Course(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
                     Integer.parseInt(splitdata[3]), splitdata[4], Integer.parseInt(splitdata[5]), Integer.parseInt(splitdata[6]), splitdata[7],
-                    Integer.parseInt(splitdata[8])));
+                    Integer.parseInt(splitdata[8]),Integer.parseInt(splitdata[9])));
         }
         return fullmodulelist;
     }

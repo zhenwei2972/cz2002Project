@@ -1,4 +1,4 @@
-public class Admin{
+public class Admin implements User{
     String username, password;
     public Admin(String username, String password){
         this.username = username;
@@ -10,4 +10,6 @@ public class Admin{
     public String getPassword(){
         return password;
     }
+    public void setUsername(String username){}
+    public void setPassword(String password){}
 }

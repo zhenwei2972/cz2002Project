@@ -41,10 +41,6 @@ public class Test {
         //     System.out.println(m.getCourseName());
         // }
 
-       String strTime = "20:15:40";
-       DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
-       Date d = dateFormat.parse(strTime);
-       System.out.println("Resultant Date and Time = " + d);
     }
 
 

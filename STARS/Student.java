@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Student {
+public class Student implements User{
     //parameters for students
     private String matricID = "";
     private ArrayList<Module> modlist;
@@ -31,15 +31,16 @@ public class Student {
     }
     
     //---------Getters----------//
-    public String getpassword(){
+    public String getPassword(){
         return this.password;
     }
-    public String getusername(){
+    public String getUsername(){
         return this.username;
     }
     public String getMatid(){
         return this.matricID;
     }
+
     public ArrayList<Module> getmodules(){
         return this.modlist;
     }
@@ -48,10 +49,10 @@ public class Student {
     }
 
     //----------setter--------------------//
-    public void setpassword(String password){
+    public void setPassword(String password){
         this.password = password;
     }
-    public void setusername(String username){
+    public void setUsername(String username){
         this.username = username;
     }
     public void setmodule(Module mod){

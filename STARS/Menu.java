@@ -76,7 +76,7 @@ public class Menu {
         // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
         /*
         Controller ctrl = new Controller();
-         List<Module> fullModuleList = ctrl.ModuleListDatabase();
+         List<Course> fullModuleList = ctrl.ModuleListDatabase();
          List<Admin> fullAdminList = ctrl.AdminUserDatabase();
          for(Admin admin : fullAdminList)
          {
