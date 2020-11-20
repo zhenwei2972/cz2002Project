@@ -50,7 +50,7 @@ public class Controller {
     }
 
     public List<Student> StudentDatabase() {
-        List<Student> fullAdminList = new ArrayList<Student>();
+        List<Student> fullStudentList = new ArrayList<Student>();
         ArrayList<String> list = new ArrayList<String>();
         try {
             FileInputStream fis = new FileInputStream("Database\\student.txt");
@@ -64,8 +64,8 @@ public class Controller {
         }
         for (String i : list) {
             String[] splitdata = i.split(",");
-            fullAdminList.add(new Student(splitdata[0],splitdata[1],splitdata[2],Boolean.parseBoolean(splitdata[3])));
+            fullStudentList.add(new Student(splitdata[0],splitdata[1],splitdata[2],Boolean.parseBoolean(splitdata[3])));
         }
-        return fullAdminList;
+        return fullStudentList;
     }
 }

@@ -3,7 +3,7 @@ import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Date;
 
-public class Filter {
+public class CourseManager {
     //Functional interface is not other than a abstract method, which we are able polymorph into different methods
     //This method only works on Java 8 onwards 
     @FunctionalInterface
