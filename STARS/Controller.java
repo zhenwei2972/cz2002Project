@@ -22,7 +22,7 @@ public class Controller {
         for (String i : list) {
             String[] splitdata = i.split(",");
             fullmodulelist.add(new Module(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
-                    Integer.parseInt(splitdata[3]), splitdata[4], splitdata[5], splitdata[6], splitdata[7],
+                    Integer.parseInt(splitdata[3]), splitdata[4], Integer.parseInt(splitdata[5]), Integer.parseInt(splitdata[6]), splitdata[7],
                     Integer.parseInt(splitdata[8])));
         }
         return fullmodulelist;
