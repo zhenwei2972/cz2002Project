@@ -59,10 +59,10 @@ public class Module {
     public void setDay(String newDay){
         this.day = newDay;
     }
-    public void setStartTime(String newStartTime){
+    public void setStartTime(int newStartTime){
         this.starttime = newStartTime;
     }
-    public void setEndTime(String newEndTime){
+    public void setEndTime(int newEndTime){
         this.endtime = newEndTime;
     }
     public void setClassType(String newClassType){

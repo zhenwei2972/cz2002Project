@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Student {
     //parameters for students
-    private String matircid = "";
+    private String matricID = "";
     private ArrayList<Module> modlist;
     private String username = "";
     private String password = "";
@@ -13,17 +13,17 @@ public class Student {
         this.modlist = new ArrayList<Module>();
     }
     //default fulltime student constructor
-    public Student(String matircid, String username, String password) {
+    public Student(String matricID, String username, String password) {
         System.out.println("Constructing a Default Student");
-        this.matircid = matircid;
+        this.matricID = matricID;
         this.username = username;
         this.password = password;
         this.modlist = new ArrayList<Module>();
     }
     //self determine fulltime/parttime student constructor
-    public Student(String matircid, String username, String password, Boolean fullorPart) {
+    public Student(String matricID, String username, String password, Boolean fullorPart) {
         System.out.println("Constructing a Student" + fullorPart );
-        this.matircid = matircid;
+        this.matricID = matricID;
         this.username = username;
         this.password = password;
         this.fullorPart = fullorPart;
@@ -38,7 +38,7 @@ public class Student {
         return this.username;
     }
     public String getMatid(){
-        return this.matircid;
+        return this.matricID;
     }
     public ArrayList<Module> getmodules(){
         return this.modlist;
