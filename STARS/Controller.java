@@ -64,7 +64,7 @@ public class Controller {
         }
         for (String i : list) {
             String[] splitdata = i.split(",");
-            fullAdminList.add(new Student());
+            fullAdminList.add(new Student(splitdata[0],splitdata[1],splitdata[2],Boolean.parseBoolean(splitdata[3])));
         }
         return fullAdminList;
     }
