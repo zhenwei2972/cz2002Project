@@ -35,7 +35,7 @@ public class Test {
         Student a = new Student("U1920129E","chienyq","12345");
         Student b = new Student("U5856210F","student3","12345");
         Course test = new Course(10214,"CZ2003","Computer Graphics",3,"Wednesday",1030,1230,"Tutorial",5,0);
-        Course test2 = new Course(10218,"CZ2003","Computer Graphics",3,"Wednesday",1030,1230,"Tutorial",5,0);
+        Course test2 = new Course(10219,"CZ2003","Computer Graphics",3,"Wednesday",1030,1230,"Tutorial",5,0);
         StudControl studcontrol = new StudControl();
         a.AddCourse(test);
         b.AddCourse(test2);
@@ -46,7 +46,7 @@ public class Test {
             System.out.println(c.index + " | " + b.getUsername());
         }
         studcontrol.SwapCourse(a, b, test, 10218);
-        
+
         for (Course c: a.getCourse()){
             System.out.println(c.index + " | " + a.getUsername());
         }

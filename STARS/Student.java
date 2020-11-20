@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.List;
 public class Student implements User{
     //parameters for students
     private String matricID = "";
@@ -7,6 +7,8 @@ public class Student implements User{
     private String username = "";
     private String password = "";
     private Boolean fullorPart = false; //true for part time , default false for full time
+
+    Filter filter = new Filter();
 
     public Student() {
         System.out.println("Constructing an empty Student");
@@ -55,10 +57,44 @@ public class Student implements User{
         this.username = username;
     }
     public void AddCourse(Course mod){
+        if(checkexist(mod))
         this.modlist.add(mod);
+        else
+        System.out.println("There is and exisitng course added index : " + mod.getIndex());
     }
     //---------delete------------------//
     public void RemoveCourse(Course mod){
+        if(!checkexist(mod))
         this.modlist.remove(mod);
+        else
+        System.out.println("There is no " + mod.getCourseName() + " exsisting in your registered course");
     }
+
+    //------------------- checking -------------------//
+    private boolean checkexist(Course mod){
+        List<Course> courses = this.modlist;
+        List<Course> result = new ArrayList<Course>();
+        result = filter.byModuleCode.Invoke(courses, mod.getCourseCode());
+        if(result.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+
+    //----------------- functions ---------------------//
+    public void SwapCourse(Student b , Course m , int modid){
+        List<Course> result = new ArrayList<Course>();
+        List<Course> courselist =  b.getCourse();
+        result = filter.byIndex.Invoke(courselist, Integer.toString(modid));
+        if (result.isEmpty()){
+            System.out.println("Student"+ b.username + " does not have " + m.getCourseName() + ":" + modid);
+            return;
+        }
+        else{
+            b.AddCourse(m);
+            b.RemoveCourse(result.get(0));
+            this.RemoveCourse(m);
+            this.AddCourse(result.get(0));
+        }
+    } 
 }
