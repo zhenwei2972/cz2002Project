@@ -58,7 +58,7 @@ public class Student implements User{
         this.modlist.add(mod);
     }
     //---------delete------------------//
-    public void RemoveModule(Course mod){
+    public void RemoveCourse(Course mod){
         this.modlist.remove(mod);
     }
 }
