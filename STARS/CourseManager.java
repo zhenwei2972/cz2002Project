@@ -29,5 +29,4 @@ public class CourseManager {
         return fullModuleList.stream().filter(x -> value.equals(x.getDay())).collect(Collectors.toList());
     };
 
-
 }

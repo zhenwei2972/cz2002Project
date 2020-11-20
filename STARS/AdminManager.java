@@ -36,7 +36,7 @@ public class AdminManager {
 
         int index = Integer.parseInt(indexInString);
         fullStudentList.stream().forEach(i -> {
-            List<Course> studentCourse = i.getmodules();
+            List<Course> studentCourse = i.getCourse();
             studentCourse.stream().filter(j -> index == j.getIndex()).forEach(x -> System.out.println("Student: " + i.getUsername()));
         });
 
@@ -53,7 +53,7 @@ public class AdminManager {
 
     PrintStudentList printStudentFromCourse = (fullStudentList, courseCode) -> {
         fullStudentList.stream().forEach(i -> {
-            List<Course> studentCourse = i.getmodules();
+            List<Course> studentCourse = i.getCourse();
             studentCourse.stream().filter(j -> courseCode.equals(j.getCourseCode())).forEach(x -> System.out.println("Student: " + i.getUsername()));
         });
 

@@ -1,6 +1,5 @@
 public class Test {
     public static void main(String args[]) throws Exception {
-      
 
         // Student a = new Student("U1920129E","chienyq","12345");
         // Module test = new Module(10214,"CZ2003","Computer
@@ -13,5 +12,4 @@ public class Test {
         // }
 
     }
-
 }
