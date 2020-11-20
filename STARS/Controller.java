@@ -18,6 +18,7 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //from courseList.txt
         // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
         for (String i : list) {
             String[] splitdata = i.split(",");
