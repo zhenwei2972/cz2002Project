@@ -1,4 +1,4 @@
-10214,CZ2003,Computer Graphics,3,Wednesday,08:30:00,09:30:00,Tutorial,5
-10255,CZ2004,Software Engineering,3,Tuesday,08:30:00,09:30:00,Tutorial,3
-10240,CZ2002,Object Oriented Programming,3,Tuesday,10:30:00,12:30:00,Tutorial,6
-10241,CZ2002,Object Oriented Programming,3,Tuesday,11:30:00,13:30:00,Tutorial,6
+10214,CZ2003,Computer Graphics,3,Wednesday,0830,0930,Tutorial,5
+10255,CZ2004,Software Engineering,3,Tuesday,0830,0930,Tutorial,3
+10240,CZ2002,Object Oriented Programming,3,Tuesday,1030,1230,Tutorial,6
+10241,CZ2002,Object Oriented Programming,3,Tuesday,1130,1330,Tutorial,6

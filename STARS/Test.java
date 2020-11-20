@@ -2,13 +2,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.List;
+import java.text.DateFormat;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Test {
     // interface Authentication {
     //     public boolean Invoke(List<Admin> list ,String username, String password);
     // }
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception{
         // Controller ctrl = new Controller();
         // List<Admin> fullAdminList = ctrl.AdminUserDatabase();
         // List<Module> fullModuleList = ctrl.ModuleListDatabase();
@@ -29,14 +32,20 @@ public class Test {
         // filterResult = filters.byModuleCode.Invoke(fullModuleList, "CZ2002");
         // filters.toDisplayResult.Display(filterResult);
         
-        Student a = new Student("U1920129E","chienyq","12345");
-        Module test = new Module(10214,"CZ2003","Computer Graphics",3,"Wednesday","08:30:00","09:30:00","Tutorial",5);
-        a.setmodule(test);
-        ArrayList<Module> mods= a.getmodules();
-        System.out.println(a.getStudentStatus());
-        for (Module m: mods){
-            System.out.println(m.getCourseName());
-        }
+        // Student a = new Student("U1920129E","chienyq","12345");
+        // Module test = new Module(10214,"CZ2003","Computer Graphics",3,"Wednesday","08:30:00","09:30:00","Tutorial",5);
+        // a.setmodule(test);
+        // ArrayList<Module> mods= a.getmodules();
+        // System.out.println(a.getStudentStatus());
+        // for (Module m: mods){
+        //     System.out.println(m.getCourseName());
+        // }
 
+       String strTime = "20:15:40";
+       DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
+       Date d = dateFormat.parse(strTime);
+       System.out.println("Resultant Date and Time = " + d);
     }
+
+
 }

@@ -4,9 +4,9 @@ public class Module {
     // index,coursecode,coursename,AU,day,starttime,endtime,classtype,vacancy
     int index = 0, au = 0, vacancy = 0;
     String coursecode = "", coursename = "", day = "", classtype = "";
-    String starttime = "", endtime = "";
+    int starttime = 0, endtime = 0;
     
-    public Module(int index, String coursecode, String coursename, int au, String day, String starttime, String endtime,String classtype,int vacancy){
+    public Module(int index, String coursecode, String coursename, int au, String day, int starttime, int endtime,String classtype,int vacancy){
         this.index = index;
         this.coursecode = coursecode;
         this.coursename = coursename;
@@ -32,10 +32,10 @@ public class Module {
     public String getDay(){
         return this.day;
     }
-    public String getStartTime(){
+    public int getStartTime(){
         return this.starttime;
     }
-    public String getEndTime(){
+    public int getEndTime(){
         return this.endtime;
     }
     public String getClassType(){
