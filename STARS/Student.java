@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.lang.model.util.ElementScanner14;
 public class Student implements User{
     //parameters for students
     private String matricID = "";
@@ -56,16 +58,47 @@ public class Student implements User{
     public void setUsername(String username){
         this.username = username;
     }
-    public void AddCourse(Course mod){
+    public void AddCourse(Course mod,WaitList waitinglist){
         if(checkexist(mod))
-        this.modlist.add(mod);
+            if(mod.getVacancy() > 0){
+            this.modlist.add(mod);
+            mod.setVacancy(mod.getVacancy()-1);
+            }
+            else
+            {
+                System.out.println("This course "+ mod.getCourseName()+ " : " + mod.getIndex() +" is full");
+                System.out.println("Adding to waitlist");
+                waitinglist.AddtoWaitList(this, mod);
+            }
         else
         System.out.println("There is and exisitng course added index : " + mod.getIndex());
     }
-    //---------delete------------------//
+    public void AddCourse(Course mod){
+        if(checkexist(mod))
+            if(mod.getVacancy() > 0){
+            this.modlist.add(mod);
+            mod.setVacancy(mod.getVacancy()-1);
+            }
+        else
+        System.out.println("There is and exisitng course : " + mod.getIndex());
+    }
     public void RemoveCourse(Course mod){
-        if(!checkexist(mod))
-        this.modlist.remove(mod);
+        if(!checkexist(mod)){
+            mod.setVacancy(mod.getVacancy()+1);
+            this.modlist.remove(mod);
+        }
+        else
+        System.out.println("There is no " + mod.getCourseName() + " exsisting in your registered course");
+    }
+
+
+    //---------delete------------------//
+    public void RemoveCourse(Course mod,WaitList waitinglist){
+        if(!checkexist(mod)){
+            mod.setVacancy(mod.getVacancy()+1);
+            this.modlist.remove(mod);
+            waitinglist.AddCoursetoStudent(mod);
+        }
         else
         System.out.println("There is no " + mod.getCourseName() + " exsisting in your registered course");
     }
