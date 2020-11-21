@@ -1,4 +1,36 @@
+10270,CZ2001,Algorithms,3,Friday,1030,1130,Tutorial,3,0
+10270,CZ2001,Algorithms,3,Monday,1030,1130,Lecture,5,0
+10270,CZ2001,Algorithms,3,Thursday,0830,1030,Lab,5,0
+10271,CZ2001,Algorithms,3,Wednesday,1030,1130,Tutorial,3,0
+10271,CZ2001,Algorithms,3,Monday,1030,1130,Lecture,5,0
+10271,CZ2001,Algorithms,3,Monday,0830,1030,Lab,5,0
+10272,CZ2001,Algorithms,3,Thursday,1430,1330,Tutorial,3,0
+10272,CZ2001,Algorithms,3,Monday,1030,1130,Lecture,5,0
+10272,CZ2001,Algorithms,3,Thursday,1530,1730,Lab,5,0
+10240,CZ2002,Object Oriented Programming,3,Thursday,1130,1230,Tutorial,6,0
+10240,CZ2002,Object Oriented Programming,3,Tuesday,1230,1330,Lecture,6,0
+10240,CZ2002,Object Oriented Programming,3,Monday,1230,1430,Lab,6,0
+10241,CZ2002,Object Oriented Programming,3,Wednesday,0930,1030,Tutorial,6,0
+10241,CZ2002,Object Oriented Programming,3,Tuesday,1230,1330,Lecture,6,0
+10241,CZ2002,Object Oriented Programming,3,Friday,0830,1030,Lab,6,0
+10242,CZ2002,Object Oriented Programming,3,Friday,0930,1030,Tutorial,6,0
+10242,CZ2002,Object Oriented Programming,3,Monday,0930,1030,Lecture,6,0
+10242,CZ2002,Object Oriented Programming,3,Monday,1130,1330,Lab,6,0
 10214,CZ2003,Computer Graphics,3,Wednesday,0830,0930,Tutorial,5,0
+10214,CZ2003,Computer Graphics,3,Tuesday,1030,1130,Lecture,5,0
+10214,CZ2003,Computer Graphics,3,Friday,1330,1530,Lab,5,0
+10215,CZ2003,Computer Graphics,3,Monday,0930,1030,Tutorial,5,0
+10215,CZ2003,Computer Graphics,3,Tuesday,1030,1130,Lecture,5,0
+10215,CZ2003,Computer Graphics,3,Monday,1330,1530,Lab,5,0
+10216,CZ2003,Computer Graphics,3,Thurday,1430,1530,Tutorial,5,0
+10216,CZ2003,Computer Graphics,3,Tuesday,1030,1130,Lecture,5,0
+10216,CZ2003,Computer Graphics,3,Wednesday,1030,1230,Lab,5,0
 10255,CZ2004,Software Engineering,3,Tuesday,0830,0930,Tutorial,3,0
-10240,CZ2002,Object Oriented Programming,3,Tuesday,1030,1230,Tutorial,6,0
-10241,CZ2002,Object Oriented Programming,3,Tuesday,1130,1330,Tutorial,6,0
+10255,CZ2004,Software Engineering,3,Friday,1130,1230,Lecture,5,0
+10255,CZ2004,Software Engineering,3,Friday,1430,1630,Lab,5,0
+10256,CZ2004,Software Engineering,3,Monday,0830,0930,Tutorial,3,0
+10256,CZ2004,Software Engineering,3,Friday,1130,1230,Lecture,5,0
+10256,CZ2004,Software Engineering,3,Thursday,0930,1130,Lab,5,0
+10256,CZ2004,Software Engineering,3,Monday,0830,0930,Tutorial,3,0
+10256,CZ2004,Software Engineering,3,Friday,1130,1230,Lecture,5,0
+10256,CZ2004,Software Engineering,3,Thursday,0930,1130,Lab,5,0
