@@ -82,14 +82,7 @@ public class Student implements User{
         else
         System.out.println("There is and exisitng course : " + mod.getIndex());
     }
-    public void RemoveCourse(Course mod){
-        if(!checkexist(mod)){
-            mod.setVacancy(mod.getVacancy()+1);
-            this.modlist.remove(mod);
-        }
-        else
-        System.out.println("There is no " + mod.getCourseName() + " exsisting in your registered course");
-    }
+    
 
 
     //---------delete------------------//
@@ -98,6 +91,14 @@ public class Student implements User{
             mod.setVacancy(mod.getVacancy()+1);
             this.modlist.remove(mod);
             waitinglist.AddCoursetoStudent(mod);
+        }
+        else
+        System.out.println("There is no " + mod.getCourseName() + " exsisting in your registered course");
+    }
+    public void RemoveCourse(Course mod){
+        if(!checkexist(mod)){
+            mod.setVacancy(mod.getVacancy()+1);
+            this.modlist.remove(mod);
         }
         else
         System.out.println("There is no " + mod.getCourseName() + " exsisting in your registered course");
