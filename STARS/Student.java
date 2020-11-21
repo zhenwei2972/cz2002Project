@@ -59,26 +59,36 @@ public class Student implements User{
         this.username = username;
     }
     public void AddCourse(Course mod,WaitList waitinglist){
-        if(checkexist(mod))
-            if(mod.getVacancy() > 0){
-            this.modlist.add(mod);
-            mod.setVacancy(mod.getVacancy()-1);
-            }
-            else
-            {
-                System.out.println("This course "+ mod.getCourseName()+ " : " + mod.getIndex() +" is full");
-                System.out.println("Adding to waitlist");
-                waitinglist.AddtoWaitList(this, mod);
-            }
+        if(checkexist(mod)){
+            if(!checkclash(mod)){
+                if(mod.getVacancy() > 0){
+                this.modlist.add(mod);
+                mod.setVacancy(mod.getVacancy()-1);
+                }
+                else
+                {
+                    System.out.println("This course "+ mod.getCourseName()+ " : " + mod.getIndex() +" is full");
+                    System.out.println("Adding to waitlist");
+                    waitinglist.AddtoWaitList(this, mod);
+                }
+            } 
+            else 
+            System.out.println("There is a clash for this course added -index : " + mod.getIndex());
+        }
         else
-        System.out.println("There is and exisitng course added index : " + mod.getIndex());
+        System.out.println("There is an exisitng course added index : " + mod.getIndex());
     }
     public void AddCourse(Course mod){
-        if(checkexist(mod))
-            if(mod.getVacancy() > 0){
-            this.modlist.add(mod);
-            mod.setVacancy(mod.getVacancy()-1);
+        if(checkexist(mod)){
+            if(!checkclash(mod)){
+                if(mod.getVacancy() > 0){
+                this.modlist.add(mod);
+                mod.setVacancy(mod.getVacancy()-1);
+                }
             }
+            else  
+            System.out.println("There is a clash for this course added -index : " + mod.getIndex());
+        }
         else
         System.out.println("There is and exisitng course : " + mod.getIndex());
     }
@@ -114,7 +124,21 @@ public class Student implements User{
         }
         return false;
     }
-
+    /**
+     * checking for time slot clash between modules.
+     */
+    private boolean checkclash(Course course){
+        List<Course> courses = this.modlist;
+        List<Course> result = new ArrayList<Course>();
+        result = filter.byDays.Invoke(courses, course.day);
+        for(Course mod: result){
+            if( mod.getStartTime() == course.getStartTime() || mod.getEndTime() == course.getEndTime() || mod.getStartTime() < course.getEndTime() && course.getStartTime() < mod.getEndTime())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     //----------------- functions ---------------------//
     public void SwapCourse(Student b , Course m , int modid){
         List<Course> result = new ArrayList<Course>();
