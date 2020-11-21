@@ -31,6 +31,6 @@
 10256,CZ2004,Software Engineering,3,Monday,0830,0930,Tutorial,3,0
 10256,CZ2004,Software Engineering,3,Friday,1130,1230,Lecture,5,0
 10256,CZ2004,Software Engineering,3,Thursday,0930,1130,Lab,5,0
-10256,CZ2004,Software Engineering,3,Monday,0830,0930,Tutorial,3,0
-10256,CZ2004,Software Engineering,3,Friday,1130,1230,Lecture,5,0
-10256,CZ2004,Software Engineering,3,Thursday,0930,1130,Lab,5,0
+10257,CZ2004,Software Engineering,3,Monday,0830,0930,Tutorial,3,0
+10257,CZ2004,Software Engineering,3,Friday,1130,1230,Lecture,5,0
+10257,CZ2004,Software Engineering,3,Thursday,0930,1130,Lab,5,0
