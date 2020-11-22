@@ -1,15 +1,16 @@
 public class Course {
-    private int index = 0, vacancy = 0, waitlist =0;
+    private int index = 0, vacancy = 0, waitlist =0, au =0;
     private String courseCode = "";
 
     public Course(){
 
     }
-    public Course(int index, String courseCode, int vacancy, int waitlist){
+    public Course(int index, String courseCode, int vacancy, int waitlist, int au){
         this.index = index;
         this.courseCode = courseCode;
         this.vacancy = vacancy;
         this.waitlist = waitlist;
+        this.au = au;
     }
     public int getIndex(){
         return index;
@@ -23,6 +24,9 @@ public class Course {
     public int getWaitlist(){
         return waitlist;
     }
+    public int getAU(){
+        return au;
+    }
     public void setIndex(int newIndex){
         this.index = newIndex;
     }
@@ -35,5 +39,7 @@ public class Course {
     public void setWaitlist(int newWaitlist){
         this.waitlist = newWaitlist;
     }
-
+    public void setAu(int newAU){
+        this.au = newAU;
+    }
 }

@@ -1,8 +1,5 @@
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javax.swing.text.html.HTML.Tag;
-
 import java.util.ArrayList;
 
 public class StudentManager {
@@ -47,6 +44,11 @@ public class StudentManager {
         for (Course course : courses) {
             System.out.println(course.getCourseCode() + " : " + course.getIndex());
         }
+        Integer totalAU = calculateTotalAU(courses);
+        System.out.println("Total AU for this semester: " + totalAU);
+    }
+    public Integer calculateTotalAU(ArrayList<Course> courses){
+        return courses.stream().mapToInt(x -> x.getAU()).sum();
     }
 
     public void AddCourse(Course mod, WaitList waitinglist, Student currentStudent) {
@@ -157,4 +159,37 @@ public class StudentManager {
             this.AddCourse(result.get(0),current);
         }
     }
+
+    public void GenerateTimeTable(ArrayList<Course> courses){
+        List<Lesson> mondayLesson = new ArrayList<Lesson>();
+        List<Lesson> tuesdayLesson = new ArrayList<Lesson>();
+        List<Lesson> wednesdayLesson = new ArrayList<Lesson>();
+        List<Lesson> thursdayLesson = new ArrayList<Lesson>();
+        List<Lesson> fridayLesson = new ArrayList<Lesson>();
+        
+        List<Integer> indexArr = new ArrayList<Integer>();
+        //Testing using 10271, 10242
+        for (Course i : courses) {
+            indexArr.add(i.getIndex());
+        }
+        mondayLesson = lessonMgmt.getMondayClasses.Invoke(indexArr);
+        tuesdayLesson = lessonMgmt.getTuesdayClasses.Invoke(indexArr);
+        wednesdayLesson = lessonMgmt.getWednesdayClasses.Invoke(indexArr);
+        thursdayLesson = lessonMgmt.getThursdayClasses.Invoke(indexArr);
+        fridayLesson = lessonMgmt.getFridayClasses.Invoke(indexArr);
+        PrintTimeTable(mondayLesson, "Monday");
+        PrintTimeTable(tuesdayLesson, "Tuesday");
+        PrintTimeTable(wednesdayLesson, "Wednesday");
+        PrintTimeTable(thursdayLesson, "Thursday");
+        PrintTimeTable(fridayLesson, "Friday");
+        System.out.println("");
+    }
+    public void PrintTimeTable(List<Lesson> lessonList, String day){
+        System.out.println(day +" Classes:");
+        System.out.println("---------------");
+        if(lessonList.size() > 0)
+            lessonList.forEach(x -> System.out.println("Index: "+ x.getIndex() +" Course Code: " + x.getCourseCode() + " Module Name: " + x.getCourseName() + " Start Time: " + x.getStartTime() + " End Time: " + x.getEndTime()));
+        else
+            System.out.println("You have no classes on " + day);
+        }
 }

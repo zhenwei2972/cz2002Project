@@ -14,8 +14,8 @@
 10241,CZ2002,Object Oriented Programming,3,Tuesday,1230,1330,Lecture
 10241,CZ2002,Object Oriented Programming,3,Friday,0830,1030,Lab
 10242,CZ2002,Object Oriented Programming,3,Friday,0930,1030,Tutorial
-10242,CZ2002,Object Oriented Programming,3,Monday,0930,1030,Lecture
-10242,CZ2002,Object Oriented Programming,3,Monday,1130,1330,Lab
+10242,CZ2002,Object Oriented Programming,3,Monday,1230,1330,Lecture
+10242,CZ2002,Object Oriented Programming,3,Monday,1330,1530,Lab
 10214,CZ2003,Computer Graphics,3,Wednesday,0830,0930,Tutorial
 10214,CZ2003,Computer Graphics,3,Tuesday,1030,1130,Lecture
 10214,CZ2003,Computer Graphics,3,Friday,1330,1530,Lab

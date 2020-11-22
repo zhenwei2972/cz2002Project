@@ -135,7 +135,7 @@ public class Database {
         for (String i : list) {
             String[] splitdata = i.split(",");
             fullcourselist.add(new Course(Integer.parseInt(splitdata[0]), splitdata[1], Integer.parseInt(splitdata[2]),
-                    Integer.parseInt(splitdata[3])));
+                    Integer.parseInt(splitdata[3]), Integer.parseInt(splitdata[4])));
         }
         return fullcourselist;
     }
@@ -144,7 +144,7 @@ public class Database {
        // index, coursecode, vacancy, waitlist
         fullCourseList.forEach(x -> {
             try {
-                myWriter.write(x.getIndex() + "," + x.getCourseCode() + "," + x.getVacancy() + "," + x.getWaitlist()
+                myWriter.write(x.getIndex() + "," + x.getCourseCode() + "," + x.getVacancy() + "," + x.getWaitlist() + "," + x.getAU()
                         + "\n");
             } catch (IOException e) {
                 System.out.println("Update Course Database Failed");
