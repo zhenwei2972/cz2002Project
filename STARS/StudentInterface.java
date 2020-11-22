@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class StudentInterface {
     CourseManager filter = new CourseManager();
-    StudentManager studentFilter = new StudentManager();
+    StudentManager studentMgmt = new StudentManager();
     public void StudentMenuLogic(Student currentStudent,Database db) {
         String num = "";
         Console console = System.console();
@@ -79,7 +79,7 @@ public class StudentInterface {
 private Course GetCourse(int courseIndex,List<Course> courses){
     List<Course> result = new ArrayList<Course>();
     //find corresponding course object using these course code & index
-    result = filter.byIndex.Invoke(courses, Integer.toString(courseIndex));
+    result = studentMgmt.byMatricNo.Filter(courses, Integer.toString(courseIndex));
     for(Course mod: result){
         //add course if found 
         return mod;
@@ -89,7 +89,7 @@ private Course GetCourse(int courseIndex,List<Course> courses){
 private Student GetStudent(int matricNo,List<Student> students){
     List<Student> result = new ArrayList<Student>();
     //find corresponding student object using these course code & index
-    result = studentFilter.byMatricNo.Invoke(students, Integer.toString(matricNo));
+    result = studentMgmt.byMatricNo.Filter(students, Integer.toString(matricNo));
     for(Student student: result){
         //add course if found 
         return student;
