@@ -32,7 +32,6 @@ public class Student implements User{
         this.fullorPart = fullorPart;
         this.modlist = new ArrayList<Course>();
     }
-    
     //---------Getters----------//
     public String getPassword(){
         return this.password;
@@ -61,102 +60,10 @@ public class Student implements User{
     public void setUsername(String username){
         this.username = username;
     }
-    public void AddCourse(Course mod,WaitList waitinglist){
-        if(checkexist(mod)){
-            if(!checkclash(mod)){
-                if(mod.getVacancy() > 0){
-                this.modlist.add(mod);
-                mod.setVacancy(mod.getVacancy()-1);
-                }
-                else
-                {
-                    System.out.println("This course "+ mod.getCourseCode() + " : " + mod.getIndex() +" is full");
-                    System.out.println("Adding to waitlist");
-                    waitinglist.AddtoWaitList(this, mod);
-                }
-            } 
-            else 
-            System.out.println("There is a clash for this course added -index : " + mod.getIndex());
-        }
-        else
-        System.out.println("There is an exisitng course added index : " + mod.getIndex());
+    public void addModList(Course course){
+        this.modlist.add(course);
     }
-    public void AddCourse(Course mod){
-        if(checkexist(mod)){
-            if(!checkclash(mod)){
-                if(mod.getVacancy() > 0){
-                    this.modlist.add(mod);
-                    mod.setVacancy(mod.getVacancy()-1);
-                }
-            }
-            else  
-            System.out.println("There is a clash for this course added -index : " + mod.getIndex());
-        }
-        else
-        System.out.println("There is and exisitng course : " + mod.getIndex());
-    }
-
-    //---------delete------------------//
-    public void RemoveCourse(Course mod,WaitList waitinglist){
-        if(!checkexist(mod)){
-            mod.setVacancy(mod.getVacancy()+1);
-            this.modlist.remove(mod);
-            waitinglist.AddCoursetoStudent(mod);
-        }
-        else
-        System.out.println("There is no " + mod.getCourseCode() + " exsisting in your registered course");
-    }
-    public void RemoveCourse(Course mod){
-        if(!checkexist(mod)){
-            mod.setVacancy(mod.getVacancy()+1);
-            this.modlist.remove(mod);
-        }
-        else
-        System.out.println("There is no " + mod.getCourseCode() + " exsisting in your registered course");
-    }
-
-    //------------------- checking -------------------//
-    private boolean checkexist(Course mod){
-        List<Course> courses = this.modlist;
-        List<Course> result = new ArrayList<Course>();
-        result = filter.byModuleCode.Invoke(courses, mod.getCourseCode());
-        if(result.isEmpty()){
-            return true;
-        }
-        return false;
-    }
-    /**
-     * checking for time slot clash between modules.
-     */
-    private boolean checkclash(Course course){
-        List<Lesson> result = new ArrayList<Lesson>();
-        result = Lfilter.byIndex.Invoke(Integer.toString(course.getIndex()));
-        for(Course mycourse: this.modlist){
-            List<Lesson> currentmodules = new ArrayList<Lesson>();
-            currentmodules = Lfilter.byIndex.Invoke(Integer.toString(mycourse.getIndex()));
-            for(Lesson current : currentmodules){
-                for(Lesson mod: result){
-                    if(current.getDay() == mod.getDay() && (current.getStartTime()< mod.getEndTime() && current.getEndTime() >= mod.getEndTime()) || (current.getStartTime() == mod.getStartTime() && current.getEndTime() == mod.getEndTime()))
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    //----------------- functions ---------------------//
-    public void SwapCourse(Student b , Course m , int modid){
-        List<Course> result = new ArrayList<Course>();
-        List<Course> courselist =  b.getCourse();
-        result = filter.byIndex.Invoke(courselist, Integer.toString(modid));
-        if (result.isEmpty()){
-            System.out.println("Student"+ b.username + " does not have " + m.getCourseCode() + ":" + modid);
-            return;
-        }
-        else{
-            b.AddCourse(m);
-            b.RemoveCourse(result.get(0));
-            this.RemoveCourse(m);
-            this.AddCourse(result.get(0));
-        }
+    public void removeModList(Course course){
+        this.modlist.remove(course);
     }
 }
