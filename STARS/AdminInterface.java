@@ -2,8 +2,10 @@ import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.IOException;
+
 public class AdminInterface {
-    public void AdminMenuLogic() {
+    public void AdminMenuLogic() throws IOException {
         String num = "";
         Console console = System.console();
         System.out.println("Welcome to Admin Mode");
@@ -53,6 +55,8 @@ public class AdminInterface {
                     System.out.println("Add/Update a course");
                     break;
                 case "8":
+                    db.UpdateStudentDatabase(fullStudentList);
+                    //db.UpdateCourseDatabase(fullCourseList);
                     System.out.println("\nQuit");
                     quit=true;
                 default:

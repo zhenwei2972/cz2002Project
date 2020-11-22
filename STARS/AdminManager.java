@@ -7,7 +7,7 @@ public class AdminManager {
         public void Invoke(List<Student> studentList, String value);
     }
 
-    public List<Student> addStudent(List<Student> fullStudentList) {
+    public void addStudent(List<Student> fullStudentList) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Student's Matriculation Number");
         String matricNo = sc.next();
@@ -26,8 +26,6 @@ public class AdminManager {
         int year = sc.nextInt();
         fullStudentList.add(new Student(matricNo, studentName, studentPassword, partTime,year));
 
-        sc.close();
-        return fullStudentList;
     }
 
     public List<Student> removeStudent(List<Student> fullStudentList, String matricNo) {
