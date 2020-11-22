@@ -131,14 +131,16 @@ public class Student implements User{
     private boolean checkclash(Course course){
         List<Lesson> result = new ArrayList<Lesson>();
         result = Lfilter.byIndex.Invoke(Integer.toString(course.getIndex()));
-        for(Course mine: this.modlist){
+        for(Course mycourse: this.modlist){
             List<Lesson> currentmodules = new ArrayList<Lesson>();
-            currentmodules = Lfilter.byIndex.Invoke(Integer.toString(mine.getIndex()));
-            for(Lesson mod: result){
-                return true;
+            currentmodules = Lfilter.byIndex.Invoke(Integer.toString(mycourse.getIndex()));
+            for(Lesson current : currentmodules){
+                for(Lesson mod: result){
+                    if(current.getDay() == mod.getDay() && (current.getStartTime()< mod.getEndTime() && current.getEndTime() >= mod.getEndTime()) || (current.getStartTime() == mod.getStartTime() && current.getEndTime() == mod.getEndTime()))
+                    return true;
+                }
             }
         }
-        
         return false;
     }
     //----------------- functions ---------------------//
