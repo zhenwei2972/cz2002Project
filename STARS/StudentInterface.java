@@ -63,11 +63,21 @@ public class StudentInterface {
                     System.out.println("\nEnter a course index that you want to change to");
                     String changeIndex = sc.next();
                     currentCourse=  studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses);
+                    System.out.println("\nInformation for Index"+courseIndex);
+                    studentMgmt.printLessonInformation(Integer.parseInt(changeIndex));
+                    System.out.println("\nInformation for Index"+changeIndex);
+                    studentMgmt.printLessonInformation(Integer.parseInt(changeIndex));
+                    System.out.println("\nConfirm Swap? yes / no");
+                    String confirmation = sc.next();
+                    if(confirmation=="yes")
+                    {
+                    
                     Course newCourse = studentMgmt.GetCourse(Integer.parseInt(changeIndex), courses);
                     studentMgmt.RemoveCourse(currentCourse, waitlist,
                             currentStudent);
                     studentMgmt.AddCourse(newCourse,waitlist,
                             currentStudent);
+                    }
                     break;
                 case "6":
                     System.out.println("\nSwop Index Number with Another Student");
