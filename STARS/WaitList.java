@@ -4,7 +4,7 @@ import java.util.List;
 
 public class WaitList {
     List<ArrayList<Object>> waitlist = new ArrayList<ArrayList<Object>>();
-
+    StudentManager studentManager = new StudentManager();
     public WaitList(){
 
     }
@@ -32,7 +32,7 @@ public class WaitList {
             if(items.get(1) == course){
                 course.setWaitlist(course.getWaitlist()-1);
                 Student s = (Student)items.get(0);
-                s.AddCourse(course);
+                studentManager.AddCourse(course,s);
                 this.waitlist.remove(items);
                 return;
             }

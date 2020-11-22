@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class LoginInterface{
-    Controller ctrl = new Controller();
+    Database ctrl = new Database();
     public void StartupInterface(){
         
         Scanner sc = new Scanner(System.in);
@@ -34,7 +34,7 @@ public class LoginInterface{
             //construct temporary student object with dummy matrix number
             String dummymatric ="U1920129E";
             Student StudentController = new Student(dummymatric,studUsername,studPassword);
-
+           // studentFilter.byMatricNo.Invoke(students, Integer.toString(matricNo));
             StudentInterface homePage = new StudentInterface();
             homePage.StudentMenuLogic(StudentController,ctrl);
         }
