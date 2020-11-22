@@ -6,7 +6,7 @@ public class LessonManager {
     interface LessonFiltering{
         public List<Lesson> Invoke(String value);
     }
-
+ 
     LessonFiltering byIndex = (stringIndex) -> {
         int value = Integer.parseInt(stringIndex);
         Database db = new Database();
