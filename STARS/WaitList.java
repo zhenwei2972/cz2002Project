@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class WaitList {
     List<ArrayList<Object>> waitlist = new ArrayList<ArrayList<Object>>();
 
-    public WaitList(){
+    public WaitList(){}
 
+    public void printWaitList(){
+        System.out.println(this.waitlist);
     }
 
     public void AddtoWaitList(Student student,Course course){

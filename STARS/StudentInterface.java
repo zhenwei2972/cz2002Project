@@ -20,7 +20,7 @@ public class StudentInterface {
         List<Student> students = db.StudentDatabase();
         while (!quit) {
             System.out.println(
-                    " 1 *Add Course \n 2 Drop Course \n 3 Check/Print Courses Registered \n 4 Check Vacancies Available \n 5 Change Index Number of Course \n 6 Swop Index Number with Another Student ");
+                    " 1 *Add Course \n 2 Drop Course \n 3 Check/Print Courses Registered \n 4 Check Vacancies Available \n 5 Change Index Number of Course \n 6 Swop Index Number with Another Student \n 7 View All Available Course");
             num = console.readLine("Please choose your action \n");
             switch (num) {
                 case "1":
@@ -73,6 +73,10 @@ public class StudentInterface {
                     studentMgmt.SwapCourse(currentStudent, studentMgmt.GetStudent(Integer.parseInt(matricNo), students),
                             studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses),
                             Integer.parseInt(courseIndex));
+                    break;
+                case "7":
+                    System.out.println("\nPrinting all available courses");
+                    courseMgmt.toDisplayResult.Display(courses);
                     break;
                 default:
             }
