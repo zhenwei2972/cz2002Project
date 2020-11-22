@@ -8,8 +8,8 @@ public class AdminInterface {
         Console console = System.console();
         System.out.println("Welcome to Admin Mode");
         AdminManager adminController = new AdminManager();
-        Controller ctrl = new Controller();
-        List<Student> fullStudentList = ctrl.StudentDatabase();
+        Database db = new Database();
+        List<Student> fullStudentList = db.StudentDatabase();
         Boolean quit = false;
         Scanner sc = new Scanner(System.in);
         while (!quit)

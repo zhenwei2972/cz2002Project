@@ -12,12 +12,10 @@ public class Student implements User{
     LessonManager Lfilter = new LessonManager();
 
     public Student() {
-        System.out.println("Constructing an empty Student");
         this.modlist = new ArrayList<Course>();
     }
     //default fulltime student constructor
     public Student(String matricID, String username, String password) {
-        System.out.println("Constructing a Default Student");
         this.matricID = matricID;
         this.username = username;
         this.password = password;
@@ -25,7 +23,6 @@ public class Student implements User{
     }
     //self determine fulltime/parttime student constructor
     public Student(String matricID, String username, String password, Boolean fullorPart) {
-        System.out.println("Constructing a Student" + fullorPart );
         this.matricID = matricID;
         this.username = username;
         this.password = password;

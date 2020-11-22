@@ -9,7 +9,7 @@ public class LoginManager {
     }
 
     Authentication studentLogin = (studID, studPassword) -> {
-        Controller ctrl = new Controller();
+        Database ctrl = new Database();
         List<Student> fullStudentList = ctrl.StudentDatabase();
 
         List<Student> checkLogin = fullStudentList.stream()
@@ -19,7 +19,7 @@ public class LoginManager {
     };
 
     Authentication adminLogin = (adminID, adminPassword) -> {
-        Controller ctrl = new Controller();
+        Database ctrl = new Database();
         List<Admin> fullAdminList = ctrl.AdminUserDatabase();
 
         List<Admin> checkLogin = fullAdminList.stream()
