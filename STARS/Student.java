@@ -137,7 +137,7 @@ public class Student implements User{
         List<Course> courselist =  b.getCourse();
         result = filter.byIndex.Invoke(courselist, Integer.toString(modid));
         if (result.isEmpty()){
-            System.out.println("Student"+ b.username + " does not have " + m.getCourseName() + ":" + modid);
+            System.out.println("Student"+ b.username + " does not have " + m.getCourseCode() + ":" + modid);
             return;
         }
         else{
