@@ -65,7 +65,7 @@ public class Student implements User{
                 }
                 else
                 {
-                    System.out.println("This course "+ mod.getCourseName()+ " : " + mod.getIndex() +" is full");
+                    System.out.println("This course "+ mod.getCourseCode() + " : " + mod.getIndex() +" is full");
                     System.out.println("Adding to waitlist");
                     waitinglist.AddtoWaitList(this, mod);
                 }
@@ -90,8 +90,6 @@ public class Student implements User{
         else
         System.out.println("There is and exisitng course : " + mod.getIndex());
     }
-    
-
 
     //---------delete------------------//
     public void RemoveCourse(Course mod,WaitList waitinglist){
@@ -101,7 +99,7 @@ public class Student implements User{
             waitinglist.AddCoursetoStudent(mod);
         }
         else
-        System.out.println("There is no " + mod.getCourseName() + " exsisting in your registered course");
+        System.out.println("There is no " + mod.getCourseCode() + " exsisting in your registered course");
     }
     public void RemoveCourse(Course mod){
         if(!checkexist(mod)){
@@ -109,7 +107,7 @@ public class Student implements User{
             this.modlist.remove(mod);
         }
         else
-        System.out.println("There is no " + mod.getCourseName() + " exsisting in your registered course");
+        System.out.println("There is no " + mod.getCourseCode() + " exsisting in your registered course");
     }
 
     //------------------- checking -------------------//
@@ -128,12 +126,8 @@ public class Student implements User{
     private boolean checkclash(Course course){
         List<Course> courses = this.modlist;
         List<Course> result = new ArrayList<Course>();
-        result = filter.byDays.Invoke(courses, course.day);
         for(Course mod: result){
-            if( mod.getStartTime() == course.getStartTime() || mod.getEndTime() == course.getEndTime() || mod.getStartTime() < course.getEndTime() && course.getStartTime() < mod.getEndTime())
-            {
-                return true;
-            }
+           
         }
         return false;
     }
@@ -143,7 +137,7 @@ public class Student implements User{
         List<Course> courselist =  b.getCourse();
         result = filter.byIndex.Invoke(courselist, Integer.toString(modid));
         if (result.isEmpty()){
-            System.out.println("Student"+ b.username + " does not have " + m.getCourseName() + ":" + modid);
+            System.out.println("Student"+ b.username + " does not have " + m.getCourseCode() + ":" + modid);
             return;
         }
         else{
@@ -152,10 +146,5 @@ public class Student implements User{
             this.RemoveCourse(m);
             this.AddCourse(result.get(0));
         }
-    }
-
-    public void setUserName(String inputID) {
-        // TODO Auto-generated method stub
-
     }
 }
