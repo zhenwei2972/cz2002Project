@@ -103,7 +103,6 @@ private void printallcourse(ArrayList<Course> courses){
     for (Course course : courses){
         System.out.println(course.getCourseCode() + " : " + course.getIndex());
     }
-
 }
 
 
