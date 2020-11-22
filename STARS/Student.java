@@ -53,6 +53,10 @@ public class Student implements User{
     public void setPassword(String password){
         this.password = password;
     }
+    @Override
+    public void setUserName(String inputID) {
+        this.username = inputID;
+    }
     public void setUsername(String username){
         this.username = username;
     }
