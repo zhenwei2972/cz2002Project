@@ -45,6 +45,7 @@ public class StudentInterface {
                 break;
             case "3":
                 System.out.println("\nCheck/Print Courses Registered");
+                printallcourse(currentStudent.getCourse());
                 break;
             case "4":
                 System.out.println("\nCheck Vacancies Available");
@@ -96,7 +97,12 @@ private Student GetStudent(int matricNo,List<Student> students){
     }
     return null;
 }
-
+private void printallcourse(ArrayList<Course> courses){
+    System.out.println("Courses registered :");
+    for (Course course : courses){
+        System.out.println(course.getCourseCode() + " : " + course.getIndex());
+    }
+}
 
 
   
