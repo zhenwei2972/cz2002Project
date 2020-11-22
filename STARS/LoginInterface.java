@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
 public class LoginInterface{
-
+    Controller ctrl = new Controller();
     public void StartupInterface(){
+        
         Scanner sc = new Scanner(System.in);
         System.out.println("Option 1: Login as Student");
         System.out.println("Option 2: Login as Admin");
@@ -26,12 +27,16 @@ public class LoginInterface{
         String studUsername = sc.next();
         System.out.println("Enter Student Password:");
         String studPassword = sc.next();
-
+        
         LoginManager loginManager = new LoginManager();
         boolean login = loginManager.studentLogin.Invoke(studUsername,studPassword);
         if(login){
+            //construct temporary student object with dummy matrix number
+            String dummymatric ="U1920129E";
+            Student StudentController = new Student(dummymatric,studUsername,studPassword);
+
             StudentInterface homePage = new StudentInterface();
-            homePage.StudentMenuLogic();
+            homePage.StudentMenuLogic(StudentController,ctrl);
         }
         else{
             System.out.println("Wrong Username or password! Please enter details again");

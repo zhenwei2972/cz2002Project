@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.lang.model.util.ElementScanner14;
 public class Student implements User{
     //parameters for students
     private String matricID = "";
@@ -154,5 +152,10 @@ public class Student implements User{
             this.RemoveCourse(m);
             this.AddCourse(result.get(0));
         }
-    } 
+    }
+
+    public void setUserName(String inputID) {
+        // TODO Auto-generated method stub
+
+    }
 }
