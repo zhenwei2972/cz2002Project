@@ -29,7 +29,8 @@ public class StudentInterface {
                     System.out.println("\nEnter a course code, course index");
                     // assuming course index is unique
                     courseIndex = sc.next();
-                    currentStudent.AddCourse(studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses), waitlist);
+                    studentMgmt.AddCourse(studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses), waitlist,
+                            currentStudent);
                     System.out.println("\n ----");
                     break;
                 case "2":
@@ -37,8 +38,8 @@ public class StudentInterface {
                     System.out.println("\nEnter a course index");
                     courseIndex = sc.next();
                     // find corresponding course object using these course code & index
-                    currentStudent.RemoveCourse(studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses),
-                            waitlist);
+                    studentMgmt.RemoveCourse(studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses), waitlist,
+                            currentStudent);
                     break;
                 case "3":
                     System.out.println("\nCheck/Print Courses Registered");
@@ -57,9 +58,10 @@ public class StudentInterface {
                     courseIndex = sc.next();
                     System.out.println("\nEnter a course index that you want to change to");
                     String changeIndex = sc.next();
-                    currentStudent.RemoveCourse(studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses),
-                            waitlist);
-                    currentStudent.AddCourse(studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses), waitlist);
+                    studentMgmt.RemoveCourse(studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses), waitlist,
+                            currentStudent);
+                    studentMgmt.AddCourse(studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses), waitlist,
+                            currentStudent);
                     break;
                 case "6":
                     System.out.println("\nSwop Index Number with Another Student");
@@ -68,7 +70,7 @@ public class StudentInterface {
                     // get other student's corresponding object
                     System.out.println("\nEnter a course index");
                     courseIndex = sc.next();
-                    currentStudent.SwapCourse(studentMgmt.GetStudent(Integer.parseInt(matricNo), students),
+                    studentMgmt.SwapCourse(currentStudent, studentMgmt.GetStudent(Integer.parseInt(matricNo), students),
                             studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses),
                             Integer.parseInt(courseIndex));
                     break;

@@ -1,8 +1,14 @@
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.swing.text.html.HTML.Tag;
+
 import java.util.ArrayList;
 
 public class StudentManager {
+    CourseManager courseMgmt = new CourseManager();
+    LessonManager lessonMgmt = new LessonManager();
+
     interface StudentFiltering {
         public List<Student> Filtering(List<Student> list, String value);
     }
@@ -15,7 +21,6 @@ public class StudentManager {
     };
 
     public Course GetCourse(int courseIndex, List<Course> courses) {
-        CourseManager courseMgmt = new CourseManager();
         List<Course> result = new ArrayList<Course>();
         // find corresponding course object using these course code & index
         result = courseMgmt.byIndex.Invoke(courses, Integer.toString(courseIndex));
@@ -45,8 +50,8 @@ public class StudentManager {
     }
 
     public void AddCourse(Course mod, WaitList waitinglist, Student currentStudent) {
-        if (checkExist(mod)) {
-            if (!checkclash(mod)) {
+        if (checkExist(mod, currentStudent)) {
+            if (!checkClash(mod, currentStudent)) {
                 if (mod.getVacancy() > 0) {
                     currentStudent.addModList(mod);
                     mod.setVacancy(mod.getVacancy() - 1);
@@ -62,8 +67,8 @@ public class StudentManager {
     }
 
     public void AddCourse(Course mod, Student currentStudent) {
-        if (checkExist(mod)) {
-            if (!checkclash(mod)) {
+        if (checkExist(mod, currentStudent)) {
+            if (!checkClash(mod, currentStudent)) {
                 if (mod.getVacancy() > 0) {
                     currentStudent.addModList(mod);
                     mod.setVacancy(mod.getVacancy() - 1);
@@ -76,7 +81,7 @@ public class StudentManager {
 
     // ---------delete------------------//
     public void RemoveCourse(Course mod, WaitList waitinglist, Student currentStudent) {
-        if (!checkExist(mod)) {
+        if (!checkExist(mod, currentStudent)) {
             mod.setVacancy(mod.getVacancy() + 1);
             currentStudent.removeModList(mod);
             waitinglist.AddCoursetoStudent(mod);
@@ -85,7 +90,7 @@ public class StudentManager {
     }
 
     public void RemoveCourse(Course mod, Student currentStudent) {
-        if (!checkExist(mod)) {
+        if (!checkExist(mod, currentStudent)) {
             mod.setVacancy(mod.getVacancy() + 1);
             currentStudent.removeModList(mod);
         } else
@@ -94,9 +99,9 @@ public class StudentManager {
 
     // ------------------- checking -------------------//
     private boolean checkExist(Course mod, Student currentStudent) {
-        List<Course> courses = this.modlist;
+        List<Course> courses = currentStudent.getCourse();
         List<Course> result = new ArrayList<Course>();
-        result = filter.byModuleCode.Invoke(courses, mod.getCourseCode());
+        result = courseMgmt.byModuleCode.Invoke(courses, mod.getCourseCode());
         if (result.isEmpty()) {
             return true;
         }
@@ -106,12 +111,12 @@ public class StudentManager {
     /**
      * checking for time slot clash between modules.
      */
-    public boolean checkclash(Course course) {
+    public boolean checkClash(Course course, Student currentStudent) {
         List<Lesson> result = new ArrayList<Lesson>();
-        result = Lfilter.byIndex.Invoke(Integer.toString(course.getIndex()));
-        for (Course mycourse : this.modlist) {
+        result = lessonMgmt.byIndex.Invoke(Integer.toString(course.getIndex()));
+        for (Course mycourse : currentStudent.getCourse()) {
             List<Lesson> currentmodules = new ArrayList<Lesson>();
-            currentmodules = Lfilter.byIndex.Invoke(Integer.toString(mycourse.getIndex()));
+            currentmodules = lessonMgmt.byIndex.Invoke(Integer.toString(mycourse.getIndex()));
             for (Lesson current : currentmodules) {
                 for (Lesson mod : result) {
                     if (current.getDay() == mod.getDay()
@@ -126,18 +131,18 @@ public class StudentManager {
     }
 
     // ----------------- functions ---------------------//
-    public void SwapCourse(Student b, Course m, int modid) {
+    public void SwapCourse(Student current, Student target, Course course, int modid) {
         List<Course> result = new ArrayList<Course>();
-        List<Course> courselist = b.getCourse();
-        result = filter.byIndex.Invoke(courselist, Integer.toString(modid));
+        List<Course> courselist = target.getCourse();
+        result = courseMgmt.byIndex.Invoke(courselist, Integer.toString(modid));
         if (result.isEmpty()) {
-            System.out.println("Student" + b.username + " does not have " + m.getCourseCode() + ":" + modid);
+            System.out.println("Student" + target.getUsername() + " does not have " + course.getCourseCode() + ":" + modid);
             return;
         } else {
-            b.AddCourse(m);
-            b.RemoveCourse(result.get(0));
-            this.RemoveCourse(m);
-            this.AddCourse(result.get(0));
+            this.AddCourse(course,target);
+            this.RemoveCourse(result.get(0),target);
+            this.RemoveCourse(course,current);
+            this.AddCourse(result.get(0),current);
         }
     }
 }
