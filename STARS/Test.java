@@ -5,8 +5,8 @@ public class Test {
         List<Lesson> fullLessonList = db.LessonListDatabase();
         List<Course> fullCourseList = db.CourseListDatabase();
         List<Admin> fullAdminList = db.AdminUserDatabase();
-        //List<Student> fullStudentList = db.StudentDatabase();
+        List<Student> fullStudentList = db.StudentDatabase();
         
-        fullCourseList.forEach(x -> System.out.println(x.getIndex()));
+        db.UpdateStudentDatabase(fullStudentList);
     }
 }
