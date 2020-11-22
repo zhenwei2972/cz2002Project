@@ -3,8 +3,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class AdminInterface {
+    Scanner sc = new Scanner(System.in);
     public void AdminMenuLogic() throws IOException {
         String num = "";
         Console console = System.console();
@@ -13,7 +16,7 @@ public class AdminInterface {
         Database db = new Database();
         List<Student> fullStudentList = db.StudentDatabase();
         Boolean quit = false;
-        Scanner sc = new Scanner(System.in);
+        
         int courseVacancy;
         StudentManager studentMgmt = new StudentManager();
         List<Course> courses = db.CourseListDatabase();
@@ -24,7 +27,13 @@ public class AdminInterface {
             num = console.readLine("Please choose your action \n");
             switch (num) {
                 case "1":
-                    System.out.println("\nEdit student access period");
+                    System.out.println("\nEdit student access period by date and time");
+                    System.out.println("\n Enter Access Period Start Date dd MMMM, yyyy HH:mm");
+                    Date startDate =InputDateTime();
+                    System.out.println("\n Enter Access Period End Date DD/MM/YYYY");   
+                    Date endDate =InputDateTime();
+
+
                     break;
                 case "2":
                     System.out.println("\nAdding a new Student");
@@ -61,7 +70,7 @@ public class AdminInterface {
                     break;
                 case "7":
                     db.UpdateStudentDatabase(fullStudentList);
-                    //db.UpdateCourseDatabase(fullCourseList);
+                    db.UpdateCourseDatabase(courses);
                     break;
                 case "8":
                     System.out.println("\nQuit");
@@ -71,6 +80,34 @@ public class AdminInterface {
           
         }
         sc.close();
+    }
+    private Date InputDateTime(){
+
+        System.out.println("\nEnter Day i.e 01");
+        String day = sc.next();
+        System.out.println("\nEnter Month i.e (JAN)");
+        String month = sc.next();
+        System.out.println("\nEnter Year i.e 2002");
+        String year = sc.next();
+        System.out.println("\n Enter Hour i.e 12");
+        String hour = sc.next();
+        System.out.println("\n Enter Minute i.e 15");
+        String min = sc.next();
+        String dateInString = month+" "+day+", "+year+" "+hour+":"+min;
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy HH:mm");
+       // String example = "Jun 7, 2013 12:10";
+
+        try {
+            Date date = formatter.parse(dateInString);
+          //  System.out.println(date);
+            System.out.println(formatter.format(date));
+            return date;
+
+        } catch (ParseException e) {
+            System.out.println("Incorect input");
+            e.printStackTrace();
+        }
+        return null;
     }
     
  

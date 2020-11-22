@@ -1,4 +1,5 @@
 import java.io.Console;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +8,7 @@ public class StudentInterface {
     CourseManager courseMgmt = new CourseManager();
     StudentManager studentMgmt = new StudentManager();
 
-    public void StudentMenuLogic(Student currentStudent, Database db) {
+    public void StudentMenuLogic(Student currentStudent, Database db) throws IOException {
         String num = "", courseIndex = "", matricNo;
         Console console = System.console();
         System.out.println("Welcome to Student Mode");
@@ -101,6 +102,8 @@ public class StudentInterface {
                     break;
                 case "9":
                     System.out.println("\nQuit");
+                    db.UpdateCourseDatabase(courses);
+                    db.UpdateStudentDatabase(students);
                     sc.close();
                     quit=true;
                 default:

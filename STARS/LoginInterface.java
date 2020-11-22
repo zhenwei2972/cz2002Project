@@ -22,7 +22,7 @@ public class LoginInterface {
         sc.close();
     }
 
-    public void StudentLoginInterface() {
+    public void StudentLoginInterface() throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Login as Student:");
         System.out.println("Enter Student Username:");
