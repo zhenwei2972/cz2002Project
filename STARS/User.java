@@ -1,6 +1,6 @@
-public interface User{
+public interface User  {
+    public void setUserName(String inputID);
+    public void setPassword(String inputPW);
     public String getUsername();
     public String getPassword();
-    public void setUsername(String username);
-    public void setPassword(String password);
 }
