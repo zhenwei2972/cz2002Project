@@ -22,7 +22,9 @@ public class AdminManager {
         String option = sc.next().toUpperCase();
         Boolean partTime = (option.equals("Y")) ? true : false;
 
-        fullStudentList.add(new Student(matricNo, studentName, studentPassword, partTime));
+        System.out.println("Enter Student Year");
+        int year = sc.nextInt();
+        fullStudentList.add(new Student(matricNo, studentName, studentPassword, partTime,year));
 
         sc.close();
         return fullStudentList;

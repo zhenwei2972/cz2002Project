@@ -21,7 +21,7 @@ public class StudentInterface {
         Course currentCourse = new Course();
         while (!quit) {
             System.out.println(
-                    " 1 *Add Course \n 2 Drop Course \n 3 Check/Print Courses Registered \n 4 Check Vacancies Available \n 5 Change Index Number of Course \n 6 Swop Index Number with Another Student \n 7 Printing all available courses ");
+                    " 1 *Add Course \n 2 Drop Course \n 3 Check/Print Courses Registered \n 4 Check Vacancies Available \n 5 Change Index Number of Course \n 6 Swop Index Number with Another Student \n 7 Printing all available courses \n 8 Check Waiting List");
             num = console.readLine("Please choose your action \n");
             switch (num) {
                 case "1":
@@ -60,10 +60,22 @@ public class StudentInterface {
                     courseIndex = sc.next();
                     System.out.println("\nEnter a course index that you want to change to");
                     String changeIndex = sc.next();
-                    currentCourse = studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses);
+                    currentCourse=  studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses);
+                    System.out.println("\nInformation for Index"+courseIndex);
+                    studentMgmt.printLessonInformation(Integer.parseInt(changeIndex));
+                    System.out.println("\nInformation for Index"+changeIndex);
+                    studentMgmt.printLessonInformation(Integer.parseInt(changeIndex));
+                    System.out.println("\nConfirm Swap? yes / no");
+                    String confirmation = sc.next();
+                    if(confirmation=="yes")
+                    {
+                    
                     Course newCourse = studentMgmt.GetCourse(Integer.parseInt(changeIndex), courses);
-                    studentMgmt.RemoveCourse(currentCourse, waitlist, currentStudent);
-                    studentMgmt.AddCourse(newCourse, waitlist, currentStudent);
+                    studentMgmt.RemoveCourse(currentCourse, waitlist,
+                            currentStudent);
+                    studentMgmt.AddCourse(newCourse,waitlist,
+                            currentStudent);
+                    }
                     break;
                 case "6":
                     System.out.println("\nSwop Index Number with Another Student");
@@ -81,8 +93,11 @@ public class StudentInterface {
                     courseMgmt.AvailableCourse.Display(courses);
                     break;
                 case "8":
-                    System.out.println("\nDisplay Waiting List");
-                    waitlist.printWaitList();
+                    System.out.println("\nEnter Index: " );
+                    String index = sc.next();
+                    System.out.println("\nDisplay Waiting List for Index: " + index );
+                    List<Course> currentList = courseMgmt.byIndex.Invoke(courses, index);
+                    courseMgmt.currentIndexWaitingList.Display(currentList);
                     break;
                 default:
             }

@@ -7,9 +7,8 @@ public class Student implements User{
     private String username = "";
     private String password = "";
     private Boolean fullorPart = false; //true for part time , default false for full time
+    private int year = 0;
 
-    CourseManager filter = new CourseManager();
-    LessonManager Lfilter = new LessonManager();
 
     public Student() {
         this.modlist = new ArrayList<Course>();
@@ -22,11 +21,12 @@ public class Student implements User{
         this.modlist = new ArrayList<Course>();
     }
     //self determine fulltime/parttime student constructor
-    public Student(String matricID, String username, String password, Boolean fullorPart) {
+    public Student(String matricID, String username, String password, Boolean fullorPart,int year) {
         this.matricID = matricID;
         this.username = username;
         this.password = password;
         this.fullorPart = fullorPart;
+        this.year = year;
         this.modlist = new ArrayList<Course>();
     }
     //---------Getters----------//
@@ -45,22 +45,25 @@ public class Student implements User{
     public Boolean getStudentStatus(){
         return this.fullorPart;
     }
+    public int getYear(){
+        return this.year;
+    }
 
     //----------setter--------------------//
     public void setPassword(String password){
         this.password = password;
     }
     @Override
-    public void setUserName(String inputID) {
+    public void setUsername(String inputID) {
         this.username = inputID;
-    }
-    public void setUsername(String username){
-        this.username = username;
     }
     public void addModList(Course course){
         this.modlist.add(course);
     }
     public void removeModList(Course course){
         this.modlist.remove(course);
+    }
+    public void setYear(int year){
+        this.year = year;
     }
 }

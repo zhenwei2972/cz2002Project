@@ -98,7 +98,7 @@ public class Database {
         for (String i : list) {
             String[] splitdata = i.split(",");
             fullStudentList
-                    .add(new Student(splitdata[0], splitdata[1], splitdata[2], Boolean.parseBoolean(splitdata[3])));
+                    .add(new Student(splitdata[0], splitdata[1], splitdata[2], Boolean.parseBoolean(splitdata[3]), Integer.parseInt(splitdata[4])));
         }
         return fullStudentList;
     }
@@ -108,7 +108,7 @@ public class Database {
         // MatricNo, Username, Password, PartTimeStudent (true / false)
         fullStudentList.forEach(x -> {
             try {
-                myWriter.write(x.getMatid() + "," + x.getUsername() + "," + x.getPassword() + "," + x.getStudentStatus()
+                myWriter.write(x.getMatid() + "," + x.getUsername() + "," + x.getPassword() + "," + x.getStudentStatus() + "," + x.getYear()
                         + "\n");
             } catch (IOException e) {
                 System.out.println("Update Student Database Failed");

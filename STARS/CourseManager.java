@@ -15,6 +15,8 @@ public class CourseManager {
     // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
     ResultDisplay AvailableCourse = (result) -> result.forEach(x -> System.out.println("Index: " + x.getIndex() + " Course Code: " + x.getCourseCode() + " Vacancy: " + x.getVacancy() + " Waiting List: " + x.getWaitlist()));
 
+    ResultDisplay currentIndexWaitingList = (result) -> result.forEach(x -> System.out.println("Index: " + x.getIndex() + " Course Code: " + x.getCourseCode() + " Waiting List: " + x.getWaitlist()));
+
     CourseFiltering byModuleCode = (fullModuleList, value) -> {
         return fullModuleList.stream().filter(x -> value.equals(x.getCourseCode())).collect(Collectors.toList());
     };

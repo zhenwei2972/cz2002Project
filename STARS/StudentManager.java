@@ -108,6 +108,18 @@ public class StudentManager {
         return false;
     }
 
+     /**
+     * checking for time slot clash between modules.
+     */
+    public void printLessonInformation(int courseIndex) {
+        List<Lesson> result = new ArrayList<Lesson>();
+        result = lessonMgmt.byIndex.Invoke(Integer.toString(courseIndex));
+                for (Lesson mod : result) {
+                    System.out.println("Class type "+mod.getClassType()+"\nCourse Name "+mod.getCourseName()+"\nCourse Code "+mod.getCourseCode()+"\nCourse Index "+mod.getIndex()+"\nDay "+mod.getDay()+"\nStar Time "+mod.getStartTime()+"\nEnd Time "+mod.getEndTime());
+                }
+            
+        
+    }
     /**
      * checking for time slot clash between modules.
      */

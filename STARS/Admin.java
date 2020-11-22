@@ -10,12 +10,9 @@ public class Admin implements User{
     public String getPassword(){
         return password;
     }
+    @Override
     public void setUsername(String username){}
     public void setPassword(String password){}
 
-    @Override
-    public void setUserName(String inputID) {
-        // TODO Auto-generated method stub
-
-    }
+    
 }

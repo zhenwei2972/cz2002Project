@@ -9,7 +9,7 @@ public class WaitList {
     public WaitList() {
     }
 
-    //Debugging Purposes
+    // Debugging Purposes
     public void printWaitList() {
         for (ArrayList<Object> i : this.waitlist) {
             for (Object j : i) {
@@ -20,21 +20,6 @@ public class WaitList {
                     Course course = (Course) j;
                     System.out.print(
                             "Course Index: " + course.getIndex() + "Course Code: " + course.getCourseCode() + "\n");
-                }
-            }
-        }
-    }
-
-    public void printIndexWaitList(int index) {
-        List<Course> courseBuffer = new ArrayList<Course>();
-        for (ArrayList<Object> i : this.waitlist) {
-            for (Object j : i) {
-                if (j instanceof Student) {
-                    Student stud = (Student) j;
-                    System.out.print("Student name: " + stud.getUsername() + " ");
-                } else if (j instanceof Course) {
-                    Course course = (Course) j;
-                    courseBuffer.add(course);
                 }
             }
         }
