@@ -3,13 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Controller {
+public class Database {
 
-    public List<Course> ModuleListDatabase() {
-        List<Course> fullmodulelist = new ArrayList<Course>();
+    public List<Lesson> LessonListDatabase() {
+        List<Lesson> fullmodulelist = new ArrayList<Lesson>();
         ArrayList<String> list = new ArrayList<String>();
         try {
-            FileInputStream fis = new FileInputStream("Database\\courseList.txt");
+            FileInputStream fis = new FileInputStream("Database\\lesson.txt");
             Scanner sc = new Scanner(fis);
             while (sc.hasNextLine()) {
                 list.add(sc.nextLine());
@@ -19,12 +19,11 @@ public class Controller {
             e.printStackTrace();
         }
         //from courseList.txt
-        // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
+
         for (String i : list) {
             String[] splitdata = i.split(",");
-            fullmodulelist.add(new Course(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
-                    Integer.parseInt(splitdata[3]), splitdata[4], Integer.parseInt(splitdata[5]), Integer.parseInt(splitdata[6]), splitdata[7],
-                    Integer.parseInt(splitdata[8]),Integer.parseInt(splitdata[9])));
+            fullmodulelist.add(new Lesson(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
+                    Integer.parseInt(splitdata[3]), splitdata[4], Integer.parseInt(splitdata[5]), Integer.parseInt(splitdata[6]), splitdata[7]));
         }
         return fullmodulelist;
     }
@@ -68,5 +67,27 @@ public class Controller {
             fullStudentList.add(new Student(splitdata[0],splitdata[1],splitdata[2],Boolean.parseBoolean(splitdata[3])));
         }
         return fullStudentList;
+    }
+
+    public List<Course> ModuleListDatabase() {
+        List<Course> fullmodulelist = new ArrayList<Course>();
+        ArrayList<String> list = new ArrayList<String>();
+        try {
+            FileInputStream fis = new FileInputStream("Database\\course.txt");
+            Scanner sc = new Scanner(fis);
+            while (sc.hasNextLine()) {
+                list.add(sc.nextLine());
+            }
+            sc.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //from courseList.txt
+        // index, coursecode, vacancy, waitlist
+        for (String i : list) {
+            String[] splitdata = i.split(",");
+            fullmodulelist.add(new Course(Integer.parseInt(splitdata[0]), splitdata[1],Integer.parseInt(splitdata[2]),Integer.parseInt(splitdata[3]));
+        }
+        return fullmodulelist;
     }
 }
