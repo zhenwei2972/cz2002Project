@@ -1,10 +1,11 @@
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class LoginInterface {
     Database ctrl = new Database();
 
-    public void StartupInterface() throws IOException {
+    public void StartupInterface() throws IOException, ParseException {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Option 1: Login as Student");
@@ -46,7 +47,7 @@ public class LoginInterface {
         sc.close();
     }
 
-    public void AdminLoginInterface() throws IOException {
+    public void AdminLoginInterface() throws IOException, ParseException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Login as Admin:");
         System.out.println("Enter Admin Username:");

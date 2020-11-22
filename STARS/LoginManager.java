@@ -7,6 +7,7 @@ public class LoginManager {
     interface Authentication {
         public boolean Invoke(String username, String password);
     }
+ 
 
     Authentication studentLogin = (studID, studPassword) -> {
         Database ctrl = new Database();

@@ -3,12 +3,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 public class AdminInterface {
     Scanner sc = new Scanner(System.in);
-    public void AdminMenuLogic() throws IOException {
+    public void AdminMenuLogic() throws IOException, ParseException {
         String num = "";
         Console console = System.console();
         System.out.println("Welcome to Admin Mode");
@@ -20,6 +21,8 @@ public class AdminInterface {
         int courseVacancy;
         StudentManager studentMgmt = new StudentManager();
         List<Course> courses = db.CourseListDatabase();
+       
+       // AccessPeriod accessPeriod2021 = new AccessPeriod("2021");
         while (!quit)
         {
             System.out.println(
@@ -28,11 +31,17 @@ public class AdminInterface {
             switch (num) {
                 case "1":
                     System.out.println("\nEdit student access period by date and time");
+                    System.out.println("\n Enter student year to edit access period");
+                    String year = sc.next();
                     System.out.println("\n Enter Access Period Start Date dd MMMM, yyyy HH:mm");
-                    Date startDate =InputDateTime();
-                    System.out.println("\n Enter Access Period End Date DD/MM/YYYY");   
-                    Date endDate =InputDateTime();
-
+                    Date startDateTime =InputDateTime();
+                    System.out.println("\n Enter Access Period End Date dd MMMM, yyyy HH:mm");   
+                    Date endDateTime =InputDateTime();
+                    //update datetime for particular student based on his year 
+                    AccessPeriod accessPeriod = new AccessPeriod(year);
+                    accessPeriod.setStartDate(startDateTime);
+                    accessPeriod.setEndDate(endDateTime);
+                    
 
                     break;
                 case "2":
