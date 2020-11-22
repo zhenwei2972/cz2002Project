@@ -9,6 +9,7 @@ public class Student implements User{
     private Boolean fullorPart = false; //true for part time , default false for full time
 
     CourseManager filter = new CourseManager();
+    LessonManager Lfilter = new LessonManager();
 
     public Student() {
         System.out.println("Constructing an empty Student");
@@ -84,8 +85,8 @@ public class Student implements User{
         if(checkexist(mod)){
             if(!checkclash(mod)){
                 if(mod.getVacancy() > 0){
-                this.modlist.add(mod);
-                mod.setVacancy(mod.getVacancy()-1);
+                    this.modlist.add(mod);
+                    mod.setVacancy(mod.getVacancy()-1);
                 }
             }
             else  
@@ -128,11 +129,16 @@ public class Student implements User{
      * checking for time slot clash between modules.
      */
     private boolean checkclash(Course course){
-        List<Course> courses = this.modlist;
-        List<Course> result = new ArrayList<Course>();
-        for(Course mod: result){
-           
+        List<Lesson> result = new ArrayList<Lesson>();
+        result = Lfilter.byIndex.Invoke(Integer.toString(course.getIndex()));
+        for(Course mine: this.modlist){
+            List<Lesson> currentmodules = new ArrayList<Lesson>();
+            currentmodules = Lfilter.byIndex.Invoke(Integer.toString(mine.getIndex()));
+            for(Lesson mod: result){
+                return true;
+            }
         }
+        
         return false;
     }
     //----------------- functions ---------------------//
