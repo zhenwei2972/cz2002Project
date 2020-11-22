@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 
 public class StudentInterface {
-    public void StudentMenuLogic(Student currentStudent,Database ctrl) {
+    CourseManager filter = new CourseManager();
+    public void StudentMenuLogic(Student currentStudent,Database db) {
         String num = "";
         Console console = System.console();
         System.out.println("Welcome to Student Mode");
@@ -14,10 +15,10 @@ public class StudentInterface {
         Scanner sc = new Scanner(System.in);
         //Initialize common variable/objets
         WaitList w = new WaitList();
-        String courseCode = "";
         String courseIndex = "";
-        List<Course> courses= ctrl.CourseListDatabase();
-
+        int courseCode =0;
+        List<Course> courses= db.CourseListDatabase();
+        int courseVacancy;
         while (!quit)
         {
         System.out.println(
@@ -26,54 +27,74 @@ public class StudentInterface {
         switch (num) {
             case "1":
             //initialize course object with default values first.
-                Course test = new Lesson(10214,"CZ2003","Computer Graphics",3,"Wednesday",830,930,"Tutorial");
-                System.out.println("\nEnter a course code, course index");
-                //need to convert to user input 
-                courseCode = sc.next();
-                courseIndex = sc.next();
-                //find corresponding course object using these course code & index
-                for(int i = 0; i < courses.size(); i++)
-                {
-                    if((courses.get(i).coursename==courseCode) && (courses.get(i).index==Integer.parseInt(courseIndex)))
-                    {
-                        test = courses.get(i);
-                    }
-                    else
-                    {
-                        //System.out.println("Course Does not exist");
-                        break;
-                    }
 
-                }
-                //add course if found 
-                currentStudent.AddCourse(test,w);
+                System.out.println("\nEnter a course code, course index");
+                //assuming course index is unique
+                courseIndex = sc.next();
+                currentStudent.AddCourse(GetCourse( Integer.parseInt(courseIndex), courses),w);
+                
                 System.out.println("\n ----");
                 break;
             case "2":
                 System.out.println("\nRemove a course");
-                System.out.println("\nEnter a course code, course index");
-                //need to convert to user input  # TBD
-                courseCode = sc.next();
+                System.out.println("\nEnter a course index");
                 courseIndex = sc.next();
                 //find corresponding course object using these course code & index
-                Course courseToBeRemoved = new Course(10214,"CZ2003","Computer Graphics",3,"Wednesday",830,930,"Tutorial",2,1);
-                currentStudent.RemoveCourse(courseToBeRemoved,w);
+                currentStudent.RemoveCourse(GetCourse( Integer.parseInt(courseIndex), courses),w);
                 break;
             case "3":
-                System.out.println("\nEnter a student name");
+                System.out.println("\nCheck/Print Courses Registered");
                 break;
             case "4":
-                System.out.println("\nEnter a student name");
+                System.out.println("\nCheck Vacancies Available");
+                System.out.println("\nEnter a course index");
+                courseIndex = sc.next();
+                courseVacancy =GetCourse(Integer.parseInt(courseIndex), courses).getVacancy();
+                System.out.println("Course Vacancy for "+courseIndex+" is "+courseVacancy);
                 break;
             case "5":
-                System.out.println("\nEnter a student name");
+                System.out.println("\nChange Index Number of Course");
+                System.out.println("\nEnter current course index");
+                courseIndex = sc.next();
+                System.out.println("\nEnter a course index that you want to change to");
+                String changeIndex;
+                changeIndex = sc.next();
                 break;
             case "6":
-                System.out.println("\nEnter a student name");
+                System.out.println("\nSwop Index Number with Another Student");
+                System.out.println("\nEnter other student's matriculation number");
+                courseIndex = sc.next();
+                //get other student's corresponding object
+                System.out.println("\nEnter a course index");
+                courseIndex = sc.next();
+               // currentStudent.SwapCourse(,GetCourse(Integer.parseInt(courseIndex), courses),courseIndex);
                 break;
             default:
         }
     }
+}
+private Course GetCourse(int courseIndex,List<Course> courses){
+    List<Course> result = new ArrayList<Course>();
+    //find corresponding course object using these course code & index
+    result = filter.byIndex.Invoke(courses, Integer.toString(courseIndex));
+    for(Course mod: result){
+        //add course if found 
+        return mod;
+    }
+    return null;
+}
+private Student GetStudent(int matricNo,List<Student> students){
+    List<Course> result = new ArrayList<Course>();
+    //find corresponding course object using these course code & index
+    /*
+    result = filter..Invoke(students, matricNo);
+    for(Course mod: result){
+        //add course if found 
+        return mod;
+    }
+    
+    */
+    return null;
 }
 
 
