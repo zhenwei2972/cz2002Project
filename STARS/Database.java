@@ -69,7 +69,7 @@ public class Database {
         return fullStudentList;
     }
 
-    public List<Course> ModuleListDatabase() {
+    public List<Course> CourseListDatabase() {
         List<Course> fullmodulelist = new ArrayList<Course>();
         ArrayList<String> list = new ArrayList<String>();
         try {

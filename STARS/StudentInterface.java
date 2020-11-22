@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 public class StudentInterface {
-    public void StudentMenuLogic(Student currentStudent,Controller ctrl) {
+    public void StudentMenuLogic(Student currentStudent,Database ctrl) {
         String num = "";
         Console console = System.console();
         System.out.println("Welcome to Student Mode");
@@ -16,7 +16,7 @@ public class StudentInterface {
         WaitList w = new WaitList();
         String courseCode = "";
         String courseIndex = "";
-        List<Course> courses= ctrl.ModuleListDatabase();
+        List<Course> courses= ctrl.CourseListDatabase();
 
         while (!quit)
         {

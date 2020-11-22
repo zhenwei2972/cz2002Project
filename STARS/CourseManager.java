@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.List;
-import java.util.Date;
 
 public class CourseManager {
     //Functional interface is not other than a abstract method, which we are able polymorph into different methods
@@ -15,7 +14,7 @@ public class CourseManager {
         public void Display(List<Course> list);
     } 
     // index, coursecode, coursename, AU, day, starttime, endtime, classtype, vacancy
-    ResultDisplay toDisplayResult = (result) -> result.forEach(x -> System.out.println("Index: " + x.index + " Course Code: " + x.coursecode + " Day of Lesson: " + x.day + " Vacancy: " + x.vacancy));
+    ResultDisplay toDisplayResult = (result) -> result.forEach(x -> System.out.println("Index: " + x.getIndex() + " Course Code: " + x.getCourseCode() + " Vacancy: " + x.getVacancy()));
 
     DataFiltering byModuleCode = (fullModuleList, value) -> {
         return fullModuleList.stream().filter(x -> value.equals(x.getCourseCode())).collect(Collectors.toList());
@@ -26,7 +25,7 @@ public class CourseManager {
     };
 
     DataFiltering byDays = (fullModuleList, value) -> {
-        return fullModuleList.stream().filter(x -> value.equals(x.getDay())).collect(Collectors.toList());
+        return fullModuleList.stream().collect(Collectors.toList());
     };
 
 }

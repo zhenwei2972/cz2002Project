@@ -1,10 +1,10 @@
 public class Lesson {
     // Time Format 20:15:40 hh:mm:ss
     // data column
-    // index,coursecode,coursename,AU,day,starttime,endtime,classtype,vacancy,waitlist
-    int index = 0, au = 0;
-    String coursecode = "", coursename = "", day = "", classtype = "";
-    int starttime = 0, endtime = 0;
+    // index,coursecode,coursename,AU,day,starttime,endtime,classtype
+    private int index = 0, au = 0;
+    private String coursecode = "", coursename = "", day = "", classtype = "";
+    private int starttime = 0, endtime = 0;
     
     public Lesson(int index, String coursecode, String coursename, int au, String day, int starttime, int endtime,String classtype){
         this.index = index;
