@@ -26,7 +26,7 @@ public class StudentInterface {
         switch (num) {
             case "1":
             //initialize course object with default values first.
-                Course test = new Course(10214,"CZ2003","Computer Graphics",3,"Wednesday",830,930,"Tutorial",2,1);
+                Course test = new Lesson(10214,"CZ2003","Computer Graphics",3,"Wednesday",830,930,"Tutorial");
                 System.out.println("\nEnter a course code, course index");
                 //need to convert to user input 
                 courseCode = sc.next();

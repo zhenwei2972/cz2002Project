@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Database {
 
     public List<Lesson> LessonListDatabase() {
-        List<Lesson> fullmodulelist = new ArrayList<Lesson>();
+        List<Lesson> fulllessonlist = new ArrayList<Lesson>();
         ArrayList<String> list = new ArrayList<String>();
         try {
             FileInputStream fis = new FileInputStream("Database\\lesson.txt");
@@ -22,10 +22,10 @@ public class Database {
 
         for (String i : list) {
             String[] splitdata = i.split(",");
-            fullmodulelist.add(new Lesson(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
+            fulllessonlist.add(new Lesson(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
                     Integer.parseInt(splitdata[3]), splitdata[4], Integer.parseInt(splitdata[5]), Integer.parseInt(splitdata[6]), splitdata[7]));
         }
-        return fullmodulelist;
+        return fulllessonlist;
     }
 
     public List<Admin> AdminUserDatabase() {
@@ -70,7 +70,7 @@ public class Database {
     }
 
     public List<Course> CourseListDatabase() {
-        List<Course> fullmodulelist = new ArrayList<Course>();
+        List<Course> fullcourselist = new ArrayList<Course>();
         ArrayList<String> list = new ArrayList<String>();
         try {
             FileInputStream fis = new FileInputStream("Database\\course.txt");
@@ -86,8 +86,8 @@ public class Database {
         // index, coursecode, vacancy, waitlist
         for (String i : list) {
             String[] splitdata = i.split(",");
-            fullmodulelist.add(new Course(Integer.parseInt(splitdata[0]), splitdata[1],Integer.parseInt(splitdata[2]),Integer.parseInt(splitdata[3]));
+            fullcourselist.add(new Course(Integer.parseInt(splitdata[0]), splitdata[1],Integer.parseInt(splitdata[2]),Integer.parseInt(splitdata[3])));
         }
-        return fullmodulelist;
+        return fullcourselist;
     }
 }

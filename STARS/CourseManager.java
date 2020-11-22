@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.List;
 
@@ -22,10 +21,6 @@ public class CourseManager {
 
     DataFiltering byIndex = (fullModuleList, value) -> {
         return fullModuleList.stream().filter(x -> Integer.parseInt(value) == x.getIndex()).collect(Collectors.toList());
-    };
-
-    DataFiltering byDays = (fullModuleList, value) -> {
-        return fullModuleList.stream().collect(Collectors.toList());
     };
 
 }
