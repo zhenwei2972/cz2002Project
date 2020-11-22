@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class StudentInterface {
     CourseManager filter = new CourseManager();
+    StudentManager studentFilter = new StudentManager();
     public void StudentMenuLogic(Student currentStudent,Database db) {
         String num = "";
         Console console = System.console();
@@ -18,7 +19,9 @@ public class StudentInterface {
         String courseIndex = "";
         int courseCode =0;
         List<Course> courses= db.CourseListDatabase();
+        List<Student> students= db.StudentDatabase();
         int courseVacancy;
+        String matricNo;
         while (!quit)
         {
         System.out.println(
@@ -32,7 +35,6 @@ public class StudentInterface {
                 //assuming course index is unique
                 courseIndex = sc.next();
                 currentStudent.AddCourse(GetCourse( Integer.parseInt(courseIndex), courses),w);
-                
                 System.out.println("\n ----");
                 break;
             case "2":
@@ -59,15 +61,17 @@ public class StudentInterface {
                 System.out.println("\nEnter a course index that you want to change to");
                 String changeIndex;
                 changeIndex = sc.next();
+                currentStudent.RemoveCourse(GetCourse( Integer.parseInt(courseIndex), courses),w);
+                currentStudent.AddCourse(GetCourse( Integer.parseInt(changeIndex), courses),w);
                 break;
             case "6":
                 System.out.println("\nSwop Index Number with Another Student");
                 System.out.println("\nEnter other student's matriculation number");
-                courseIndex = sc.next();
+                matricNo = sc.next();
                 //get other student's corresponding object
                 System.out.println("\nEnter a course index");
                 courseIndex = sc.next();
-               // currentStudent.SwapCourse(,GetCourse(Integer.parseInt(courseIndex), courses),courseIndex);
+                currentStudent.SwapCourse(GetStudent(Integer.parseInt(matricNo),students),GetCourse(Integer.parseInt(courseIndex), courses),Integer.parseInt(courseIndex));
                 break;
             default:
         }
@@ -84,16 +88,13 @@ private Course GetCourse(int courseIndex,List<Course> courses){
     return null;
 }
 private Student GetStudent(int matricNo,List<Student> students){
-    List<Course> result = new ArrayList<Course>();
-    //find corresponding course object using these course code & index
-    /*
-    result = filter..Invoke(students, matricNo);
-    for(Course mod: result){
+    List<Student> result = new ArrayList<Student>();
+    //find corresponding student object using these course code & index
+    result = studentFilter.byMatricNo.Invoke(students, Integer.toString(matricNo));
+    for(Student student: result){
         //add course if found 
-        return mod;
+        return student;
     }
-    
-    */
     return null;
 }
 
