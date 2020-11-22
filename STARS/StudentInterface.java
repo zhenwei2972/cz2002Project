@@ -21,7 +21,7 @@ public class StudentInterface {
         Course currentCourse = new Course();
         while (!quit) {
             System.out.println(
-                    " 1 *Add Course \n 2 Drop Course \n 3 Check/Print Courses Registered \n 4 Check Vacancies Available \n 5 Change Index Number of Course \n 6 Swop Index Number with Another Student \n 7 Printing all available courses \n 8 Check Waiting List");
+                    " 1 *Add Course \n 2 Drop Course \n 3 Check/Print Courses Registered \n 4 Check Vacancies Available \n 5 Change Index Number of Course \n 6 Swop Index Number with Another Student \n 7 Printing all available courses \n 8 Check Waiting List \n 9 Quit");
             num = console.readLine("Please choose your action \n");
             switch (num) {
                 case "1":
@@ -99,6 +99,10 @@ public class StudentInterface {
                     List<Course> currentList = courseMgmt.byIndex.Invoke(courses, index);
                     courseMgmt.currentIndexWaitingList.Display(currentList);
                     break;
+                case "9":
+                    System.out.println("\nQuit");
+                    sc.close();
+                    quit=true;
                 default:
             }
         }

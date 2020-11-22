@@ -1,8 +1,8 @@
 import java.io.Console;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.io.IOException;
 
 public class AdminInterface {
     public void AdminMenuLogic() throws IOException {
@@ -14,14 +14,17 @@ public class AdminInterface {
         List<Student> fullStudentList = db.StudentDatabase();
         Boolean quit = false;
         Scanner sc = new Scanner(System.in);
+        int courseVacancy;
+        StudentManager studentMgmt = new StudentManager();
+        List<Course> courses = db.CourseListDatabase();
         while (!quit)
         {
             System.out.println(
-            " 1 Edit student access period \n 2 Add Student Records \n 3 Removing A Student \n 4 Check available slot for an index number \n 5 Print student list by index number \n 6 Print student list by course");
+            " 1 Edit student access period \n 2 Add Student Records \n 3 Removing A Student \n 4 Check available slot by index number \n 5 Print student list by index number \n 6 Print student list by course");
             num = console.readLine("Please choose your action \n");
             switch (num) {
                 case "1":
-                    System.out.println("\nNot implemented");
+                    System.out.println("\nEdit student access period");
                     break;
                 case "2":
                     System.out.println("\nAdding a new Student");
@@ -37,7 +40,12 @@ public class AdminInterface {
                     System.out.println("\nRemoved "+matricNo+" Student");
                     break;
                 case "4":
-                    System.out.println("\nEnter a student name");
+                    System.out.println("\nCheck available slot by index number");
+                    System.out.println("Enter index number");
+                    String courseIndex = sc.next();
+                    Course currentCourse = studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses);
+                    courseVacancy = currentCourse.getVacancy();
+                    System.out.println("Course Vacancy for " + courseIndex + " is " + courseVacancy);
                     break;
                 case "5":
                     System.out.println("\nDisplay Students by course index");
@@ -52,11 +60,10 @@ public class AdminInterface {
                     adminController.printStudentfromIndex.Invoke(fullStudentList,courseCode);
                     break;
                 case "7":
-                    System.out.println("Add/Update a course");
-                    break;
-                case "8":
                     db.UpdateStudentDatabase(fullStudentList);
                     //db.UpdateCourseDatabase(fullCourseList);
+                    break;
+                case "8":
                     System.out.println("\nQuit");
                     quit=true;
                 default:
