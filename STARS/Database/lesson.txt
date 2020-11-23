@@ -1,36 +1,36 @@
-10270|CZ2001|Algorithms|3|Friday|1030|1130|Tutorial
-10270|CZ2001|Algorithms|3|Monday|1030|1130|Lecture
-10270|CZ2001|Algorithms|3|Thursday|0830|1030|Lab
-10271|CZ2001|Algorithms|3|Wednesday|1030|1130|Tutorial
-10271|CZ2001|Algorithms|3|Monday|1030|1130|Lecture
-10271|CZ2001|Algorithms|3|Monday|0830|1030|Lab
-10272|CZ2001|Algorithms|3|Thursday|1430|1330|Tutorial
-10272|CZ2001|Algorithms|3|Monday|1030|1130|Lecture
-10272|CZ2001|Algorithms|3|Thursday|1530|1730|Lab
-10240|CZ2002|Object Oriented Programming|3|Thursday|1130|1230|Tutorial
-10240|CZ2002|Object Oriented Programming|3|Tuesday|1230|1330|Lecture
-10240|CZ2002|Object Oriented Programming|3|Monday|1230|1430|Lab
-10241|CZ2002|Object Oriented Programming|3|Wednesday|0930|1030|Tutorial
-10241|CZ2002|Object Oriented Programming|3|Tuesday|1230|1330|Lecture
-10241|CZ2002|Object Oriented Programming|3|Friday|0830|1030|Lab
-10242|CZ2002|Object Oriented Programming|3|Friday|0930|1030|Tutorial
-10242|CZ2002|Object Oriented Programming|3|Monday|1230|1330|Lecture
-10242|CZ2002|Object Oriented Programming|3|Monday|1330|1530|Lab
-10214|CZ2003|Computer Graphics|3|Wednesday|0830|0930|Tutorial
-10214|CZ2003|Computer Graphics|3|Tuesday|1030|1130|Lecture
-10214|CZ2003|Computer Graphics|3|Friday|1330|1530|Lab
-10215|CZ2003|Computer Graphics|3|Monday|0930|1030|Tutorial
-10215|CZ2003|Computer Graphics|3|Tuesday|1030|1130|Lecture
-10215|CZ2003|Computer Graphics|3|Monday|1330|1530|Lab
-10216|CZ2003|Computer Graphics|3|Thurday|1430|1530|Tutorial
-10216|CZ2003|Computer Graphics|3|Tuesday|1030|1130|Lecture
-10216|CZ2003|Computer Graphics|3|Wednesday|1030|1230|Lab
-10255|CZ2004|Software Engineering|3|Tuesday|0830|0930|Tutorial
-10255|CZ2004|Software Engineering|3|Friday|1130|1230|Lecture
-10255|CZ2004|Software Engineering|3|Friday|1430|1630|Lab
-10256|CZ2004|Software Engineering|3|Monday|0830|0930|Tutorial
-10256|CZ2004|Software Engineering|3|Friday|1130|1230|Lecture
-10256|CZ2004|Software Engineering|3|Thursday|0930|1130|Lab
-10257|CZ2004|Software Engineering|3|Monday|0830|0930|Tutorial
-10257|CZ2004|Software Engineering|3|Friday|1130|1230|Lecture
-10257|CZ2004|Software Engineering|3|Thursday|0930|1130|Lab
+10270,CZ2001,Algorithms,3,Friday,1030,1130,Tutorial
+10270,CZ2001,Algorithms,3,Monday,1030,1130,Lecture
+10270,CZ2001,Algorithms,3,Thursday,0830,1030,Lab
+10271,CZ2001,Algorithms,3,Wednesday,1030,1130,Tutorial
+10271,CZ2001,Algorithms,3,Monday,1030,1130,Lecture
+10271,CZ2001,Algorithms,3,Monday,0830,1030,Lab
+10272,CZ2001,Algorithms,3,Thursday,1430,1330,Tutorial
+10272,CZ2001,Algorithms,3,Monday,1030,1130,Lecture
+10272,CZ2001,Algorithms,3,Thursday,1530,1730,Lab
+10240,CZ2002,Object Oriented Programming,3,Thursday,1130,1230,Tutorial
+10240,CZ2002,Object Oriented Programming,3,Tuesday,1230,1330,Lecture
+10240,CZ2002,Object Oriented Programming,3,Monday,1230,1430,Lab
+10241,CZ2002,Object Oriented Programming,3,Wednesday,0930,1030,Tutorial
+10241,CZ2002,Object Oriented Programming,3,Tuesday,1230,1330,Lecture
+10241,CZ2002,Object Oriented Programming,3,Friday,0830,1030,Lab
+10242,CZ2002,Object Oriented Programming,3,Friday,0930,1030,Tutorial
+10242,CZ2002,Object Oriented Programming,3,Monday,1230,1330,Lecture
+10242,CZ2002,Object Oriented Programming,3,Monday,1330,1530,Lab
+10214,CZ2003,Computer Graphics,3,Wednesday,0830,0930,Tutorial
+10214,CZ2003,Computer Graphics,3,Tuesday,1030,1130,Lecture
+10214,CZ2003,Computer Graphics,3,Friday,1330,1530,Lab
+10215,CZ2003,Computer Graphics,3,Monday,0930,1030,Tutorial
+10215,CZ2003,Computer Graphics,3,Tuesday,1030,1130,Lecture
+10215,CZ2003,Computer Graphics,3,Monday,1330,1530,Lab
+10216,CZ2003,Computer Graphics,3,Thurday,1430,1530,Tutorial
+10216,CZ2003,Computer Graphics,3,Tuesday,1030,1130,Lecture
+10216,CZ2003,Computer Graphics,3,Wednesday,1030,1230,Lab
+10255,CZ2004,Software Engineering,3,Tuesday,0830,0930,Tutorial
+10255,CZ2004,Software Engineering,3,Friday,1130,1230,Lecture
+10255,CZ2004,Software Engineering,3,Friday,1430,1630,Lab
+10256,CZ2004,Software Engineering,3,Monday,0830,0930,Tutorial
+10256,CZ2004,Software Engineering,3,Friday,1130,1230,Lecture
+10256,CZ2004,Software Engineering,3,Thursday,0930,1130,Lab
+10257,CZ2004,Software Engineering,3,Monday,0830,0930,Tutorial
+10257,CZ2004,Software Engineering,3,Friday,1130,1230,Lecture
+10257,CZ2004,Software Engineering,3,Thursday,0930,1130,Lab

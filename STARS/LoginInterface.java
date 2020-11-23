@@ -6,8 +6,9 @@ import java.util.Scanner;
 
 public class LoginInterface {
     Database ctrl = new Database();
-    List<AccessPeriod> accessPeriodList = ctrl.AccessPeriodDatabase();
     List<Student> fullStudentList = ctrl.StudentDatabase();
+    List<AccessPeriod> accessPeriodList = ctrl.AccessPeriodDatabase();
+    
 
     
     public String readPassword() {
@@ -37,7 +38,6 @@ public class LoginInterface {
             default:
                 StartupInterface();
         }
-        sc.close();
     }
 
     public void StudentLoginInterface() throws IOException {
@@ -89,7 +89,6 @@ public class LoginInterface {
         System.out.println("Enter Admin Username:");
         String adminUsername = sc.next();
         String adminPassword = readPassword();
-        sc.close();
         LoginManager loginManager = new LoginManager();
         boolean login = loginManager.adminLogin.Invoke(adminUsername, adminPassword);
         if (login) {

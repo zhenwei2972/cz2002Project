@@ -1,6 +1,6 @@
-U1920129E|chienyq|12345|true|2020|ychien003@e.ntu.edu.sg
-U1983957A|student1|1111|false|2020|idknetworking@gmail.com
-U1847661Z|student2|2222|true|2019|c190147@e.ntu.edu.sg
-U1856210F|student3|3333|false|2019|zlee041@e.ntu.edu.sg
-U1713574K|student4|4444|false|2017|habbo_armageddon@hotmail.com
-U1756438M|student5|5555|false|2017|unwantedntu@gmail.com
+U1920129E,chienyq,12345,true,2020,ychien003@e.ntu.edu.sg
+U1983957A,student1,1111,false,2020,idknetworking@gmail.com
+U1847661Z,student2,2222,true,2019,c190147@e.ntu.edu.sg
+U1856210F,student3,3333,false,2019,zlee041@e.ntu.edu.sg
+U1713574K,student4,4444,false,2017,habbo_armageddon@hotmail.com
+U1756438M,student5,5555,false,2017,unwantedntu@gmail.com

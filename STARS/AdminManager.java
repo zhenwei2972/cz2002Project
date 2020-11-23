@@ -30,7 +30,6 @@ public class AdminManager {
         System.out.println("Enter Student Email");
         String email = sc.next();
         fullStudentList.add(new Student(matricNo, studentName, studentPassword, partTime,year, email));
-        sc.close();
 
     }
 
