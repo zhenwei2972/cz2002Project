@@ -1,8 +1,11 @@
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
 public class AdminManager {
     interface PrintStudentList {
         public void Invoke(List<Student> studentList, String value);
@@ -71,4 +74,32 @@ public class AdminManager {
         //     }
         // }
     };
+    public Date InputDateTime(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nEnter Day i.e 01");
+        String day = sc.next();
+        System.out.println("\nEnter Month i.e (JAN)");
+        String month = sc.next();
+        System.out.println("\nEnter Year i.e 2002");
+        String year = sc.next();
+        System.out.println("\n Enter Hour i.e 12");
+        String hour = sc.next();
+        System.out.println("\n Enter Minute i.e 15");
+        String min = sc.next();
+        String dateInString = month+" "+day+", "+year+" "+hour+":"+min;
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy HH:mm");
+       // String example = "Jun 7, 2013 12:10";
+
+        try {
+            Date date = formatter.parse(dateInString);
+          //  System.out.println(date);
+            System.out.println("entered "+formatter.format(date));
+            return date;
+
+        } catch (ParseException e) {
+            System.out.println("Incorrect Entry");
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -172,7 +172,7 @@ public class Database {
         }
         // index, coursecode, vacancy, waitlist
         for (String i : list) {
-            String[] splitdata = i.split(",");
+            String[] splitdata = i.split("|");
             fullAccessPeriodlist.add(new AccessPeriod(splitdata[0], splitdata[1], splitdata[2]));
         }
         return fullAccessPeriodlist;

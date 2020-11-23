@@ -9,6 +9,10 @@ public class AccessPeriod {
     Date endDate;
     // this is a white list method, setting default startdate/enddate in the constructor
     SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy HH:mm");
+    public AccessPeriod(String startDate, String endDate, String Year)
+    {
+        
+    }
     public AccessPeriod(String year) {
         try {
             String tempStart = "Jan 1, 2020 12:10";

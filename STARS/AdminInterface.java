@@ -17,7 +17,7 @@ public class AdminInterface {
         Database db = new Database();
         List<Student> fullStudentList = db.StudentDatabase();
         Boolean quit = false;
-        
+        LoginManager loginManager = new LoginManager();
         int courseVacancy;
         StudentManager studentMgmt = new StudentManager();
         List<Course> courses = db.CourseListDatabase();
@@ -26,7 +26,7 @@ public class AdminInterface {
         while (!quit)
         {
             System.out.println(
-            " 1 Edit student access period \n 2 Add Student Records \n 3 Removing A Student \n 4 Check available slot by index number \n 5 Print student list by index number \n 6 Print student list by course");
+            " 1 Edit student access period \n 2 Add Student Records \n 3 Removing A Student \n 4 Check available slot by index number \n 5 Print student list by index number \n 6 Print student list by course \n 7 Save to file and Quit");
             num = console.readLine("Please choose your action \n");
             switch (num) {
                 case "1":
@@ -35,16 +35,10 @@ public class AdminInterface {
                     System.out.println("\n Enter student year to edit access period");
                     String year = sc.next();
                     System.out.println("\n Enter Access Period Start Date ");
-                    Date startDateTime =InputDateTime();
+                    Date startDateTime =adminController.InputDateTime();
                     System.out.println("\n Enter Access Period End Date ");   
-                    Date endDateTime =InputDateTime();
-                    //update datetime for particular student based on his year 
-                  //  AccessPeriod accessPeriod = new AccessPeriod(year);
-                    LoginManager loginManager = new LoginManager();
-                    AccessPeriod currentAP = loginManager.GetAccessPeriod(year, accessPeriodList);
-                    currentAP.setStartDate(startDateTime);
-                    currentAP.setEndDate(endDateTime);
-                    
+                    Date endDateTime =adminController.InputDateTime();
+                    loginManager.validateLogin(year,accessPeriodList,startDateTime,endDateTime);
 
                     break;
                 case "2":
@@ -83,44 +77,16 @@ public class AdminInterface {
                 case "7":
                     db.UpdateStudentDatabase(fullStudentList);
                     db.UpdateCourseDatabase(courses);
-                    break;
-                case "8":
                     System.out.println("\nQuit");
                     quit=true;
+                    break;
                 default:
             }
           
         }
 
     }
-    private Date InputDateTime(){
-
-        System.out.println("\nEnter Day i.e 01");
-        String day = sc.next();
-        System.out.println("\nEnter Month i.e (JAN)");
-        String month = sc.next();
-        System.out.println("\nEnter Year i.e 2002");
-        String year = sc.next();
-        System.out.println("\n Enter Hour i.e 12");
-        String hour = sc.next();
-        System.out.println("\n Enter Minute i.e 15");
-        String min = sc.next();
-        String dateInString = month+" "+day+", "+year+" "+hour+":"+min;
-        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy HH:mm");
-       // String example = "Jun 7, 2013 12:10";
-
-        try {
-            Date date = formatter.parse(dateInString);
-          //  System.out.println(date);
-            System.out.println("entered "+formatter.format(date));
-            return date;
-
-        } catch (ParseException e) {
-            System.out.println("Incorrect Entry");
-            e.printStackTrace();
-        }
-        return null;
-    }
+    
     
  
 }
