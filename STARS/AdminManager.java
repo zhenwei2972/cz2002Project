@@ -3,9 +3,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 public class AdminManager {
     interface PrintStudentList {
         public void Invoke(List<Student> studentList, String value);
@@ -32,6 +30,7 @@ public class AdminManager {
         System.out.println("Enter Student Email");
         String email = sc.next();
         fullStudentList.add(new Student(matricNo, studentName, studentPassword, partTime,year, email));
+        sc.close();
 
     }
 
@@ -101,5 +100,6 @@ public class AdminManager {
             e.printStackTrace();
         }
         return null;
+        
     }
 }

@@ -4,12 +4,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 public class AdminInterface {
     Scanner sc = new Scanner(System.in);
-    public void AdminMenuLogic(ArrayList<AccessPeriod> accessPeriodList) throws IOException, ParseException {
+    public void AdminMenuLogic(List<AccessPeriod> accessPeriodList) throws IOException, ParseException {
         String num = "";
         Console console = System.console();
         System.out.println("Welcome to Admin Mode");
@@ -22,7 +20,6 @@ public class AdminInterface {
         StudentManager studentMgmt = new StudentManager();
         List<Course> courses = db.CourseListDatabase();
        
-       // AccessPeriod accessPeriod2021 = new AccessPeriod("2021");
         while (!quit)
         {
             System.out.println(
@@ -77,8 +74,10 @@ public class AdminInterface {
                 case "7":
                     db.UpdateStudentDatabase(fullStudentList);
                     db.UpdateCourseDatabase(courses);
+                    db.UpdateAccessListDatabase(accessPeriodList);
                     System.out.println("\nQuit");
                     quit=true;
+                    System.exit(1);
                     break;
                 default:
             }

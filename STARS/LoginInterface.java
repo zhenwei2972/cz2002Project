@@ -1,13 +1,12 @@
 import java.io.Console;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class LoginInterface {
     Database ctrl = new Database();
-    ArrayList<AccessPeriod> accessPeriodList = new ArrayList<AccessPeriod>(2);
+    List<AccessPeriod> accessPeriodList = ctrl.AccessPeriodDatabase();
     List<Student> fullStudentList = ctrl.StudentDatabase();
 
     
@@ -18,10 +17,12 @@ public class LoginInterface {
     }
 
     public void StartupInterface() throws IOException, ParseException {
+        /*
         AccessPeriod ap2020 = new AccessPeriod("2020");
         AccessPeriod ap2019 = new AccessPeriod("2019");
         accessPeriodList.add(ap2019);
         accessPeriodList.add(ap2020);
+        */
         
         Scanner sc = new Scanner(System.in);
         System.out.println("Option 1: Login as Student");
@@ -47,7 +48,6 @@ public class LoginInterface {
         System.out.println("Enter Student Username:");
         String studUsername = sc.next();
         String studPassword = readPassword();
-
         LoginManager loginManager = new LoginManager();
         boolean login = loginManager.studentLogin.Invoke(studUsername, studPassword);
         if (login) 
@@ -89,7 +89,7 @@ public class LoginInterface {
         System.out.println("Enter Admin Username:");
         String adminUsername = sc.next();
         String adminPassword = readPassword();
-
+        sc.close();
         LoginManager loginManager = new LoginManager();
         boolean login = loginManager.adminLogin.Invoke(adminUsername, adminPassword);
         if (login) {

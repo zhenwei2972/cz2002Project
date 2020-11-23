@@ -1,7 +1,5 @@
 import java.util.stream.Collectors;
 import java.util.List;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 public class LoginManager {
@@ -43,7 +41,7 @@ public class LoginManager {
         return (checkLogin.size() > 0) ? true : false;
     };
 
-    public void validateLogin(String year, ArrayList<AccessPeriod> accessPeriodList,Date startDateTime,Date endDateTime){
+    public void validateLogin(String year,List<AccessPeriod> accessPeriodList,Date startDateTime,Date endDateTime){
         AccessPeriod currentAP = GetAccessPeriod(year, accessPeriodList);
         currentAP.setStartDate(startDateTime);
         currentAP.setEndDate(endDateTime);

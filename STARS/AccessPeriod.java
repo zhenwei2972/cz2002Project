@@ -11,7 +11,21 @@ public class AccessPeriod {
     SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy HH:mm");
     public AccessPeriod(String startDate, String endDate, String Year)
     {
-        
+        try {
+            //temporarily dont use the startdate/endate yet
+            String tempStart = "Jan 1, 2020 12:10";
+           System.out.println(startDate);
+            Date defaultStart = formatter.parse(tempStart);
+            String tempEnd = "Jan 1, 2021 12:10";
+            Date defaultEnd = formatter.parse(tempEnd);
+            this.year = Year;
+            this.startDate =defaultStart;
+            this.endDate =defaultEnd;
+
+        } catch (ParseException e) {
+            System.out.println("Incorrect Entry");
+            e.printStackTrace();
+        }
     }
     public AccessPeriod(String year) {
         try {
@@ -20,8 +34,8 @@ public class AccessPeriod {
             String tempEnd = "Jan 1, 2021 12:10";
             Date defaultEnd = formatter.parse(tempEnd);
             this.year = year;
-            startDate =defaultStart;
-            endDate =defaultEnd;
+            this.startDate =defaultStart;
+            this.endDate =defaultEnd;
 
         } catch (ParseException e) {
             System.out.println("Incorrect Entry");
