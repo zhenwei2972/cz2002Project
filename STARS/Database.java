@@ -39,8 +39,8 @@ public class Database {
         // Index, Coursecode, Coursename, AU, Day, starttime, endtime, classtype
         fullLessonList.forEach(x -> {
             try {
-                myWriter.write(x.getIndex() + "|" + x.getCourseCode() + "|" + x.getCourseName() + "|" + x.getAU() + "|" + x.getDay() + "|" + x.getStartTime() + "|" + x.getEndTime() + "|" + x.getClassType()
-                        + "\n");
+                myWriter.write(x.getIndex() + "|" + x.getCourseCode() + "|" + x.getCourseName() + "|" + x.getAU() + "|"
+                        + x.getDay() + "|" + x.getStartTime() + "|" + x.getEndTime() + "|" + x.getClassType() + "\n");
             } catch (IOException e) {
                 System.out.println("Update Lesson Database Failed");
                 e.printStackTrace();
@@ -48,7 +48,6 @@ public class Database {
         });
         myWriter.close();
     }
-    
 
     public List<Admin> AdminUserDatabase() {
         List<Admin> fullAdminList = new ArrayList<Admin>();
@@ -70,10 +69,11 @@ public class Database {
         }
         return fullAdminList;
     }
+
     public void UpdateAdminDatabase(List<Admin> fullAdminList) throws IOException {
         FileWriter myWriter = new FileWriter("Database\\admin.txt");
-       // username, password
-       fullAdminList.forEach(x -> {
+        // username, password
+        fullAdminList.forEach(x -> {
             try {
                 myWriter.write(x.getUsername() + "|" + x.getUsername() + "\n");
             } catch (IOException e) {
@@ -84,7 +84,7 @@ public class Database {
         myWriter.close();
     }
 
-    public List<Student> StudentDatabase(){
+    public List<Student> StudentDatabase() {
         List<Student> fullStudentList = new ArrayList<Student>();
         ArrayList<String> list = new ArrayList<String>();
         try {
@@ -100,8 +100,8 @@ public class Database {
         // MatricNo, Username, Password, PartTimeStudent (true / false)
         for (String i : list) {
             String[] splitdata = i.split("|");
-            fullStudentList
-                    .add(new Student(splitdata[0], splitdata[1], splitdata[2], Boolean.parseBoolean(splitdata[3]), Integer.parseInt(splitdata[4]), splitdata[5]));
+            fullStudentList.add(new Student(splitdata[0], splitdata[1], splitdata[2],
+                    Boolean.parseBoolean(splitdata[3]), Integer.parseInt(splitdata[4]), splitdata[5]));
         }
         return fullStudentList;
     }
@@ -111,8 +111,8 @@ public class Database {
         // MatricNo, Username, Password, PartTimeStudent (true / false)
         fullStudentList.forEach(x -> {
             try {
-                myWriter.write(x.getMatid() + "|" + x.getUsername() + "|" + x.getPassword() + "|" + x.getStudentStatus() + "|" + x.getYear() + "|" + x.getEmail()
-                        + "\n");
+                myWriter.write(x.getMatid() + "|" + x.getUsername() + "|" + x.getPassword() + "|" + x.getStudentStatus()
+                        + "|" + x.getYear() + "|" + x.getEmail() + "\n");
             } catch (IOException e) {
                 System.out.println("Update Student Database Failed");
                 e.printStackTrace();
@@ -142,13 +142,14 @@ public class Database {
         }
         return fullcourselist;
     }
+
     public void UpdateCourseDatabase(List<Course> fullCourseList) throws IOException {
         FileWriter myWriter = new FileWriter("Database\\course.txt");
-       // index, coursecode, vacancy, waitlist
+        // index, coursecode, vacancy, waitlist
         fullCourseList.forEach(x -> {
             try {
-                myWriter.write(x.getIndex() + "|" + x.getCourseCode() + "|" + x.getVacancy() + "|" + x.getWaitlist() + "|" + x.getAU()
-                        + "\n");
+                myWriter.write(x.getIndex() + "|" + x.getCourseCode() + "|" + x.getVacancy() + "|" + x.getWaitlist()
+                        + "|" + x.getAU() + "\n");
             } catch (IOException e) {
                 System.out.println("Update Course Database Failed");
                 e.printStackTrace();
@@ -180,8 +181,8 @@ public class Database {
 
     public void UpdateAccessListDatabase(List<AccessPeriod> fullAccessPeriodlist) throws IOException {
         FileWriter myWriter = new FileWriter("Database\\accessperiod.txt");
-       // index, coursecode, vacancy, waitlist
-       fullAccessPeriodlist.forEach(x -> {
+        // index, coursecode, vacancy, waitlist
+        fullAccessPeriodlist.forEach(x -> {
             try {
                 myWriter.write(x.getStartDate() + "|" + x.getEndDate() + "|" + x.getYear() + "\n");
             } catch (IOException e) {
