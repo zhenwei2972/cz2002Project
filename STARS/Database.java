@@ -2,6 +2,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import org.graalvm.compiler.nodes.memory.Access;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -148,6 +151,41 @@ public class Database {
                         + "\n");
             } catch (IOException e) {
                 System.out.println("Update Course Database Failed");
+                e.printStackTrace();
+            }
+        });
+        myWriter.close();
+    }
+
+    public List<AccessPeriod> AccessPeriodDatabase() {
+        List<AccessPeriod> fullAccessPeriodlist = new ArrayList<AccessPeriod>();
+        ArrayList<String> list = new ArrayList<String>();
+        try {
+            FileInputStream fis = new FileInputStream("Database\\accessperiod.txt");
+            Scanner sc = new Scanner(fis);
+            while (sc.hasNextLine()) {
+                list.add(sc.nextLine());
+            }
+            sc.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // index, coursecode, vacancy, waitlist
+        for (String i : list) {
+            String[] splitdata = i.split(",");
+            fullAccessPeriodlist.add(new AccessPeriod(splitdata[0], splitdata[1], splitdata[2]));
+        }
+        return fullAccessPeriodlist;
+    }
+
+    public void UpdateAccessListDatabase(List<AccessPeriod> fullAccessPeriodlist) throws IOException {
+        FileWriter myWriter = new FileWriter("Database\\accessperiod.txt");
+       // index, coursecode, vacancy, waitlist
+       fullAccessPeriodlist.forEach(x -> {
+            try {
+                myWriter.write(x.getStartDate() + "|" + x.getEndDate() + "|" + x.getYear() + "\n");
+            } catch (IOException e) {
+                System.out.println("Update Access Period Database Failed");
                 e.printStackTrace();
             }
         });

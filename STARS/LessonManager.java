@@ -9,6 +9,7 @@ public class LessonManager {
         public List<Lesson> Invoke(String value);
     }
 
+    @FunctionalInterface
     interface TimeTableFiltering{
         public List<Lesson> Invoke(List<Integer> indexlist);
     }
