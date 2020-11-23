@@ -81,7 +81,7 @@ public class Database {
         myWriter.close();
     }
 
-    public List<Student> StudentDatabase() {
+    public List<Student> StudentDatabase(){
         List<Student> fullStudentList = new ArrayList<Student>();
         ArrayList<String> list = new ArrayList<String>();
         try {
@@ -91,7 +91,7 @@ public class Database {
                 list.add(sc.nextLine());
             }
             sc.close();
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         // MatricNo, Username, Password, PartTimeStudent (true / false)
