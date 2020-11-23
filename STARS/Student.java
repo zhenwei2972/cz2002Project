@@ -8,6 +8,7 @@ public class Student implements User{
     private String password = "";
     private Boolean fullorPart = false; //true for part time , default false for full time
     private int year = 0;
+    private String email = "";
 
 
     public Student() {
@@ -21,12 +22,13 @@ public class Student implements User{
         this.modlist = new ArrayList<Course>();
     }
     //self determine fulltime/parttime student constructor
-    public Student(String matricID, String username, String password, Boolean fullorPart,int year) {
+    public Student(String matricID, String username, String password, Boolean fullorPart,int year, String email) {
         this.matricID = matricID;
         this.username = username;
         this.password = password;
         this.fullorPart = fullorPart;
         this.year = year;
+        this.email = email;
         this.modlist = new ArrayList<Course>();
     }
     //---------Getters----------//
@@ -48,6 +50,9 @@ public class Student implements User{
     public int getYear(){
         return this.year;
     }
+    public String getEmail(){
+        return this.email;
+    }
 
     //----------setter--------------------//
     public void setPassword(String password){
@@ -65,5 +70,8 @@ public class Student implements User{
     }
     public void setYear(int year){
         this.year = year;
+    }
+    public void setEmail(String email){
+        this.email = email;
     }
 }

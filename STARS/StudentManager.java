@@ -1,10 +1,14 @@
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.mail.MessagingException;
+
 import java.util.ArrayList;
 
 public class StudentManager {
     CourseManager courseMgmt = new CourseManager();
     LessonManager lessonMgmt = new LessonManager();
+    Mail mailer = new Mail();
 
     interface StudentFiltering {
         public List<Student> Filtering(List<Student> list, String value);
@@ -58,8 +62,18 @@ public class StudentManager {
         Integer totalAU = calculateTotalAU(courses);
         System.out.println("Total AU for this semester: " + totalAU);
     }
-    public Integer calculateTotalAU(ArrayList<Course> courses){
+
+    public Integer calculateTotalAU(ArrayList<Course> courses) {
         return courses.stream().mapToInt(x -> x.getAU()).sum();
+    }
+
+    public void SendEmail(String email) {
+        try {
+            mailer.sendMail(email);
+        } catch (MessagingException ex) {
+            System.out.println("Email Sending Error");
+        }
+
     }
 
     public void AddCourse(Course mod, WaitList waitinglist, Student currentStudent) {
@@ -68,6 +82,7 @@ public class StudentManager {
                 if (mod.getVacancy() > 0) {
                     currentStudent.addModList(mod);
                     mod.setVacancy(mod.getVacancy() - 1);
+                    SendEmail(currentStudent.getEmail());
                 } else {
                     System.out.println("This course " + mod.getCourseCode() + " : " + mod.getIndex() + " is full");
                     System.out.println("Adding to waitlist");
@@ -85,6 +100,7 @@ public class StudentManager {
                 if (mod.getVacancy() > 0) {
                     currentStudent.addModList(mod);
                     mod.setVacancy(mod.getVacancy() - 1);
+                    SendEmail(currentStudent.getEmail());
                 }
             } else
                 System.out.println("There is a clash for this course added -index : " + mod.getIndex());
@@ -102,7 +118,7 @@ public class StudentManager {
             System.out.println("There is no " + mod.getCourseCode() + " exsisting in your registered course");
     }
 
-    public void RemoveCourse(Course mod, Student currentStudent) {
+    public void RemoveCourse(Course mod, Student currentStudent)  {
         if (!checkExist(mod, currentStudent)) {
             mod.setVacancy(mod.getVacancy() + 1);
             currentStudent.removeModList(mod);
@@ -121,18 +137,20 @@ public class StudentManager {
         return false;
     }
 
-     /**
+    /**
      * checking for time slot clash between modules.
      */
     public void printLessonInformation(int courseIndex) {
         List<Lesson> result = new ArrayList<Lesson>();
         result = lessonMgmt.byIndex.Invoke(Integer.toString(courseIndex));
-                for (Lesson mod : result) {
-                    System.out.println("Class type "+mod.getClassType()+"\nCourse Name "+mod.getCourseName()+"\nCourse Code "+mod.getCourseCode()+"\nCourse Index "+mod.getIndex()+"\nDay "+mod.getDay()+"\nStar Time "+mod.getStartTime()+"\nEnd Time "+mod.getEndTime());
-                }
-            
-        
+        for (Lesson mod : result) {
+            System.out.println("Class type " + mod.getClassType() + "\nCourse Name " + mod.getCourseName()
+                    + "\nCourse Code " + mod.getCourseCode() + "\nCourse Index " + mod.getIndex() + "\nDay "
+                    + mod.getDay() + "\nStar Time " + mod.getStartTime() + "\nEnd Time " + mod.getEndTime());
+        }
+
     }
+
     /**
      * checking for time slot clash between modules.
      */
@@ -161,25 +179,26 @@ public class StudentManager {
         List<Course> courselist = target.getCourse();
         result = courseMgmt.byIndex.Invoke(courselist, Integer.toString(modid));
         if (result.isEmpty()) {
-            System.out.println("Student" + target.getUsername() + " does not have " + course.getCourseCode() + ":" + modid);
+            System.out.println(
+                    "Student" + target.getUsername() + " does not have " + course.getCourseCode() + ":" + modid);
             return;
         } else {
-            this.AddCourse(course,target);
-            this.RemoveCourse(result.get(0),target);
-            this.RemoveCourse(course,current);
-            this.AddCourse(result.get(0),current);
+            this.AddCourse(course, target);
+            this.RemoveCourse(result.get(0), target);
+            this.RemoveCourse(course, current);
+            this.AddCourse(result.get(0), current);
         }
     }
 
-    public void GenerateTimeTable(ArrayList<Course> courses){
+    public void GenerateTimeTable(ArrayList<Course> courses) {
         List<Lesson> mondayLesson = new ArrayList<Lesson>();
         List<Lesson> tuesdayLesson = new ArrayList<Lesson>();
         List<Lesson> wednesdayLesson = new ArrayList<Lesson>();
         List<Lesson> thursdayLesson = new ArrayList<Lesson>();
         List<Lesson> fridayLesson = new ArrayList<Lesson>();
-        
+
         List<Integer> indexArr = new ArrayList<Integer>();
-        //Testing using 10271, 10242
+        // Testing using 10271, 10242
         for (Course i : courses) {
             indexArr.add(i.getIndex());
         }
@@ -195,13 +214,15 @@ public class StudentManager {
         PrintTimeTable(fridayLesson, "Friday");
         System.out.println("");
     }
-    
-    public void PrintTimeTable(List<Lesson> lessonList, String day){
-        System.out.println(day +" Classes:");
+
+    public void PrintTimeTable(List<Lesson> lessonList, String day) {
+        System.out.println(day + " Classes:");
         System.out.println("---------------");
-        if(lessonList.size() > 0)
-            lessonList.forEach(x -> System.out.println("Index: "+ x.getIndex() +" Course Code: " + x.getCourseCode() + " Module Name: " + x.getCourseName() + " Start Time: " + x.getStartTime() + " End Time: " + x.getEndTime()));
+        if (lessonList.size() > 0)
+            lessonList.forEach(x -> System.out
+                    .println("Index: " + x.getIndex() + " Course Code: " + x.getCourseCode() + " Module Name: "
+                            + x.getCourseName() + " Start Time: " + x.getStartTime() + " End Time: " + x.getEndTime()));
         else
             System.out.println("You have no classes on " + day);
-        }
+    }
 }

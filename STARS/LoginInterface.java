@@ -10,6 +10,7 @@ public class LoginInterface {
     ArrayList<AccessPeriod> accessPeriodList = new ArrayList<AccessPeriod>(2);
     List<Student> fullStudentList = ctrl.StudentDatabase();
 
+    
     public String readPassword() {
         Console console = System.console();
         String enteredPassword = new String(console.readPassword("Please enter your password: "));

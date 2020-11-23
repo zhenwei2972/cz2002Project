@@ -1,50 +1,46 @@
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 
 public class Mail {
 
-   public static void main(String [] args) {    
-      // Recipient's email ID needs to be mentioned.
-      String to = "idknetworking@gmail.com";
+   public void sendMail(String recepient) throws MessagingException {
+      System.out.println("Prepare Messaging email");
+      Properties prop = new Properties();
+      prop.put("mail.smtp.auth", "true");
+      prop.put("mail.smtp.starttls.enable", "true");
+      prop.put("mail.smtp.host", "smtp.gmail.com");
+      prop.put("mail.smtp.port", "587");
 
-      // Sender's email ID needs to be mentioned
-      String from = "unwantedntu@gmail.com";
+      String myAccount = "unwantedntu@gmail.com";
+      String password = "cpl12454";
 
-      // Assuming you are sending email from localhost
-      String host = "cpl12454";
+      Session session = Session.getInstance(prop, new Authenticator() {
+         @Override
+         protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(myAccount, password);
+         }
+      });
+      Message message = prepareMessage(session, myAccount, recepient);
+      Transport.send(message);
+      System.out.println("Message sent successfully");
+   }
 
-      // Get system properties
-      Properties properties = System.getProperties();
-
-      // Setup mail server
-      properties.setProperty("smtp.gmail.com", host);
-
-      // Get the default Session object.
-      Session session = Session.getDefaultInstance(properties);
-
+   private Message prepareMessage(Session session, String myAccountEmail, String recepient) {
       try {
-         // Create a default MimeMessage object.
-         MimeMessage message = new MimeMessage(session);
-
-         // Set From: header field of the header.
-         message.setFrom(new InternetAddress(from));
-
-         // Set To: header field of the header.
-         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
-         // Set Subject: header field
-         message.setSubject("This is the Subject Line!");
-
-         // Now set the actual message
-         message.setText("This is actual message");
-
-         // Send message
-         Transport.send(message);
-         System.out.println("Sent message successfully....");
-      } catch (MessagingException mex) {
-         mex.printStackTrace();
+         Message msg = new MimeMessage(session);
+         msg.setFrom(new InternetAddress(myAccountEmail));
+         msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
+         msg.setSubject("Course Information");
+         msg.setText("You course have been successfully registered!");
+         return msg;
+      } catch (Exception ex) {
+         Logger.getLogger("Error!").log(Level.SEVERE, null, ex);
       }
+      return null;
    }
 }
