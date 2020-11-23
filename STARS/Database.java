@@ -26,7 +26,7 @@ public class Database {
         // from courseList.txt
 
         for (String i : list) {
-            String[] splitdata = i.split(",");
+            String[] splitdata = i.split("|");
             fulllessonlist.add(new Lesson(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
                     Integer.parseInt(splitdata[3]), splitdata[4], Integer.parseInt(splitdata[5]),
                     Integer.parseInt(splitdata[6]), splitdata[7]));
@@ -39,7 +39,7 @@ public class Database {
         // Index, Coursecode, Coursename, AU, Day, starttime, endtime, classtype
         fullLessonList.forEach(x -> {
             try {
-                myWriter.write(x.getIndex() + "," + x.getCourseCode() + "," + x.getCourseName() + "," + x.getAU() + "," + x.getDay() + "," + x.getStartTime() + "," + x.getEndTime() + "," + x.getClassType()
+                myWriter.write(x.getIndex() + "|" + x.getCourseCode() + "|" + x.getCourseName() + "|" + x.getAU() + "|" + x.getDay() + "|" + x.getStartTime() + "|" + x.getEndTime() + "|" + x.getClassType()
                         + "\n");
             } catch (IOException e) {
                 System.out.println("Update Lesson Database Failed");
@@ -65,7 +65,7 @@ public class Database {
         }
         // username, password
         for (String i : list) {
-            String[] splitdata = i.split(",");
+            String[] splitdata = i.split("|");
             fullAdminList.add(new Admin(splitdata[0], splitdata[1]));
         }
         return fullAdminList;
@@ -75,7 +75,7 @@ public class Database {
        // username, password
        fullAdminList.forEach(x -> {
             try {
-                myWriter.write(x.getUsername() + "," + x.getUsername() + "\n");
+                myWriter.write(x.getUsername() + "|" + x.getUsername() + "\n");
             } catch (IOException e) {
                 System.out.println("Update Admin Database Failed");
                 e.printStackTrace();
@@ -99,7 +99,7 @@ public class Database {
         }
         // MatricNo, Username, Password, PartTimeStudent (true / false)
         for (String i : list) {
-            String[] splitdata = i.split(",");
+            String[] splitdata = i.split("|");
             fullStudentList
                     .add(new Student(splitdata[0], splitdata[1], splitdata[2], Boolean.parseBoolean(splitdata[3]), Integer.parseInt(splitdata[4]), splitdata[5]));
         }
@@ -111,7 +111,7 @@ public class Database {
         // MatricNo, Username, Password, PartTimeStudent (true / false)
         fullStudentList.forEach(x -> {
             try {
-                myWriter.write(x.getMatid() + "," + x.getUsername() + "," + x.getPassword() + "," + x.getStudentStatus() + "," + x.getYear() + "," + x.getEmail()
+                myWriter.write(x.getMatid() + "|" + x.getUsername() + "|" + x.getPassword() + "|" + x.getStudentStatus() + "|" + x.getYear() + "|" + x.getEmail()
                         + "\n");
             } catch (IOException e) {
                 System.out.println("Update Student Database Failed");
@@ -147,7 +147,7 @@ public class Database {
        // index, coursecode, vacancy, waitlist
         fullCourseList.forEach(x -> {
             try {
-                myWriter.write(x.getIndex() + "," + x.getCourseCode() + "," + x.getVacancy() + "," + x.getWaitlist() + "," + x.getAU()
+                myWriter.write(x.getIndex() + "|" + x.getCourseCode() + "|" + x.getVacancy() + "|" + x.getWaitlist() + "|" + x.getAU()
                         + "\n");
             } catch (IOException e) {
                 System.out.println("Update Course Database Failed");
@@ -172,7 +172,7 @@ public class Database {
         }
         // index, coursecode, vacancy, waitlist
         for (String i : list) {
-            String[] splitdata = i.split(",");
+            String[] splitdata = i.split("|");
             fullAccessPeriodlist.add(new AccessPeriod(splitdata[0], splitdata[1], splitdata[2]));
         }
         return fullAccessPeriodlist;
