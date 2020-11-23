@@ -1,9 +1,16 @@
+import java.io.Console;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
 
 public class LoginInterface {
     Database ctrl = new Database();
+
+    public String readPassword() {
+        Console console = System.console();
+        String enteredPassword = new String(console.readPassword("Please enter your password: "));
+        return enteredPassword;
+    }
 
     public void StartupInterface() throws IOException, ParseException {
 
@@ -28,8 +35,7 @@ public class LoginInterface {
         System.out.println("Login as Student:");
         System.out.println("Enter Student Username:");
         String studUsername = sc.next();
-        System.out.println("Enter Student Password:");
-        String studPassword = sc.next();
+        String studPassword = readPassword();
 
         LoginManager loginManager = new LoginManager();
         boolean login = loginManager.studentLogin.Invoke(studUsername, studPassword);
@@ -52,16 +58,14 @@ public class LoginInterface {
         System.out.println("Login as Admin:");
         System.out.println("Enter Admin Username:");
         String adminUsername = sc.next();
-        System.out.println("Enter Admin Password:");
-        String adminPassword = sc.next();
+        String adminPassword = readPassword();
 
         LoginManager loginManager = new LoginManager();
         boolean login = loginManager.adminLogin.Invoke(adminUsername, adminPassword);
-        if(login){
+        if (login) {
             AdminInterface homePage = new AdminInterface();
             homePage.AdminMenuLogic();
-        }
-        else{
+        } else {
             System.out.println("Wrong Username or password! Please enter details again");
             AdminLoginInterface();
         }

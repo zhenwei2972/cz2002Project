@@ -1,6 +1,5 @@
 import java.io.Console;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,7 +15,7 @@ public class StudentInterface {
         Scanner sc = new Scanner(System.in);
         // Initialize common variable/objets
         WaitList waitlist = new WaitList();
-        int courseCode = 0, courseVacancy;
+        int courseVacancy;
         List<Course> courses = db.CourseListDatabase();
         List<Student> students = db.StudentDatabase();
         Course currentCourse = new Course();
