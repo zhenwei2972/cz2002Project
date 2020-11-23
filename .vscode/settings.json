@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "STARS/JavaMail/javax.mail.jar",
+        "STARS/JavaMail/dsn.jar",
+        "STARS/JavaMail/imap.jar",
+        "STARS/JavaMail/mail.jar",
+        "STARS/JavaMail/mailapi.jar",
+        "STARS/JavaMail/pop3.jar",
+        "STARS/JavaMail/smtp.jar",
+        "STARS/JavaMail/activation-1.1.jar"
+    ]
+}

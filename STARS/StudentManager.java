@@ -195,6 +195,7 @@ public class StudentManager {
         PrintTimeTable(fridayLesson, "Friday");
         System.out.println("");
     }
+    
     public void PrintTimeTable(List<Lesson> lessonList, String day){
         System.out.println(day +" Classes:");
         System.out.println("---------------");
