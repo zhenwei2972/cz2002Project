@@ -9,7 +9,6 @@ import javax.activation.*;
 public class Mail {
 
    public void sendMail(String recepient) throws MessagingException {
-      System.out.println("Prepare Messaging email");
       Properties prop = new Properties();
       prop.put("mail.smtp.auth", "true");
       prop.put("mail.smtp.starttls.enable", "true");
@@ -27,7 +26,7 @@ public class Mail {
       });
       Message message = prepareMessage(session, myAccount, recepient);
       Transport.send(message);
-      System.out.println("Message sent successfully");
+      System.out.println("Course added successfully, confirmation has been sent by email");
    }
 
    private Message prepareMessage(Session session, String myAccountEmail, String recepient) {
