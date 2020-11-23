@@ -39,6 +39,17 @@ public class StudentManager {
         return null;
     }
 
+    public Student GetStudentByUserName(String username, List<Student> students) {
+        List<Student> result = new ArrayList<Student>();
+        // find corresponding student object using these course code & index
+        result = byUsername.Filtering(students, username);
+        for (Student student : result) {
+            // add course if found
+            return student;
+        }
+        return null;
+    }
+
     public void printAllCourse(ArrayList<Course> courses) {
         System.out.println("Courses registered :");
         for (Course course : courses) {

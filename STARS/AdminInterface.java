@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 public class AdminInterface {
     Scanner sc = new Scanner(System.in);
-    public void AdminMenuLogic() throws IOException, ParseException {
+    public void AdminMenuLogic(ArrayList<AccessPeriod> accessPeriodList) throws IOException, ParseException {
         String num = "";
         Console console = System.console();
         System.out.println("Welcome to Admin Mode");
@@ -30,17 +30,20 @@ public class AdminInterface {
             num = console.readLine("Please choose your action \n");
             switch (num) {
                 case "1":
+                    //start date/ end date can be adjusted here.
                     System.out.println("\nEdit student access period by date and time");
                     System.out.println("\n Enter student year to edit access period");
                     String year = sc.next();
-                    System.out.println("\n Enter Access Period Start Date dd MMMM, yyyy HH:mm");
+                    System.out.println("\n Enter Access Period Start Date ");
                     Date startDateTime =InputDateTime();
-                    System.out.println("\n Enter Access Period End Date dd MMMM, yyyy HH:mm");   
+                    System.out.println("\n Enter Access Period End Date ");   
                     Date endDateTime =InputDateTime();
                     //update datetime for particular student based on his year 
-                    AccessPeriod accessPeriod = new AccessPeriod(year);
-                    accessPeriod.setStartDate(startDateTime);
-                    accessPeriod.setEndDate(endDateTime);
+                  //  AccessPeriod accessPeriod = new AccessPeriod(year);
+                    LoginManager loginManager = new LoginManager();
+                    AccessPeriod currentAP = loginManager.GetAccessPeriod(year, accessPeriodList);
+                    currentAP.setStartDate(startDateTime);
+                    currentAP.setEndDate(endDateTime);
                     
 
                     break;
@@ -88,7 +91,7 @@ public class AdminInterface {
             }
           
         }
-        sc.close();
+
     }
     private Date InputDateTime(){
 
@@ -109,11 +112,11 @@ public class AdminInterface {
         try {
             Date date = formatter.parse(dateInString);
           //  System.out.println(date);
-            System.out.println(formatter.format(date));
+            System.out.println("entered "+formatter.format(date));
             return date;
 
         } catch (ParseException e) {
-            System.out.println("Incorect input");
+            System.out.println("Incorrect Entry");
             e.printStackTrace();
         }
         return null;

@@ -1,12 +1,20 @@
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LoginInterface {
     Database ctrl = new Database();
+    ArrayList<AccessPeriod> accessPeriodList = new ArrayList<AccessPeriod>(2);
+    List<Student> fullStudentList = ctrl.StudentDatabase();
 
     public void StartupInterface() throws IOException, ParseException {
-
+        AccessPeriod ap2020 = new AccessPeriod("2020");
+        AccessPeriod ap2019 = new AccessPeriod("2019");
+        accessPeriodList.add(ap2019);
+        accessPeriodList.add(ap2020);
+        
         Scanner sc = new Scanner(System.in);
         System.out.println("Option 1: Login as Student");
         System.out.println("Option 2: Login as Admin");
@@ -24,6 +32,8 @@ public class LoginInterface {
     }
 
     public void StudentLoginInterface() throws IOException {
+        //initialize acccess period list
+       
         Scanner sc = new Scanner(System.in);
         System.out.println("Login as Student:");
         System.out.println("Enter Student Username:");
@@ -33,18 +43,37 @@ public class LoginInterface {
 
         LoginManager loginManager = new LoginManager();
         boolean login = loginManager.studentLogin.Invoke(studUsername, studPassword);
-        if (login) {
+        if (login) 
+        {
             // construct temporary student object with dummy matrix number
-            String dummymatric = "U1920129E";
-            Student StudentController = new Student(dummymatric, studUsername, studPassword);
-            // studentFilter.byMatricNo.Invoke(students, Integer.toString(matricNo));
+            StudentManager sm = new StudentManager();
+            Student studentObject = sm.GetStudentByUserName(studUsername, fullStudentList);
             StudentInterface homePage = new StudentInterface();
-            homePage.StudentMenuLogic(StudentController, ctrl);
-        } else {
+            AccessPeriod currentAP = loginManager.GetAccessPeriod(Integer.toString(studentObject.getYear()), accessPeriodList);
+            if(currentAP==null)
+            {
+                System.out.println("Access period is not set, unable to login ");
+                StudentLoginInterface();
+            }
+            else
+            {
+                boolean validAccessTime = loginManager.validateAccessPeriod(currentAP);
+                System.out.println(accessPeriodList);
+                if(validAccessTime)
+                {
+                    homePage.StudentMenuLogic(studentObject, ctrl);
+                }
+                else{
+                    System.out.println("Access period is not valid you should login on "+currentAP.getStartDate()+" to "+currentAP.getEndDate());
+                }
+            }
+        } 
+        else 
+        {
             System.out.println("Wrong Username or password! Please enter details again");
             StudentLoginInterface();
         }
-        sc.close();
+       
     }
 
     public void AdminLoginInterface() throws IOException, ParseException {
@@ -54,18 +83,16 @@ public class LoginInterface {
         String adminUsername = sc.next();
         System.out.println("Enter Admin Password:");
         String adminPassword = sc.next();
-
         LoginManager loginManager = new LoginManager();
         boolean login = loginManager.adminLogin.Invoke(adminUsername, adminPassword);
         if(login){
             AdminInterface homePage = new AdminInterface();
-            homePage.AdminMenuLogic();
+            homePage.AdminMenuLogic(accessPeriodList);
         }
         else{
             System.out.println("Wrong Username or password! Please enter details again");
             AdminLoginInterface();
         }
-        sc.close();
     }
 
 }

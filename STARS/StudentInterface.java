@@ -105,12 +105,13 @@ public class StudentInterface {
                     System.out.println("\nQuit");
                     db.UpdateCourseDatabase(courses);
                     db.UpdateStudentDatabase(students);
-                    sc.close();
+
                     quit = true;
                     break;
                 default:
             }
         }
+        sc.close();
     }
 
 }
