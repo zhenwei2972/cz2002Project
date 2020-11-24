@@ -13,10 +13,10 @@ public class AccessPeriod {
     {
         try {
             //temporarily dont use the startdate/endate yet
-            String tempStart = "Jan 1, 2020 12:10";
-            System.out.println(startDate);
+           // String tempStart = "Jan 1, 2020 12:10";
+         //   System.out.println(startDate);
             Date defaultStart = formatter.parse(startDate);
-            String tempEnd = "Jan 1, 2021 12:10";
+         //   String tempEnd = "Jan 1, 2021 12:10";
             Date defaultEnd = formatter.parse(endDate);
             this.year = Year;
             this.startDate =defaultStart;

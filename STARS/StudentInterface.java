@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
 
 public class StudentInterface {
     CourseManager courseMgmt = new CourseManager();

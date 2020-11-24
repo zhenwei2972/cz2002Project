@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 public class Database {
 
@@ -171,7 +172,6 @@ public class Database {
             String[] splitdata = i.split(",");
             String startdate = splitdata[0] + "," + splitdata[1];
             String enddate = splitdata[2] + "," + splitdata[3];
-            //System.out.println(startdate + "," + enddate + "," + splitdata[4]);
             fullAccessPeriodlist.add(new AccessPeriod(startdate, enddate, splitdata[4]));
         }
         return fullAccessPeriodlist;
@@ -182,7 +182,10 @@ public class Database {
         // index, coursecode, vacancy, waitlist
         fullAccessPeriodlist.forEach(x -> {
             try {
-                myWriter.write(x.getStartDate() + "," + x.getEndDate() + "," + x.getYear() + "\n");
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm");
+                String startDate = sdf.format(x.getStartDate());
+                String endDate = sdf.format(x.getEndDate());
+                myWriter.write(startDate+ "," + endDate + "," + x.getYear() + "\n");
             } catch (IOException e) {
                 System.out.println("Update Access Period Database Failed");
                 e.printStackTrace();

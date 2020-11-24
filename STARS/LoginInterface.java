@@ -65,13 +65,13 @@ public class LoginInterface {
             else
             {
                 boolean validAccessTime = loginManager.validateAccessPeriod(currentAP);
-                System.out.println(accessPeriodList);
                 if(validAccessTime)
                 {
                     homePage.StudentMenuLogic(studentObject, ctrl);
                 }
                 else{
                     System.out.println("Access period is not valid you should login on "+currentAP.getStartDate()+" to "+currentAP.getEndDate());
+                    sc.next();
                 }
             }
         } 
