@@ -9,7 +9,7 @@ public class StudentManager {
     CourseManager courseMgmt = new CourseManager();
     LessonManager lessonMgmt = new LessonManager();
     Mail mailer = new Mail();
-
+    private int auLimit = 23;
     interface StudentFiltering {
         public List<Student> Filtering(List<Student> list, String value);
     }
@@ -78,18 +78,22 @@ public class StudentManager {
 
     public void AddCourse(Course mod, WaitList waitinglist, Student currentStudent) {
         if (checkExist(mod, currentStudent)) {
-            if (!checkClash(mod, currentStudent)) {
-                if (mod.getVacancy() > 0) {
-                    currentStudent.addModList(mod);
-                    mod.setVacancy(mod.getVacancy() - 1);
-                    SendEmail(currentStudent.getEmail());
-                } else {
-                    System.out.println("This course " + mod.getCourseCode() + " : " + mod.getIndex() + " is full");
-                    System.out.println("Adding to waitlist");
-                    waitinglist.AddtoWaitList(currentStudent, mod);
-                }
-            } else
-                System.out.println("There is a clash for this course added -index : " + mod.getIndex());
+            if (calculateTotalAU(currentStudent.getCourse()) <= auLimit) {
+                if (!checkClash(mod, currentStudent)) {
+                    if (mod.getVacancy() > 0) {
+                        currentStudent.addModList(mod);
+                        mod.setVacancy(mod.getVacancy() - 1);
+                        SendEmail(currentStudent.getEmail());
+                    } else {
+                        System.out.println("This course " + mod.getCourseCode() + " : " + mod.getIndex() + " is full");
+                        System.out.println("Adding to waitlist");
+                        waitinglist.AddtoWaitList(currentStudent, mod);
+                    }
+                } else
+                    System.out.println("There is a clash for this course added -index : " + mod.getIndex());
+            } else {
+                System.out.println("Number of total AU exceeded 23, not allowed to add");
+            }
         } else
             System.out.println("There is an exisitng course added index : " + mod.getIndex());
     }
@@ -116,7 +120,7 @@ public class StudentManager {
             System.out.println("There is no " + mod.getCourseCode() + " exsisting in your registered course");
     }
 
-    public void RemoveCourse(Course mod, Student currentStudent)  {
+    public void RemoveCourse(Course mod, Student currentStudent) {
         if (!checkExist(mod, currentStudent)) {
             mod.setVacancy(mod.getVacancy() + 1);
             currentStudent.removeModList(mod);

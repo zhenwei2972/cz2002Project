@@ -37,6 +37,119 @@ public class AdminManager {
             System.out.println("Student already exist in records");
         }
     }
+    public void addCourse(List<Course> courseList,List<Lesson> lessonList) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Course Index Number");
+        int courseNo =0;
+        if (sc.hasNextInt()) { 
+            courseNo = sc.nextInt();
+        } 
+        else { 
+            System.out.println("Wrong input");
+            return;
+        } 
+
+        if(!checkExistingCourse(courseList,courseNo))
+        {
+            System.out.println("Enter Course Code");
+            String courseCode = sc.next();
+            int vacancy =0;
+            int au =0;
+            int lessonNo;
+            int starttime;
+            int endtime;
+            String classtype,courseName;
+            String day;
+            System.out.println("Enter Vacancy");
+            if (sc.hasNextInt()) { 
+                vacancy = sc.nextInt();
+            } 
+            else { 
+                System.out.println("Wrong input");
+                return;
+            } 
+            System.out.println("Enter Course AU");
+            if (sc.hasNextInt()) { 
+                au = sc.nextInt();
+            } 
+            else { 
+                System.out.println("Wrong input");
+                return;
+            } 
+
+            System.out.println("Enter Course Name");
+            courseName = sc.next();
+
+            System.out.println("Enter number of lessons");
+            if (sc.hasNextInt()) { 
+                lessonNo = sc.nextInt();
+            } 
+            else { 
+                System.out.println("Wrong input");
+                return;
+            } 
+            for(int i=0; i < lessonNo; i ++){
+                System.out.println("Enter start time 0000-2359 (24hour time)");
+                if (sc.hasNextInt()) { 
+                    starttime = sc.nextInt();
+                    if(starttime>2359)
+                    {
+                        System.out.println("Time must be within range 0000-2359");
+                        return;
+                    }
+                } 
+                else { 
+                    System.out.println("Wrong input");
+                    return;
+                } 
+                System.out.println("Enter end time 0000-2359 (24hour time)");
+                if (sc.hasNextInt()) { 
+                    endtime = sc.nextInt();
+                    if(endtime>2359)
+                    {
+                        System.out.println("Time must be within range 0000-2359");
+                        return;
+                    }
+                    else if( endtime<=starttime)
+                    {
+                        System.out.println("End time must be before Start time");
+                        return;
+                    }
+                } 
+                else { 
+                    System.out.println("Wrong input");
+                    return;
+                } 
+                System.out.println("Enter Course Type");
+                classtype = sc.next();
+                if(!(classtype.equals("Lecture")||classtype.equals("Tutorial")||classtype.equals("Lab")))
+                {
+                    return;
+                }
+                System.out.println("Enter Day(i.e Monday)");
+                day = sc.next();
+                if(!(day.equals("Monday")||day.equals("Tuesday")||day.equals("Wednesday")||day.equals("Thursday")||day.equals("Friday")))
+                {
+                    return;
+                }
+                lessonList.add(new Lesson(courseNo,courseCode,courseName,au,day,starttime,endtime,classtype));
+            }
+            courseList.add(new Course(courseNo,courseCode,vacancy,0,au));
+            System.out.println("Course successfully added");
+        }
+        else{
+            System.out.println("Course already exist in records");
+        }
+    }
+    private boolean checkExistingCourse(List<Course> courseList,int courseNo){
+        List<Course> tempCourse =courseList.stream().filter(x -> x.getIndex()==courseNo).collect(Collectors.toList());
+        if(tempCourse.isEmpty())
+        {
+
+            return false;
+        }
+        return true;
+    }
 
     public List<Student> removeStudent(List<Student> fullStudentList, String matricNo) {
         

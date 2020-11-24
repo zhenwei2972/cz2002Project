@@ -18,12 +18,12 @@ public class AdminInterface {
         LoginManager loginManager = new LoginManager();
         int courseVacancy;
         StudentManager studentMgmt = new StudentManager();
-        List<Course> courses = db.CourseListDatabase();
-       
+        List<Course> courseList = db.CourseListDatabase();
+        List<Lesson> lessonList = db.LessonListDatabase();
         while (!quit)
         {
             System.out.println(
-            " 1 Edit student access period \n 2 Add Student Records \n 3 Removing A Student \n 4 Check available slot by index number \n 5 Print student list by index number \n 6 Print student list by course \n 7 Save to file and Quit");
+            " 1 Edit student access period \n 2 Add Student Records \n 3 Removing A Student \n 4 Check available slot by index number \n 5 Print student list by index number \n 6 Print student list by course \n 7 Add a new Course \n 8 Save to file and Quit");
             num = console.readLine("Please choose your action \n");
             switch (num) {
                 case "1":
@@ -55,7 +55,7 @@ public class AdminInterface {
                     System.out.println("\nCheck available slot by index number");
                     System.out.println("Enter index number");
                     String courseIndex = sc.next();
-                    Course currentCourse = studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses);
+                    Course currentCourse = studentMgmt.GetCourse(Integer.parseInt(courseIndex), courseList);
                     courseVacancy = currentCourse.getVacancy();
                     System.out.println("Course Vacancy for " + courseIndex + " is " + courseVacancy);
                     break;
@@ -72,9 +72,14 @@ public class AdminInterface {
                     adminController.printStudentfromIndex.Invoke(fullStudentList,courseCode);
                     break;
                 case "7":
+                    System.out.println("\nAdd a new course");
+                    adminController.addCourse(courseList, lessonList);
+                    break;
+                case "8":
                     db.UpdateStudentDatabase(fullStudentList);
-                    db.UpdateCourseDatabase(courses);
+                    db.UpdateCourseDatabase(courseList);
                     db.UpdateAccessListDatabase(accessPeriodList);
+                    db.UpdateLessonDatabase(lessonList);
                     System.out.println("\nQuit");
                     quit=true;
                     System.exit(1);
