@@ -102,6 +102,8 @@ public class StudentManager {
                     mod.setVacancy(mod.getVacancy() - 1);
                     SendEmail(currentStudent.getEmail());
                 }
+            }
+        }
     }
 
     // ---------delete------------------//
