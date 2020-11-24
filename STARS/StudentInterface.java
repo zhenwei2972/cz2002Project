@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.lang.model.util.ElementScanner14;
+
 public class StudentInterface {
     CourseManager courseMgmt = new CourseManager();
     StudentManager studentMgmt = new StudentManager();
@@ -31,7 +33,13 @@ public class StudentInterface {
                     // assuming course index is unique
                     courseIndex = sc.next();
                     currentCourse = studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses);
-                    studentMgmt.AddCourse(currentCourse, waitlist, currentStudent);
+                    if(currentCourse != null){
+                        studentMgmt.AddCourse(currentCourse, waitlist, currentStudent);
+                        }else{
+                            System.out.println(("Please enter an exisiting course index :"));
+                            courseMgmt.AvailableCourse.Display(courses);
+                        }
+                    
                     System.out.println("\n ----");
                     break;
                 case "2":
