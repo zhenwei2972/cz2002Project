@@ -169,8 +169,8 @@ public class Database {
         // index, coursecode, vacancy, waitlist
         for (String i : list) {
             String[] splitdata = i.split(",");
-            String startdate = splitdata[0] + splitdata[1];
-            String enddate = splitdata[2] + splitdata[3];
+            String startdate = splitdata[0] + "," + splitdata[1];
+            String enddate = splitdata[2] + "," + splitdata[3];
             //System.out.println(startdate + "," + enddate + "," + splitdata[4]);
             fullAccessPeriodlist.add(new AccessPeriod(startdate, enddate, splitdata[4]));
         }
