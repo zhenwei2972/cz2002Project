@@ -102,10 +102,6 @@ public class StudentManager {
                     mod.setVacancy(mod.getVacancy() - 1);
                     SendEmail(currentStudent.getEmail());
                 }
-            } else
-                System.out.println("There is a clash for this course added -index : " + mod.getIndex());
-        } else
-            System.out.println("There is and exisitng course : " + mod.getIndex());
     }
 
     // ---------delete------------------//
