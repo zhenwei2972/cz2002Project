@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.List;
 
 public class test {
@@ -5,11 +6,9 @@ public class test {
 
     public static void main(String args[]) {
         Database ctrl = new Database();
-        List<Student> fullStudentList = ctrl.StudentDatabase();
+        List<AccessPeriod> fullAccessPeriodList = ctrl.AccessPeriodDatabase();
 
-        for (int i = 0; i < fullStudentList.size(); i++) {
-            System.out.println(fullStudentList.get(i).getUsername());
-        }
+        fullAccessPeriodList.forEach(x -> System.out.println(x.getYear()));
 
     }
 }
