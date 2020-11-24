@@ -14,27 +14,43 @@ public class AdminManager {
         System.out.println("Enter Student's Matriculation Number");
         String matricNo = sc.next();
 
-        System.out.println("Enter Student's Username");
-        String studentName = sc.next();
+        if(!checkExistingStudent(fullStudentList,matricNo))
+        {
+            System.out.println("Enter Student's Username");
+            String studentName = sc.next();
 
-        System.out.println("Enter Student's Password");
-        String studentPassword = sc.next();
+            System.out.println("Enter Student's Password");
+            String studentPassword = sc.next();
 
-        System.out.println("Is this Part-Time Student? (Y/N)");
-        String option = sc.next().toUpperCase();
-        Boolean partTime = (option.equals("Y")) ? true : false;
+            System.out.println("Is this Part-Time Student? (Y/N)");
+            String option = sc.next().toUpperCase();
+            Boolean partTime = (option.equals("Y")) ? true : false;
 
-        System.out.println("Enter Student Year");
-        int year = sc.nextInt();
+            System.out.println("Enter Student Year");
+            int year = sc.nextInt();
 
-        System.out.println("Enter Student Email");
-        String email = sc.next();
-        fullStudentList.add(new Student(matricNo, studentName, studentPassword, partTime,year, email));
-
+            System.out.println("Enter Student Email");
+            String email = sc.next();
+            fullStudentList.add(new Student(matricNo, studentName, studentPassword, partTime,year, email));
+        }
+        else{
+            System.out.println("Student already exist in records");
+        }
     }
 
     public List<Student> removeStudent(List<Student> fullStudentList, String matricNo) {
-        return fullStudentList.stream().filter(x -> !x.getMatid().equals(matricNo)).collect(Collectors.toList());
+        
+        return fullStudentList.stream().filter(x -> x.getMatid().equals(matricNo)).collect(Collectors.toList());
+    }
+    private boolean checkExistingStudent(List<Student> fullStudentList,String matricNo){
+        List<Student> tempStudent =fullStudentList.stream().filter(x -> x.getMatid().equals(matricNo)).collect(Collectors.toList());
+        System.out.println(tempStudent);
+        if(tempStudent.isEmpty())
+        {
+
+            return false;
+        }
+        return true;
     }
 
     PrintStudentList printStudentfromIndex = (fullStudentList, indexInString) -> {
@@ -80,9 +96,9 @@ public class AdminManager {
         String month = sc.next();
         System.out.println("\nEnter Year i.e 2002");
         String year = sc.next();
-        System.out.println("\n Enter Hour i.e 12");
+        System.out.println("\nEnter Hour i.e 12");
         String hour = sc.next();
-        System.out.println("\n Enter Minute i.e 15");
+        System.out.println("\nEnter Minute i.e 15");
         String min = sc.next();
         String dateInString = month+" "+day+", "+year+" "+hour+":"+min;
         SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy HH:mm");
