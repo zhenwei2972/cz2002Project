@@ -112,7 +112,7 @@ public class StudentManager {
 
     // ---------delete------------------//
     public void RemoveCourse(Course mod, WaitList waitinglist, Student currentStudent) {
-        if (!checkExist(mod, currentStudent)) {
+        if (!checkExistIndex(mod, currentStudent)) {
             mod.setVacancy(mod.getVacancy() + 1);
             currentStudent.removeModList(mod);
             waitinglist.AddCoursetoStudent(mod);
@@ -122,12 +122,10 @@ public class StudentManager {
     }
 
     public void RemoveCourse(Course mod, Student currentStudent) {
-        if (!checkExist(mod, currentStudent)) {
+        if (!checkExistIndex(mod, currentStudent)) {
             mod.setVacancy(mod.getVacancy() + 1);
             currentStudent.removeModList(mod);
-            System.out.println("\nCourse Removed");
-        } else
-            System.out.println("There is no " + mod.getCourseCode() + " existing in your registered course");
+        }
     }
 
     // ------------------- checking -------------------//
@@ -140,7 +138,16 @@ public class StudentManager {
         }
         return false;
     }
-
+    //-------------------checking by index-------------------------//
+    private boolean checkExistIndex(Course mod, Student currentStudent) {
+        List<Course> courses = currentStudent.getCourse();
+        List<Course> result = new ArrayList<Course>();
+        result = courseMgmt.byIndex.Invoke(courses, Integer.toString(mod.getIndex()));
+        if (result.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
     /**
      * checking for time slot clash between modules.
      */
