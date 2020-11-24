@@ -23,17 +23,17 @@ public class AdminInterface {
         while (!quit)
         {
             System.out.println(
-            " 1 Edit student access period \n 2 Add Student Records \n 3 Removing A Student \n 4 Check available slot by index number \n 5 Print student list by index number \n 6 Print student list by course \n 7 Add a new Course \n 8 Save to file and Quit");
+            " 1 Edit student access period \n 2 Add Student Records \n 3 Removing A Student \n 4 Check available slot by index number \n 5 Print student list by course index  \n 6 Print student list by course code \n 7 Add a new Course \n 8 Save to file and Quit");
             num = console.readLine("Please choose your action \n");
             switch (num) {
                 case "1":
                     //start date/ end date can be adjusted here.
                     System.out.println("\nEdit student access period by date and time");
-                    System.out.println("\n Enter student year to edit access period");
+                    System.out.println("\nEnter student year to edit access period");
                     String year = sc.next();
-                    System.out.println("\n Enter Access Period Start Date ");
+                    System.out.println("\nEnter Access Period Start Date ");
                     Date startDateTime =adminController.InputDateTime();
-                    System.out.println("\n Enter Access Period End Date ");   
+                    System.out.println("\nEnter Access Period End Date ");   
                     Date endDateTime =adminController.InputDateTime();
                     loginManager.validateLogin(year,accessPeriodList,startDateTime,endDateTime);
 
@@ -42,7 +42,7 @@ public class AdminInterface {
                     System.out.println("\nAdding a new Student");
                     // need to populate with new student list 
                     adminController.addStudent(fullStudentList);
-                    System.out.println("\n Added a new Student");
+
                     break;
                 case "3":
                     System.out.println("\nRemoving a current Student");
@@ -68,8 +68,8 @@ public class AdminInterface {
                 case "6":
                     System.out.println("\nDisplay Students by Course Code");
                     System.out.println("Enter the Course Code of Students to be printed");
-                    String courseCode = sc.next();
-                    adminController.printStudentfromIndex.Invoke(fullStudentList,courseCode);
+                    String courseCode = sc.nextLine();
+                    adminController.printStudentFromCourse.Invoke(fullStudentList,courseCode);
                     break;
                 case "7":
                     System.out.println("\nAdd a new course");

@@ -34,4 +34,3 @@
 10257,CZ2004,Software Engineering,3,Monday,830,930,Tutorial
 10257,CZ2004,Software Engineering,3,Friday,1130,1230,Lecture
 10257,CZ2004,Software Engineering,3,Thursday,930,1130,Lab
-

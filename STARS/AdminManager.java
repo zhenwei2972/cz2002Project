@@ -1,10 +1,12 @@
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Matcher;
 public class AdminManager {
     interface PrintStudentList {
         public void Invoke(List<Student> studentList, String value);
@@ -14,25 +16,65 @@ public class AdminManager {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Student's Matriculation Number");
         String matricNo = sc.next();
-
+        int year =0;
         if(!checkExistingStudent(fullStudentList,matricNo))
         {
-            System.out.println("Enter Student's Username");
+            Boolean partTime =false;
+            System.out.println("Enter Student's Username(Minimum 6 characters)");
             String studentName = sc.next();
+            if(studentName.length()<6)
+            {
+                System.out.println("Username must be longer than 6 characters");
+                return;
+            }
 
-            System.out.println("Enter Student's Password");
+            System.out.println("Enter Student's Password(Minimum 6 characters)");
             String studentPassword = sc.next();
+            if(studentPassword.length()<6)
+            {
+                System.out.println("Password must be longer than 6 characters");
+                return;
+            }
 
             System.out.println("Is this Part-Time Student? (Y/N)");
             String option = sc.next().toUpperCase();
-            Boolean partTime = (option.equals("Y")) ? true : false;
+            if(option.equals("Y")||option.equals("N"))
+            {
+                partTime = (option.equals("Y")) ? true : false;
+            }
+            else{
+                System.out.println("Invalid Option, only pick Y/N");
+                return;
+            }
 
             System.out.println("Enter Student Year");
-            int year = sc.nextInt();
+            if(sc.hasNextInt()){
+                year = sc.nextInt();
+                if(Integer.toString(year).length() != 4)
+                {
+                    System.out.println("Incorrect input 4 digits are required");
+                    return;
+                }
+                else
+                {
+                    //successfully entered year
+                }
+            }
+            else{
+                System.out.println("Incorrect input, only integers allowed");
+                return;
+            }
+
 
             System.out.println("Enter Student Email");
             String email = sc.next();
+            if(!isValidEmailAddress(email)){
+                System.out.println("Invalid Student Email, please use valid email format ");
+                return;
+            }
+            
             fullStudentList.add(new Student(matricNo, studentName, studentPassword, partTime,year, email));
+            System.out.println("\n Added a new Student");
         }
         else{
             System.out.println("Student already exist in records");
@@ -194,7 +236,7 @@ public class AdminManager {
         fullStudentList.stream().forEach(i -> {
             List<Course> studentCourse = i.getCourse();
             List<Course> displayCourse = studentCourse.stream().filter(j -> courseCode.equals(j.getCourseCode())).collect(Collectors.toList());
-            if(displayCourse.size() < 0)
+            if(displayCourse.size() < 1)
                 System.out.println("No Student Registered in this course");
             else
                 displayCourse.forEach(x -> System.out.println("Student: " + i.getUsername()));
@@ -239,4 +281,13 @@ public class AdminManager {
         return null;
         
     }
+    //https://java.net/projects/javamail
+    private static final String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    public static boolean isValidEmailAddress(String email) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        
+        return matcher.matches();
+     }
+
 }

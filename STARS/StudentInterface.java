@@ -20,14 +20,13 @@ public class StudentInterface {
         List<Course> courses = db.CourseListDatabase();
         List<Student> students = db.StudentDatabase();
         Course currentCourse = new Course();
+        
         while (!quit) {
             System.out.println(
                     " 1 *Add Course \n 2 Drop Course \n 3 Check/Print Courses Registered \n 4 Check Vacancies Available \n 5 Change Index Number of Course \n 6 Swop Index Number with Another Student \n 7 Printing all available courses \n 8 Check Waiting List \n 9 Print Current Timetable \n 10 Quit");
             num = console.readLine("Please choose your action \n");
             switch (num) {
                 case "1":
-                    // initialize course object with default values first.
-
                     System.out.println("\nEnter a course index");
                     // assuming course index is unique
                     courseIndex = sc.next();
@@ -58,6 +57,12 @@ public class StudentInterface {
                     System.out.println("\nEnter a course index");
                     courseIndex = sc.next();
                     currentCourse = studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses);
+                    if(currentCourse == null)
+                    {
+                        System.out.println("Invalid course index");
+                        sc.nextLine();
+                        break;
+                    }
                     courseVacancy = currentCourse.getVacancy();
                     System.out.println("Course Vacancy for " + courseIndex + " is " + courseVacancy);
                     break;
