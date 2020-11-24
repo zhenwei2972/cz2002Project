@@ -48,11 +48,14 @@ public class WaitList {
     public void AddCoursetoStudent(Course course) {
         for (ArrayList<Object> items : this.waitlist) {
             if (items.get(1) == course) {
-                course.setWaitlist(course.getWaitlist() - 1);
                 Student s = (Student) items.get(0);
+                int slot = course.getVacancy();
                 studentManager.AddCourse(course, s);
-                this.waitlist.remove(items);
-                return;
+                if (slot != course.getVacancy()){
+                    course.setWaitlist(course.getWaitlist() - 1);
+                    this.waitlist.remove(items);
+                    return;
+                }
             }
         }
     }
