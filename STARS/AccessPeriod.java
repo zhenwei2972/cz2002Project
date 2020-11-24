@@ -49,7 +49,7 @@ public class AccessPeriod {
         boolean validDateTime =false;
         try{
             Date currentDateTimeAfterFormatting = formatter.parse(strDate);
-            System.out.println(currentDateTimeAfterFormatting);
+        //    System.out.println(currentDateTimeAfterFormatting);
             if(currentDateTimeAfterFormatting.before(endDate) && currentDateTimeAfterFormatting.after(startDate))
             {
                 validDateTime=true;
@@ -72,11 +72,11 @@ public class AccessPeriod {
     }
     public void setStartDate(Date startDate){ 
         this.startDate=startDate;
-        System.out.println(formatter.format(startDate));
+      //  System.out.println(formatter.format(startDate));
     }
     public void setEndDate(Date endDate){
         this.endDate = endDate;
-        System.out.println(formatter.format(endDate));
+     //   System.out.println(formatter.format(endDate));
     }
 
 }

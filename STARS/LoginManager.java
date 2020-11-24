@@ -41,10 +41,12 @@ public class LoginManager {
         return (checkLogin.size() > 0) ? true : false;
     };
 
-    public void validateLogin(String year,List<AccessPeriod> accessPeriodList,Date startDateTime,Date endDateTime){
+    public void updateAccessPeriod(String year,List<AccessPeriod> accessPeriodList,Date startDateTime,Date endDateTime){
         AccessPeriod currentAP = GetAccessPeriod(year, accessPeriodList);
+        System.out.println("Updated access period for "+year+" from "+startDateTime+" to "+endDateTime);
         currentAP.setStartDate(startDateTime);
         currentAP.setEndDate(endDateTime);
+
     }
 
 }

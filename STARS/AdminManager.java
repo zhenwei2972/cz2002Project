@@ -4,7 +4,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 public class AdminManager {
@@ -167,12 +166,14 @@ public class AdminManager {
                 classtype = sc.next();
                 if(!(classtype.equals("Lecture")||classtype.equals("Tutorial")||classtype.equals("Lab")))
                 {
+                    System.out.println("Invalid input, must be Lecture/Tutorial/Lab");
                     return;
                 }
                 System.out.println("Enter Day(i.e Monday)");
                 day = sc.next();
                 if(!(day.equals("Monday")||day.equals("Tuesday")||day.equals("Wednesday")||day.equals("Thursday")||day.equals("Friday")))
                 {
+                    System.out.println("Invalid input must be Monday/Tuesday/Wednesday/Thursday/Friday");
                     return;
                 }
                 lessonList.add(new Lesson(courseNo,courseCode,courseName,au,day,starttime,endtime,classtype));
@@ -256,22 +257,69 @@ public class AdminManager {
         Scanner sc = new Scanner(System.in);
         System.out.println("\nEnter Day i.e 01");
         String day = sc.next();
+        int numberCheck;
+        try {
+            numberCheck = Integer.parseInt(day);
+            if(day.length()!=2)
+            {
+                System.out.println("\nInvalid input, enter 2 digit integers");
+                return null;
+            }
+        } catch (NumberFormatException ex) {
+            System.out.println("invalid input, must enter a (Integer)");
+            return null;
+        }
         System.out.println("\nEnter Month i.e (JAN)");
         String month = sc.next();
+        if(month.length()!=3)
+        {
+            return null;
+        }
         System.out.println("\nEnter Year i.e 2002");
         String year = sc.next();
+        try {
+            numberCheck = Integer.parseInt(year);
+            if(year.length()!=4)
+            {
+                System.out.println("\nInvalid input, enter 4 digit integers");
+                return null;
+            }
+        } catch (NumberFormatException ex) {
+            System.out.println("invalid input, must enter a (Integer)");
+            return null;
+        }
         System.out.println("\nEnter Hour i.e 12");
         String hour = sc.next();
+        try {
+            numberCheck = Integer.parseInt(hour);
+            if(hour.length()!=2)
+            {
+                System.out.println("\nInvalid input, enter 2 digit integers");
+                return null;
+            }
+        } catch (NumberFormatException ex) {
+            System.out.println("invalid input, must enter a (Integer)");
+            return null;
+        }
         System.out.println("\nEnter Minute i.e 15");
         String min = sc.next();
+        try {
+            numberCheck = Integer.parseInt(min);
+            if(min.length()!=2)
+            {
+                System.out.println("\nInvalid input, enter 2 digit integers");
+                return null;
+            }
+        } catch (NumberFormatException ex) {
+            System.out.println("invalid input, must enter a (Integer)");
+            return null;
+        }
         String dateInString = month+" "+day+", "+year+" "+hour+":"+min;
         SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy HH:mm");
-       // String example = "Jun 7, 2013 12:10";
 
         try {
             Date date = formatter.parse(dateInString);
-          //  System.out.println(date);
-            System.out.println("entered "+formatter.format(date));
+            System.out.println("Entered "+formatter.format(date));
             return date;
 
         } catch (ParseException e) {
@@ -281,7 +329,7 @@ public class AdminManager {
         return null;
         
     }
-    //https://java.net/projects/javamail
+    //regex to validate email address pattern
     private static final String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     public static boolean isValidEmailAddress(String email) {
         Pattern pattern = Pattern.compile(regex);

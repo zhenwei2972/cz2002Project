@@ -18,13 +18,6 @@ public class LoginInterface {
     }
 
     public void StartupInterface() throws IOException, ParseException {
-        /*
-        AccessPeriod ap2020 = new AccessPeriod("2020");
-        AccessPeriod ap2019 = new AccessPeriod("2019");
-        accessPeriodList.add(ap2019);
-        accessPeriodList.add(ap2020);
-        */
-        
         Scanner sc = new Scanner(System.in);
         System.out.println("Option 1: Login as Student");
         System.out.println("Option 2: Login as Admin");
@@ -71,7 +64,7 @@ public class LoginInterface {
                 }
                 else{
                     System.out.println("Access period is not valid you should login on "+currentAP.getStartDate()+" to "+currentAP.getEndDate());
-                    sc.next();
+                    StudentLoginInterface();
                 }
             }
         } 

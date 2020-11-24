@@ -116,16 +116,18 @@ public class StudentManager {
             mod.setVacancy(mod.getVacancy() + 1);
             currentStudent.removeModList(mod);
             waitinglist.AddCoursetoStudent(mod);
+            System.out.println("\nCourse Removed");
         } else
-            System.out.println("There is no " + mod.getCourseCode() + " exsisting in your registered course");
+            System.out.println("There is no " + mod.getCourseCode() + " existing in your registered course");
     }
 
     public void RemoveCourse(Course mod, Student currentStudent) {
         if (!checkExist(mod, currentStudent)) {
             mod.setVacancy(mod.getVacancy() + 1);
             currentStudent.removeModList(mod);
+            System.out.println("\nCourse Removed");
         } else
-            System.out.println("There is no " + mod.getCourseCode() + " exsisting in your registered course");
+            System.out.println("There is no " + mod.getCourseCode() + " existing in your registered course");
     }
 
     // ------------------- checking -------------------//
