@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 public class AdminManager {
     interface PrintStudentList {
@@ -54,11 +55,15 @@ public class AdminManager {
     }
 
     PrintStudentList printStudentfromIndex = (fullStudentList, indexInString) -> {
-
         int index = Integer.parseInt(indexInString);
         fullStudentList.stream().forEach(i -> {
             List<Course> studentCourse = i.getCourse();
-            studentCourse.stream().filter(j -> index == j.getIndex()).forEach(x -> System.out.println("Student: " + i.getUsername()));
+            List<Course> displaycourse = studentCourse.stream().filter(j -> index == j.getIndex()).collect(Collectors.toList());
+            if(displaycourse.size() < 1)
+                System.out.println("No Student Registered in this index");
+            else
+                displaycourse.forEach(x -> System.out.println("Student: " + i.getUsername()));
+           
         });
 
         //This code is the same as the top
@@ -75,7 +80,11 @@ public class AdminManager {
     PrintStudentList printStudentFromCourse = (fullStudentList, courseCode) -> {
         fullStudentList.stream().forEach(i -> {
             List<Course> studentCourse = i.getCourse();
-            studentCourse.stream().filter(j -> courseCode.equals(j.getCourseCode())).forEach(x -> System.out.println("Student: " + i.getUsername()));
+            List<Course> displayCourse = studentCourse.stream().filter(j -> courseCode.equals(j.getCourseCode())).collect(Collectors.toList());
+            if(displayCourse.size() < 0)
+                System.out.println("No Student Registered in this course");
+            else
+                displayCourse.forEach(x -> System.out.println("Student: " + i.getUsername()));
         });
 
         //This code is the same as the top
