@@ -121,6 +121,7 @@ public class AdminManager {
             int endtime;
             String classtype,courseName;
             String day;
+            String venue;
             System.out.println("Enter Vacancy");
             if (sc.hasNextInt()) { 
                 vacancy = sc.nextInt();
@@ -195,7 +196,9 @@ public class AdminManager {
                     System.out.println("Invalid input must be Monday/Tuesday/Wednesday/Thursday/Friday");
                     return;
                 }
-                lessonList.add(new Lesson(courseNo,courseCode,courseName,au,day,starttime,endtime,classtype));
+                System.out.println("Enter Venue of Lesson");
+                venue = sc.next();
+                lessonList.add(new Lesson(courseNo,courseCode,courseName,au,day,starttime,endtime,classtype,venue));
             }
             courseList.add(new Course(courseNo,courseCode,vacancy,0,au));
             System.out.println("Course successfully added");

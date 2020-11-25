@@ -3,10 +3,10 @@ public class Lesson {
     // data column
     // index,coursecode,coursename,AU,day,starttime,endtime,classtype
     private int index = 0, au = 0;
-    private String coursecode = "", coursename = "", day = "", classtype = "";
+    private String coursecode = "", coursename = "", day = "", classtype = "", venue ="";
     private int starttime = 0, endtime = 0;
     
-    public Lesson(int index, String coursecode, String coursename, int au, String day, int starttime, int endtime,String classtype){
+    public Lesson(int index, String coursecode, String coursename, int au, String day, int starttime, int endtime,String classtype,String venue){
         this.index = index;
         this.coursecode = coursecode;
         this.coursename = coursename;
@@ -72,6 +72,12 @@ public class Lesson {
     public String getClassType(){
         return this.classtype;
     }
+     /** 
+     * @return String
+     */
+    public String getVenue(){
+        return this.venue;
+    }
     
     /** 
      * @param newIndex
@@ -128,4 +134,11 @@ public class Lesson {
     public void setClassType(String newClassType){
         this.classtype = newClassType;
     }
+    /** 
+     * @param venue
+     */
+    public void setVenue(String newVenue){
+        this.venue = newVenue;
+    }
+    
 }

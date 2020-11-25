@@ -38,7 +38,7 @@ public class Database {
             String[] splitdata = i.split(",");
             fulllessonlist.add(new Lesson(Integer.parseInt(splitdata[0]), splitdata[1], splitdata[2],
                     Integer.parseInt(splitdata[3]), splitdata[4], Integer.parseInt(splitdata[5]),
-                    Integer.parseInt(splitdata[6]), splitdata[7]));
+                    Integer.parseInt(splitdata[6]), splitdata[7],splitdata[8]));
         }
         return fulllessonlist;
     }
@@ -53,7 +53,7 @@ public class Database {
         fullLessonList.forEach(x -> {
             try {
                 myWriter.write(x.getIndex() + "," + x.getCourseCode() + "," + x.getCourseName() + "," + x.getAU() + ","
-                        + x.getDay() + "," + x.getStartTime() + "," + x.getEndTime() + "," + x.getClassType() + "\n");
+                        + x.getDay() + "," + x.getStartTime() + "," + x.getEndTime() + "," + x.getClassType() + "," + x.getVenue() + "\n");
             } catch (IOException e) {
                 System.out.println("Update Lesson Database Failed");
                 e.printStackTrace();

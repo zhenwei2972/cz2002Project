@@ -383,7 +383,7 @@ public class StudentManager {
         if (lessonList.size() > 0)
             lessonList.forEach(x -> System.out
                     .println("Index: " + x.getIndex() + " Course Code: " + x.getCourseCode() + " Module Name: "
-                            + x.getCourseName() + " Start Time: " + x.getStartTime() + " End Time: " + x.getEndTime()));
+                            + x.getCourseName() + " Start Time: " + x.getStartTime() + " End Time: " + x.getEndTime() + "Venue: " + x.getVenue()));
         else
             System.out.println("You have no classes on " + day);
     }
