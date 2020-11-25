@@ -6,12 +6,18 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 
+/**
+ * This is the mail class
+ * it handles all the mailing
+ * @author Team Stars
+ * @version 1.0
+ * @since 2020
+ */
 public class Mail {
-
-   
    /** 
-    * @param recepient
-    * @throws MessagingException
+    * this is the sending mail function
+    * @param recepient as the recevier's email
+    * @throws MessagingException to catch when mail fails
     */
    public void sendMail(String recepient) throws MessagingException {
       Properties prop = new Properties();
@@ -36,10 +42,11 @@ public class Mail {
 
    
    /** 
-    * @param session
-    * @param myAccountEmail
-    * @param recepient
-    * @return Message
+    * this is the preping of email
+    * @param session as the new email to send
+    * @param myAccountEmail as the systems email
+    * @param recepient as the reciever's email
+    * @return Message as the email content
     */
    private Message prepareMessage(Session session, String myAccountEmail, String recepient) {
       try {

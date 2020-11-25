@@ -3,17 +3,33 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * This is the LoginInterface.
+ * it handles the menu of the login page
+ * @author Team Stars
+ * @version 1.0
+ * @since 2020
+ */
 public class LoginInterface {
+    /**
+     * requires the database to load
+     */
     Database ctrl = new Database();
+    /**
+     * to load in data for student accounts
+     */
     List<Student> fullStudentList = ctrl.StudentDatabase();
+    /**
+     * to load in data for Admin accounts
+     */
     List<AccessPeriod> accessPeriodList = ctrl.AccessPeriodDatabase();
     
 
     
     
     /** 
-     * @return String
+     * to pass the in the password to the system
+     * @return String User password keyed in
      */
     public String readPassword() {
         Console console = System.console();
@@ -23,8 +39,9 @@ public class LoginInterface {
 
     
     /** 
-     * @throws IOException
-     * @throws ParseException
+     * Print out the menu of the login page
+     * @throws IOException for loading the datas
+     * @throws ParseException for casting or parsing the data keyed
      */
     public void StartupInterface() throws IOException, ParseException {
         Scanner sc = new Scanner(System.in);
@@ -44,7 +61,8 @@ public class LoginInterface {
 
     
     /** 
-     * @throws IOException
+     * print for student's login menu
+     * @throws IOException to catch the load expception
      */
     public void StudentLoginInterface() throws IOException {
         //initialize acccess period list
@@ -91,8 +109,9 @@ public class LoginInterface {
 
     
     /** 
-     * @throws IOException
-     * @throws ParseException
+     * Print the admin login menu
+     * @throws IOException to catch database load fail
+     * @throws ParseException to catch casting or parsing fail
      */
     public void AdminLoginInterface() throws IOException, ParseException {
         Scanner sc = new Scanner(System.in);

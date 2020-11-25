@@ -348,9 +348,7 @@ public class StudentManager {
         }
     }
     /**
-     * Generating timetable function
-     * Create a list of lesson for each day
-     * Printing lessons in sets of days
+     * Generating the visual for each day
      * @param courses from the student
      */
     public void GenerateTimeTable(ArrayList<Course> courses) {
@@ -377,7 +375,12 @@ public class StudentManager {
         PrintTimeTable(fridayLesson, "Friday");
         System.out.println("");
     }
-
+    /**
+     * Generating timetable function
+     * Create a list of lesson for each day
+     * Printing lessons in sets of days
+     * @param courses from the student
+     */
     public void PrintTimeTable(List<Lesson> lessonList, String day) {
         System.out.println(day + " Classes:");
         System.out.println("---------------");
