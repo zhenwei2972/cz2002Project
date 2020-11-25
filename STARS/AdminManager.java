@@ -409,6 +409,7 @@ public class AdminManager {
      * checking valid email
      * 
      * @param email is the creating new student email
+     * @return boolean match and mismatch
      */
     public static boolean isValidEmailAddress(String email) {
         Pattern pattern = Pattern.compile(regex);

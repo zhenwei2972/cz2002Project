@@ -42,27 +42,20 @@ public class Student implements User{
      */
 
     /**
-     * This is the constructor to construct Student objects 
-     * @param matricID is this Student's Matric ID ( unique )
-     * @param username is this student's Username
-     * @param password is this Student's password 
-     * @param modlist is this student's registered courses
-     * @param fullorpart is this students's parttime or full time
-     * is determine by true for part time , default false for full time
-     * @param year is this student's year
-     * @param email is this student's email address 
-     */
-
-
-    /**
      * this is an empty constructor for passing reference after sorting student object list
      */ 
     public Student() {
         this.modlist = new ArrayList<Course>();
     }
-    /**
-     * a default constructor that always construct a full time student
-     */ 
+     /**
+     * This is the constructor to construct Student objects 
+     * @param matricID is this Student's Matric ID ( unique )
+     * @param username is this student's Username
+     * @param password is this Student's password 
+     * is determine by true for part time , default false for full time
+     * @param year is this student's year
+     * @param email is this student's email address 
+     */
     public Student(String matricID, String username, String password,int year,String email) {
         this.matricID = matricID;
         this.username = username;
@@ -72,8 +65,15 @@ public class Student implements User{
         this.modlist = new ArrayList<Course>();
     }
     /**
-     * a constructor that requires the detail of parttime/fulltime
-     */ 
+     * This is the constructor to construct Student objects 
+     * @param matricID is this Student's Matric ID ( unique )
+     * @param username is this student's Username
+     * @param password is this Student's password 
+     * @param fullorPart is this students's parttime or full time
+     * is determine by true for part time , default false for full time
+     * @param year is this student's year
+     * @param email is this student's email address 
+     */
     public Student(String matricID, String username, String password, Boolean fullorPart,int year, String email) {
         this.matricID = matricID;
         this.username = username;
@@ -88,42 +88,49 @@ public class Student implements User{
 
     /**
      * return student's password
+     * @return String password
      */
     public String getPassword(){
         return this.password;
     }
     /**
      * return student's username
+     * @return String username
      */
     public String getUsername(){
         return this.username;
     }
     /**
      * return student's matric id
+     * @return String matricID
      */
     public String getMatid(){
         return this.matricID;
     }
     /**
      * return student's registered courses
+     * @return ArrayList of course object
      */
     public ArrayList<Course> getCourse(){
         return this.modlist;
     }
     /**
      * return student's fulltime or parttime status
+     * @return boolean true for part time , default false for full time
      */
     public Boolean getStudentStatus(){
         return this.fullorPart;
     }
      /**
      * return student's year
+     * @return int year
      */
     public int getYear(){
         return this.year;
     }
      /**
      * return student's email
+     * @return string email
      */
     public String getEmail(){
         return this.email;
@@ -133,12 +140,14 @@ public class Student implements User{
 
      /**
      * set student's password
+     * @param password as new password
      */
     public void setPassword(String password){
         this.password = password;
     }
      /**
      * set student's username
+     * @param inputID as new username
      */
     @Override
     public void setUsername(String inputID) {
@@ -146,24 +155,28 @@ public class Student implements User{
     }
     /**
      * register course to student
+     * @param course as the course to register
      */
     public void addModList(Course course){
         this.modlist.add(course);
     }
      /**
      * remove course from student
+     * @param course as the course to de-register
      */
     public void removeModList(Course course){
         this.modlist.remove(course);
     }
      /**
      * set year to student
+     * @param year as new year
      */
     public void setYear(int year){
         this.year = year;
     }
      /**
      * set email to student
+     * @param email as new email address
      */
     public void setEmail(String email){
         this.email = email;

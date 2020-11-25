@@ -173,7 +173,7 @@ public class Lesson {
     }
     /** 
      * stter method for the venue
-     * @param venue as the new venue
+     * @param newVenue as the new venue
      */
     public void setVenue(String newVenue){
         this.venue = newVenue;

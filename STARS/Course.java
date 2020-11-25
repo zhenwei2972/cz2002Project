@@ -8,6 +8,7 @@
 public class Course {
     /**
      * interger of index (unique) , vacancy , waitlist and au
+     *
      */
     private int index = 0, vacancy = 0, waitlist =0, au =0;
     /**
@@ -96,14 +97,14 @@ public class Course {
     }
     /**
      * setter method for course waitlist
-     * @param newWaitList is the new course waitlist to update
+     * @param newWaitlist is the new course waitlist to update
      */
     public void setWaitlist(int newWaitlist){
         this.waitlist = newWaitlist;
     }
     /**
      * setter method for course au
-     * @param newau is the new course au to update
+     * @param newAU is the new course au to update
      */
     public void setAu(int newAU){
         this.au = newAU;

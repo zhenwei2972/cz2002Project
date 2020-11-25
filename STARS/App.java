@@ -12,7 +12,7 @@ import java.text.ParseException;
 public class App {
     /**
      * This is the start of the program
-     * @param args
+     * @param args empty
      * @throws IOException Exception load error
      * @throws ParseException Exception casting parsing error
      * @throws FileNotFoundException Exception of data file not found

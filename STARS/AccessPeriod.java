@@ -52,6 +52,7 @@ public class AccessPeriod {
     /**
      * This is a simplified constructor to build a default access period object with 
      * pre initialized values for a given year
+     * @param year as the student's year
      */
     public AccessPeriod(String year) {
         try {
@@ -94,30 +95,35 @@ public class AccessPeriod {
     }
     /**
      * Get this AccessPeriod's Year
+     * @return String year
      */
     public String getYear() {
         return this.year;
     }
     /**
      * Get this AccessPeriod's start date
+     * @return Date start date
      */
     public Date getStartDate() {
         return startDate;
     }
     /**
      * Get this AccessPeriod's end date
+     * @return Date end date
      */
     public Date getEndDate() {
         return endDate;
     }
     /**
      * Set this AccessPeriod's start date
+     * @param startDate a Date start date
      */
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
     /**
      * Set this AccessPeriod's end date
+     * @param endDate a Date end date
      */
     public void setEndDate(Date endDate) {
         this.endDate = endDate;

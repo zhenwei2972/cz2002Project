@@ -43,13 +43,14 @@ public class StudentManager {
     /**
      * this uses the matricid of the student to filter out
      * since the matric id is unquie it will always return 1 item in the list
+     * @return a list of students
      */
     StudentFiltering byMatricNo = (fullStudentList, matricNo) -> {
         return fullStudentList.stream().filter(x -> matricNo.equals(x.getMatid())).collect(Collectors.toList());
     };
     /**
      * this uses the username of the student to filter out
-     * 
+     * @return a list of students
      */
     StudentFiltering byUsername = (fullStudentList, username) -> {
         return fullStudentList.stream().filter(x -> username.equals(x.getUsername())).collect(Collectors.toList());
@@ -62,6 +63,7 @@ public class StudentManager {
      * no module found will return null
      * @param courseIndex is the course index
      * @param courses is the List of courses for filtering
+     * @return a course object or null
      */
     public Course GetCourse(int courseIndex, List<Course> courses) {
         List<Course> result = new ArrayList<Course>();
@@ -80,6 +82,7 @@ public class StudentManager {
      * if not return null
      * @param matricNo is the matric numbner of the student
      * @param students is the list of student object
+     * @return a student object or null
      */
     public Student GetStudent(int matricNo, List<Student> students) {
         List<Student> result = new ArrayList<Student>();
@@ -97,6 +100,7 @@ public class StudentManager {
      * if not return null
      * @param username is the student's username or input from login
      * @param students is the list of student object
+     * @return a student object or null
      */
     public Student GetStudentByUserName(String username, List<Student> students) {
         List<Student> result = new ArrayList<Student>();
@@ -123,6 +127,7 @@ public class StudentManager {
     /**
      * to calculate the sum AU from the course object list 
      * @param courses is the list of courses object
+     * @return an integer
      */
     public Integer calculateTotalAU(ArrayList<Course> courses) {
         return courses.stream().mapToInt(x -> x.getAU()).sum();
@@ -235,7 +240,7 @@ public class StudentManager {
      * with the course code
      * @param mod is the course 
      * @param currentStudent is the current logged in student
-     * 
+     * @return boolean
      * returning the result of a boolean
      * false there is an exisiting course of same course code
      * true when there is no mataches
@@ -255,7 +260,7 @@ public class StudentManager {
      * with the course index
      * @param mod is the course 
      * @param currentStudent is the current logged in student
-     * 
+     * @return boolean
      * returning the result of a boolean
      * false there is an exisiting course of same course index
      * true when there is no mataches
@@ -288,6 +293,7 @@ public class StudentManager {
      * checking for time slot clash between modules.
      * @param course is the course
      * @param currentStudent is the student object
+     * @return boolean
      * this checks the lessons of the course and student registered courses lessons
      * check of each lessons if there is any clashes
      * returning a boolean value of  true if there is a clash
@@ -323,7 +329,7 @@ public class StudentManager {
      * @param target student that was targeted to swap with
      * @param course the course intended to swap from current student
      * @param modid the index of the course from target
-     * 
+     * @param password as the string of password for the 2nd student
      * will 1st do a check for target and id if target have registered the index
      * if exist will do a swap
      */
@@ -385,7 +391,8 @@ public class StudentManager {
      * Generating timetable function
      * Create a list of lesson for each day
      * Printing lessons in sets of days
-     * @param courses from the student
+     * @param lessonList as list of lesson from the student
+     * @param day as the String of the day for lesson
      */
     public void PrintTimeTable(List<Lesson> lessonList, String day) {
         System.out.println(day + " Classes:");

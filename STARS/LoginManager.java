@@ -3,7 +3,13 @@ import java.util.List;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Date;
-
+/**
+ * This is the login manager where all the admin functions are written
+ * 
+ * @author Team Stars
+ * @version 1.0
+ * @since 2020
+ */
 public class LoginManager {
      /**
      * a Functional interface is not other than a abstract method, which we are able polymorph into different methods
