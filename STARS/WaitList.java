@@ -79,15 +79,22 @@ public class WaitList {
      * @param course the course object
      */
     public void AddCoursetoStudent(Course course) {
+
         for (ArrayList<Object> items : this.waitlist) {
+
             if (items.get(1) == course) {
                 Student s = (Student) items.get(0);
                 int slot = course.getVacancy();
                 studentManager.AddCourse(course, s);
+
                 if (slot != course.getVacancy()){
                     course.setWaitlist(course.getWaitlist() - 1);
                     this.waitlist.remove(items);
+                    System.out.println("Successfully added "+ s.getUsername() + " from waitlist");
                     return;
+                }
+                else{
+                    System.out.println("Clashing time slots with "+s.getUsername());
                 }
             }
         }

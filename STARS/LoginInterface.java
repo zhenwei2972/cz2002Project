@@ -24,6 +24,9 @@ public class LoginInterface {
      */
     List<AccessPeriod> accessPeriodList = ctrl.AccessPeriodDatabase();
     
+    WaitList waitList = new WaitList();
+
+    List<Course> allCourses =   ctrl.CourseListDatabase();
 
     
     
@@ -79,7 +82,7 @@ public class LoginInterface {
             // construct temporary student object with dummy matrix number
             StudentManager sm = new StudentManager();
             Student studentObject = sm.GetStudentByUserName(studUsername, fullStudentList);
-            StudentInterface homePage = new StudentInterface();
+            StudentInterface homePage = new StudentInterface(fullStudentList,allCourses,waitList);
             AccessPeriod currentAP = loginManager.GetAccessPeriod(Integer.toString(studentObject.getYear()), accessPeriodList);
             if(currentAP==null)
             {

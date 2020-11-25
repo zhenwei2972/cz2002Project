@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.stream.Collectors;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -240,5 +240,27 @@ public class Database {
             }
         });
         myWriter.close();
+    }
+    public void PrepopulateStudentCourses(List<Student> fullStudentList,List<Course> fullCourseList,StudentManager sm,WaitList waitList){
+          //populate student1 with course 10271, so can drop later to add student2 from waitlist to course.
+       Student student1 = fullStudentList.get(1);
+       Course chosenCourse = (fullCourseList.stream().filter(x -> Integer.parseInt("10271") == x.getIndex()).collect(Collectors.toList())).get(0);
+       sm.AddCourse(chosenCourse, waitList, student1);
+       System.out.println(fullStudentList.get(1).getUsername()+chosenCourse.getIndex());
+     //prepopulate student2 with course 10271 to add student2 to wait list for 10271
+       Student student2 = fullStudentList.get(2);
+       chosenCourse = (fullCourseList.stream().filter(x -> Integer.parseInt("10271") == x.getIndex()).collect(Collectors.toList())).get(0);
+       System.out.println(student2.getUsername()+chosenCourse.getIndex());
+       
+       sm.AddCourse(chosenCourse, waitList, student2);
+       /*
+       //prepopulate course 10215 to prepare for swapping operation , SWAP use 10215,10271
+       chosenCourse = (fullCourseList.stream().filter(x -> Integer.parseInt("10215") == x.getIndex()).collect(Collectors.toList())).get(0);
+       sm.AddCourse(chosenCourse, waitList, student2);
+       */
+       //populate extra students to other courses for printCoursesByIndex etc
+       Student student3 = fullStudentList.get(3);
+       chosenCourse = (fullCourseList.stream().filter(x -> Integer.parseInt("10242") == x.getIndex()).collect(Collectors.toList())).get(0);
+       sm.AddCourse(chosenCourse, waitList, student3);
     }
 }

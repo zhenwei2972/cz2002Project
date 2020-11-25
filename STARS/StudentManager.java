@@ -296,7 +296,11 @@ public class StudentManager {
     public boolean checkClash(Course course, Student currentStudent) {
         List<Lesson> result = new ArrayList<Lesson>();
         result = lessonMgmt.byIndex.Invoke(Integer.toString(course.getIndex()));
+        if(currentStudent.getCourse().isEmpty()){
+            return false;
+        }
         for (Course mycourse : currentStudent.getCourse()) {
+
             List<Lesson> currentmodules = new ArrayList<Lesson>();
             currentmodules = lessonMgmt.byIndex.Invoke(Integer.toString(mycourse.getIndex()));
             for (Lesson current : currentmodules) {

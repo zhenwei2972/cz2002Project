@@ -19,8 +19,16 @@ public class StudentInterface {
      * StudentManager for filtering list of student
      */
     StudentManager studentMgmt = new StudentManager();
-
-    /**
+    private List<Student> students;
+    private List<Course> courses;
+    private WaitList waitlist;
+    
+    public StudentInterface(List<Student> fullStudentList2,List<Course>coursesInput,WaitList waitListInput) {
+        this.students = fullStudentList2;
+        this.courses = coursesInput;
+        this.waitlist = waitListInput;
+    }
+	/**
      * this funtions is to print the main menu and checks all the valid entries
      * handling the calling of object functions
      * @param currentStudent is an student object from login
@@ -34,10 +42,11 @@ public class StudentInterface {
         Boolean quit = false;
         Scanner sc = new Scanner(System.in);
         // Initialize common variable/objets
-        WaitList waitlist = new WaitList();
+        
         int courseVacancy;
-        List<Course> courses = db.CourseListDatabase();
-        List<Student> students = db.StudentDatabase();
+        
+       
+        db.PrepopulateStudentCourses(students, courses,studentMgmt,waitlist);
         Course currentCourse = new Course();
         int intCheck;
         while (!quit) {
