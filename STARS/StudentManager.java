@@ -5,22 +5,64 @@ import javax.mail.MessagingException;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the StudentManager object, 
+ * this is to do the required functions that student can perform
+ * and it does filtering of the student list.
+ * @author Team Stars
+ * @version 1.0
+ * @since 2020
+ */
+
+
 public class StudentManager {
+    /**
+     * this is a courseManager for filtering courses
+     */
     CourseManager courseMgmt = new CourseManager();
+    /**
+     * this is a lessonmanager for filtering lessons
+     */
     LessonManager lessonMgmt = new LessonManager();
+    /**
+     * this is a mail for sending emails to student
+     */
     Mail mailer = new Mail();
+    /**
+     * this is a limit au for student
+     */
     private int auLimit = 23;
+
+    /**
+     * this is a flitering interface for filtering students
+     * 
+     */
     interface StudentFiltering {
         public List<Student> Filtering(List<Student> list, String value);
     }
-
+    /**
+     * this uses the matricid of the student to filter out
+     * since the matric id is unquie it will always return 1 item in the list
+     */
     StudentFiltering byMatricNo = (fullStudentList, matricNo) -> {
         return fullStudentList.stream().filter(x -> matricNo.equals(x.getMatid())).collect(Collectors.toList());
     };
+    /**
+     * this uses the username of the student to filter out
+     * 
+     */
     StudentFiltering byUsername = (fullStudentList, username) -> {
         return fullStudentList.stream().filter(x -> username.equals(x.getUsername())).collect(Collectors.toList());
     };
 
+
+    /**
+     * this is a course filtering by index using it to get a module of the speficic index
+     * return a course object if the index mataches
+     * no module found will return null
+     * @param courseIndex is the course index
+     * @param courses is the List of courses for filtering
+     */
     public Course GetCourse(int courseIndex, List<Course> courses) {
         List<Course> result = new ArrayList<Course>();
         // find corresponding course object using these course code & index
@@ -32,6 +74,13 @@ public class StudentManager {
         return null;
     }
 
+    /**
+     * Finding a student function
+     * will return the student object when matric id mataches
+     * if not return null
+     * @param matricNo is the matric numbner of the student
+     * @param students is the list of student object
+     */
     public Student GetStudent(int matricNo, List<Student> students) {
         List<Student> result = new ArrayList<Student>();
         // find corresponding student object using these course code & index
@@ -42,7 +91,13 @@ public class StudentManager {
         }
         return null;
     }
-
+    /**
+     * Finding a student function
+     * will return the student object when matric id mataches
+     * if not return null
+     * @param username is the student's username or input from login
+     * @param students is the list of student object
+     */
     public Student GetStudentByUserName(String username, List<Student> students) {
         List<Student> result = new ArrayList<Student>();
         // find corresponding student object using these course code & index
@@ -53,7 +108,10 @@ public class StudentManager {
         }
         return null;
     }
-
+    /**
+     * this function prints all courses from the list of courses object given
+     * @param courses is the list of courses object
+     */
     public void printAllCourse(ArrayList<Course> courses) {
         System.out.println("Courses registered :");
         for (Course course : courses) {
@@ -62,11 +120,19 @@ public class StudentManager {
         Integer totalAU = calculateTotalAU(courses);
         System.out.println("Total AU for this semester: " + totalAU);
     }
-
+    /**
+     * to calculate the sum AU from the course object list 
+     * @param courses is the list of courses object
+     */
     public Integer calculateTotalAU(ArrayList<Course> courses) {
         return courses.stream().mapToInt(x -> x.getAU()).sum();
     }
 
+
+    /**
+     * this function does a email sending check and calling the sendmail function from mail class
+     * @param email is the email of a student
+     */
     public void SendEmail(String email) {
         try {
             mailer.sendMail(email);
@@ -76,6 +142,17 @@ public class StudentManager {
 
     }
 
+    /**
+     * This is the Registering course function for the student
+     * It consist 4 types of checking
+     * 1. checking for exisiting courses in the student's registered courses
+     * 2. the total au in student not exceeding the limit
+     * 3. the time check clash before adding
+     * 4. the vaccancy of the course index
+     * @param mod this is the course that the student wish to add
+     * @param waitinglist is the waiting list
+     * @param currentStudent is the current logged in student
+     */
     public void AddCourse(Course mod, WaitList waitinglist, Student currentStudent) {
         if (checkExist(mod, currentStudent)) {
             if (calculateTotalAU(currentStudent.getCourse()) <= auLimit) {
@@ -97,7 +174,18 @@ public class StudentManager {
         } else
             System.out.println("There is an exisitng course added index : " + mod.getIndex());
     }
-
+    /**
+     * This is the Registering course function for the student
+     * It consist 4 types of checking
+     * 1. checking for exisiting courses in the student's registered courses
+     * 2. the total au in student not exceeding the limit
+     * 3. the time check clash before adding
+     * 4. the vaccancy of the course index
+     * @param mod this is the course that the student wish to add
+     * @param currentStudent is the current logged in student
+     * 
+     * Will not print anything and will not affect waiting list
+     */
     public void AddCourse(Course mod, Student currentStudent) {
         if (checkExist(mod, currentStudent)) {
             if (!checkClash(mod, currentStudent)) {
@@ -111,6 +199,12 @@ public class StudentManager {
     }
 
     // ---------delete------------------//
+    /**
+     * This function remove the student from thier registered course
+     * @param mod is the course or deletion
+     * @param waitinglist is the waiting list 
+     * @param currentStudent is the current logged in student
+     */
     public void RemoveCourse(Course mod, WaitList waitinglist, Student currentStudent) {
         if (!checkExistIndex(mod, currentStudent)) {
             mod.setVacancy(mod.getVacancy() + 1);
@@ -120,7 +214,13 @@ public class StudentManager {
         } else
             System.out.println("There is no " + mod.getCourseCode() + " existing in your registered course");
     }
-
+    /**
+     * This function remove the student from thier registered course
+     * @param mod is the course for deletion
+     * @param currentStudent is the current logged in student
+     * 
+     * Will not print anything and will not affect waiting list
+    */
     public void RemoveCourse(Course mod, Student currentStudent) {
         if (!checkExistIndex(mod, currentStudent)) {
             mod.setVacancy(mod.getVacancy() + 1);
@@ -129,6 +229,16 @@ public class StudentManager {
     }
 
     // ------------------- checking -------------------//
+    /**
+     * This a private function to check that module existing in thier registered courses
+     * with the course code
+     * @param mod is the course 
+     * @param currentStudent is the current logged in student
+     * 
+     * returning the result of a boolean
+     * false there is an exisiting course of same course code
+     * true when there is no mataches
+    */
     private boolean checkExist(Course mod, Student currentStudent) {
         List<Course> courses = currentStudent.getCourse();
         List<Course> result = new ArrayList<Course>();
@@ -139,6 +249,16 @@ public class StudentManager {
         return false;
     }
     //-------------------checking by index-------------------------//
+    /**
+     * This a private function to check that module existing in thier registered courses
+     * with the course index
+     * @param mod is the course 
+     * @param currentStudent is the current logged in student
+     * 
+     * returning the result of a boolean
+     * false there is an exisiting course of same course index
+     * true when there is no mataches
+    */
     private boolean checkExistIndex(Course mod, Student currentStudent) {
         List<Course> courses = currentStudent.getCourse();
         List<Course> result = new ArrayList<Course>();
@@ -149,7 +269,8 @@ public class StudentManager {
         return false;
     }
     /**
-     * checking for time slot clash between modules.
+     * Printing of all the lesson information of a certain index
+     * @param courseIndex is an integer of course index
      */
     public void printLessonInformation(int courseIndex) {
         List<Lesson> result = new ArrayList<Lesson>();
@@ -164,6 +285,12 @@ public class StudentManager {
 
     /**
      * checking for time slot clash between modules.
+     * @param course is the course
+     * @param currentStudent is the student object
+     * this checks the lessons of the course and student registered courses lessons
+     * check of each lessons if there is any clashes
+     * returning a boolean value of  true if there is a clash
+     * false if there isnt any clashes
      */
     public boolean checkClash(Course course, Student currentStudent) {
         List<Lesson> result = new ArrayList<Lesson>();
@@ -185,6 +312,16 @@ public class StudentManager {
     }
 
     // ----------------- functions ---------------------//
+    /**
+     * This is a Swapping of courses with another student
+     * @param current student that called the function
+     * @param target student that was targeted to swap with
+     * @param course the course intended to swap from current student
+     * @param modid the index of the course from target
+     * 
+     * will 1st do a check for target and id if target have registered the index
+     * if exist will do a swap
+     */
     public void SwapCourse(Student current, Student target, Course course, int modid) {
         List<Course> result = new ArrayList<Course>();
         List<Course> courselist = target.getCourse();
@@ -200,7 +337,12 @@ public class StudentManager {
             this.AddCourse(result.get(0), current);
         }
     }
-
+    /**
+     * Generating timetable function
+     * Create a list of lesson for each day
+     * Printing lessons in sets of days
+     * @param courses from the student
+     */
     public void GenerateTimeTable(ArrayList<Course> courses) {
         List<Lesson> mondayLesson = new ArrayList<Lesson>();
         List<Lesson> tuesdayLesson = new ArrayList<Lesson>();
