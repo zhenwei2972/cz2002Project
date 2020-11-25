@@ -3,6 +3,9 @@ import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import jdk.internal.jline.internal.Log;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,6 +31,7 @@ public class AdminManager {
      * 
      * @param fullStudentList is the entire list of student accounts
      */
+    LoginManager loginMgmt = new LoginManager();
     public void addStudent(List<Student> fullStudentList) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Student's Matriculation Number");
@@ -48,6 +52,7 @@ public class AdminManager {
                 System.out.println("Password must be longer than 6 characters");
                 return;
             }
+            studentPassword = loginMgmt.passwordHashing(studentPassword);
 
             System.out.println("Is this Part-Time Student? (Y/N)");
             String option = sc.next().toUpperCase();
