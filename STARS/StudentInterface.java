@@ -182,11 +182,6 @@ public class StudentInterface {
                         System.out.println("\nWrong Username / 2nd student does not exist");
                         break;
                     }
-                    //pre-add course for demo purpose 
-                    System.out.println("\nPre-initializing student 2 with a course to showcase swap working.");
-                    Course secondCourse = studentMgmt.GetCourse(Integer.parseInt(peerCourseIndex), courses);
-                    studentMgmt.AddCourse(secondCourse, waitlist, secondStudent);
-                    //end of demo code
                     currentCourse = studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses);
                     studentMgmt.SwapCourse(currentStudent, secondStudent, currentCourse, Integer.parseInt(peerCourseIndex),password);
                     break;

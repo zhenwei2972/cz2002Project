@@ -331,6 +331,8 @@ public class StudentManager {
         List<Course> result = new ArrayList<Course>();
         List<Course> courselist = target.getCourse();
         result = courseMgmt.byIndex.Invoke(courselist, Integer.toString(modid));
+        LoginManager loginManager = new LoginManager();
+        password =loginManager.passwordHashing(password);
         if(!(target.getPassword().equals(password)))
         {
             System.out.println("Invalid Password");

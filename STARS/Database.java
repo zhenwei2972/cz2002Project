@@ -243,24 +243,23 @@ public class Database {
     }
     public void PrepopulateStudentCourses(List<Student> fullStudentList,List<Course> fullCourseList,StudentManager sm,WaitList waitList){
           //populate student1 with course 10271, so can drop later to add student2 from waitlist to course.
+       System.out.println("Pre-initializing data");
        Student student1 = fullStudentList.get(1);
        Course chosenCourse = (fullCourseList.stream().filter(x -> Integer.parseInt("10271") == x.getIndex()).collect(Collectors.toList())).get(0);
        sm.AddCourse(chosenCourse, waitList, student1);
        System.out.println(fullStudentList.get(1).getUsername()+chosenCourse.getIndex());
-     //prepopulate student2 with course 10271 to add student2 to wait list for 10271
+       //STUDENT 2 ONLY FOR WAITLIST
+       //prepopulate student2 with course 10271 to add student2 to wait list for 10271
        Student student2 = fullStudentList.get(2);
        chosenCourse = (fullCourseList.stream().filter(x -> Integer.parseInt("10271") == x.getIndex()).collect(Collectors.toList())).get(0);
        System.out.println(student2.getUsername()+chosenCourse.getIndex());
        
        sm.AddCourse(chosenCourse, waitList, student2);
-       /*
-       //prepopulate course 10215 to prepare for swapping operation , SWAP use 10215,10271
-       chosenCourse = (fullCourseList.stream().filter(x -> Integer.parseInt("10215") == x.getIndex()).collect(Collectors.toList())).get(0);
-       sm.AddCourse(chosenCourse, waitList, student2);
-       */
        //populate extra students to other courses for printCoursesByIndex etc
        Student student3 = fullStudentList.get(3);
        chosenCourse = (fullCourseList.stream().filter(x -> Integer.parseInt("10242") == x.getIndex()).collect(Collectors.toList())).get(0);
        sm.AddCourse(chosenCourse, waitList, student3);
+
+       //add 10215 , drop 10271, add 10215 , swap student 3  10242 , change index 10242 with 10241 , check vacancy with 10241
     }
 }

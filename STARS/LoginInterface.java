@@ -28,7 +28,7 @@ public class LoginInterface {
 
     List<Course> allCourses =   ctrl.CourseListDatabase();
 
-    
+    List<Lesson> lessonList = ctrl.LessonListDatabase();
     
     /** 
      * to pass the in the password to the system
@@ -127,7 +127,7 @@ public class LoginInterface {
         adminPassword = loginManager.passwordHashing(adminPassword);
         boolean login = loginManager.adminLogin.Invoke(adminUsername, adminPassword);
         if (login) {
-            AdminInterface homePage = new AdminInterface();
+            AdminInterface homePage = new AdminInterface(fullStudentList,allCourses,lessonList);
             homePage.AdminMenuLogic(accessPeriodList);
         } else {
             System.out.println("Wrong Username or password! Please enter details again");
