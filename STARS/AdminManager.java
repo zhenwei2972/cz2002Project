@@ -6,11 +6,24 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
+
+/**
+ * This is the admin manager where all the admin functions are written
+ * @author Team Stars
+ * @version 1.0
+ * @since 2020
+ */
 public class AdminManager {
+    /**
+     * an interface for flitering studentlist
+     */
     interface PrintStudentList {
         public void Invoke(List<Student> studentList, String value);
     }
-
+    /**
+     * creating new student accounts
+     * @param fullStudentList is the entire list of student accounts
+     */
     public void addStudent(List<Student> fullStudentList) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Student's Matriculation Number");
@@ -79,6 +92,12 @@ public class AdminManager {
             System.out.println("Student already exist in records");
         }
     }
+
+    /**
+     * adding a new course to the system
+     * @param courseList the entire list of courses
+     * @param lessonList the entire list of lessons
+     */
     public void addCourse(List<Course> courseList,List<Lesson> lessonList) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Course Index Number");
@@ -185,6 +204,12 @@ public class AdminManager {
             System.out.println("Course already exist in records");
         }
     }
+    /**
+     * a check for adding course to make sure there is no duplicated index
+     * @param courseList the entire course list
+     * @param courseNo the index to be created
+     * @return a boolean. False when it is not existed. True when it exist.
+     */
     private boolean checkExistingCourse(List<Course> courseList,int courseNo){
         List<Course> tempCourse =courseList.stream().filter(x -> x.getIndex()==courseNo).collect(Collectors.toList());
         if(tempCourse.isEmpty())
@@ -195,10 +220,22 @@ public class AdminManager {
         return true;
     }
 
+    /**
+     * Deleting student account
+     * @param fullStudentList The entire student list
+     * @param matricNo the matric number of account to be deleted
+     * @return the studentlist and is found
+     */
     public List<Student> removeStudent(List<Student> fullStudentList, String matricNo) {
         
         return fullStudentList.stream().filter(x -> x.getMatid().equals(matricNo)).collect(Collectors.toList());
     }
+    /**
+     * a check for creating student to make sure there is no duplicated matric id
+     * @param fullStudentList the entire list of student
+     * @param matricNo the matric id to be created
+     * @return a boolean. False when it is not existed. True when it exist.
+     */
     private boolean checkExistingStudent(List<Student> fullStudentList,String matricNo){
         List<Student> tempStudent =fullStudentList.stream().filter(x -> x.getMatid().equals(matricNo)).collect(Collectors.toList());
         System.out.println(tempStudent);
@@ -209,7 +246,12 @@ public class AdminManager {
         }
         return true;
     }
-
+    /**
+     * rewrite from interface
+     * this will print all the student that have registered for the course index
+     * @param fullStudentList
+     * @param IndexInString
+     */
     PrintStudentList printStudentfromIndex = (fullStudentList, indexInString) -> {
         int index = Integer.parseInt(indexInString);
         fullStudentList.stream().forEach(i -> {
@@ -232,7 +274,12 @@ public class AdminManager {
         //     }
         // }
     };
-
+    /**
+     * rewrite from interface
+     * this will print all the student that have registered for the course
+     * @param fullStudentList
+     * @param CourseCode
+     */
     PrintStudentList printStudentFromCourse = (fullStudentList, courseCode) -> {
         fullStudentList.stream().forEach(i -> {
             List<Course> studentCourse = i.getCourse();
@@ -253,6 +300,11 @@ public class AdminManager {
         //     }
         // }
     };
+
+    /**
+     * Entering a new access period
+     * @return null when exception or invalid input
+     */
     public Date InputDateTime(){
         Scanner sc = new Scanner(System.in);
         System.out.println("\nEnter Day i.e 01");
@@ -331,6 +383,10 @@ public class AdminManager {
     }
     //regex to validate email address pattern
     private static final String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    /**
+     * checking valid email
+     * @param email is the creating new student email
+     */
     public static boolean isValidEmailAddress(String email) {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);

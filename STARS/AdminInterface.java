@@ -6,9 +6,24 @@ import java.util.Scanner;
 import java.text.ParseException;
 import java.util.Date;
 
+/**
+ * This is the admin UI/UX
+ * prints the menu and also checks for valid inputs
+ * @author Team Stars
+ * @version 1.0
+ * @since 2020
+ */
 public class AdminInterface {
+    /**
+     * scanner for taking in user input
+     */
     Scanner sc = new Scanner(System.in);
-
+    /**
+     * the function that prints the menu and handle input checks
+     * @param accessPeriodList is the list of available access periods for student
+     * @throws IOException is to check for database load fails
+     * @throws ParseException is to check for casting/parsing fails
+     */
     public void AdminMenuLogic(List<AccessPeriod> accessPeriodList) throws IOException, ParseException {
         String num = "";
         Console console = System.console();
