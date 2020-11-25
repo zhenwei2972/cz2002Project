@@ -174,6 +174,7 @@ public class StudentManager {
         } else
             System.out.println("There is an exisitng course added index : " + mod.getIndex());
     }
+   
     /**
      * This is the Registering course function for the student
      * It consist 4 types of checking

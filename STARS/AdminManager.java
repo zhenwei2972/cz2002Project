@@ -87,12 +87,22 @@ public class AdminManager {
             
             fullStudentList.add(new Student(matricNo, studentName, studentPassword, partTime,year, email));
             System.out.println("\n Added a new Student");
+            System.out.println("\n All Students in records");
+            AllStudents.Display(fullStudentList);
         }
         else{
             System.out.println("Student already exist in records");
         }
     }
 
+    @FunctionalInterface
+    interface StudentDiplay {
+        public void Display(List<Student> list);
+    } 
+    /**
+     * Print all students
+     */
+    StudentDiplay AllStudents = (result) -> result.forEach(x -> System.out.println(" Username " + x.getUsername() + " Matriculation Number " + x.getMatid()));
     /**
      * adding a new course to the system
      * @param courseList the entire list of courses
@@ -241,7 +251,6 @@ public class AdminManager {
      */
     private boolean checkExistingStudent(List<Student> fullStudentList,String matricNo){
         List<Student> tempStudent =fullStudentList.stream().filter(x -> x.getMatid().equals(matricNo)).collect(Collectors.toList());
-        System.out.println(tempStudent);
         if(tempStudent.isEmpty())
         {
 
