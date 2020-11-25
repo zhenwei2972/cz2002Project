@@ -1,15 +1,35 @@
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This is a waitlist object. it is a list of objects to act as a queuing system.
+ * @version 1.0
+ * @since 2020
+ */
 public class WaitList {
+    /**
+     * a 2d array of Objects. to act as the queue
+     */
     List<ArrayList<Object>> waitlist = new ArrayList<ArrayList<Object>>();
+    /**
+     * studentmanger for filtering students
+     */
     StudentManager studentManager = new StudentManager();
+    /**
+     * coursemanger for filtering course
+     */
     CourseManager courseMgmt = new CourseManager();
 
+     /**
+     * This is the constructor, since waitlist conisit of object and it is gobal
+     * there is no object inserted upon constructing
+     */
     public WaitList() {
     }
 
     // Debugging Purposes
+      /**
+     * to print all student in the wait list and thier index of course they are waiting for
+     */
     public void printWaitList() {
         for (ArrayList<Object> i : this.waitlist) {
             for (Object j : i) {
@@ -24,7 +44,11 @@ public class WaitList {
             }
         }
     }
-
+    /**
+     * Adding the student to the waitlist
+     * @param student the student object
+     * @param course the course object
+     */
     public void AddtoWaitList(Student student, Course course) {
         ArrayList<Object> details = new ArrayList<Object>();
         details.add(student);
@@ -33,6 +57,11 @@ public class WaitList {
         course.setWaitlist(course.getWaitlist() + 1);
     }
 
+    /**
+     * Removing the student from the waitlist from the certain index
+     * @param student the student object
+     * @param course the course object
+     */
     public void RemoveFromWaitList(Student student, Course course) {
         if (this.waitlist.isEmpty())
             return;
@@ -45,6 +74,10 @@ public class WaitList {
         }
     }
 
+    /**
+     * Automated system to register student to the course from waitlist
+     * @param course the course object
+     */
     public void AddCoursetoStudent(Course course) {
         for (ArrayList<Object> items : this.waitlist) {
             if (items.get(1) == course) {
