@@ -35,6 +35,7 @@ public class Lesson {
         this.starttime = starttime;
         this.endtime = endtime;
         this.classtype = classtype;
+        this.venue = venue;
     }
     
     /** 

@@ -111,6 +111,16 @@ public class AdminManager {
     StudentDiplay AllStudents = (result) -> result
             .forEach(x -> System.out.println(" Username " + x.getUsername() + " Matriculation Number " + x.getMatid()));
 
+    @FunctionalInterface
+    interface CourseDisplay {
+        public void Display(List<Course> list);
+    }
+
+    /**
+     * Print all courses
+     */
+    CourseDisplay AllCourses = (result) -> result
+            .forEach(x -> System.out.println(" Course Index " + x.getIndex() + " Course Code " + x.getCourseCode()));
     /**
      * adding a new course to the system
      * 
@@ -210,6 +220,8 @@ public class AdminManager {
             }
             courseList.add(new Course(courseNo, courseCode, vacancy, 0, au));
             System.out.println("Course successfully added");
+            System.out.println("\n All Courses in records");
+            AllCourses.Display(courseList);
         } else {
             System.out.println("Course already exist in records");
         }
