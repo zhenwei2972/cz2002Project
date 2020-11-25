@@ -76,6 +76,7 @@ public class LoginInterface {
         String studUsername = sc.next();
         String studPassword = readPassword();
         LoginManager loginManager = new LoginManager();
+        studPassword = loginManager.passwordHashing(studPassword);
         boolean login = loginManager.studentLogin.Invoke(studUsername, studPassword);
         if (login) 
         {
@@ -123,6 +124,7 @@ public class LoginInterface {
         String adminUsername = sc.next();
         String adminPassword = readPassword();
         LoginManager loginManager = new LoginManager();
+        adminPassword = loginManager.passwordHashing(adminPassword);
         boolean login = loginManager.adminLogin.Invoke(adminUsername, adminPassword);
         if (login) {
             AdminInterface homePage = new AdminInterface();

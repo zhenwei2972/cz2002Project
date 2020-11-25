@@ -1,7 +1,9 @@
 import java.util.stream.Collectors;
 import java.util.List;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Date;
+
 public class LoginManager {
      /**
      * a Functional interface is not other than a abstract method, which we are able polymorph into different methods
@@ -81,6 +83,30 @@ public class LoginManager {
         currentAP.setStartDate(startDateTime);
         currentAP.setEndDate(endDateTime);
 
+    }
+
+    public String passwordHashing(String password) {
+        String securedPassword = sha512Hashing(password);
+        return securedPassword;
+    }
+
+    private String sha512Hashing(String base) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-512");
+            byte[] hash = digest.digest(base.getBytes("UTF-8"));
+            StringBuffer hexString = new StringBuffer();
+
+            for (int i = 0; i < hash.length; i++) {
+                String hex = Integer.toHexString(0xff & hash[i]);
+                if (hex.length() == 1)
+                    hexString.append('0');
+                hexString.append(hex);
+            }
+
+            return hexString.toString();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
 }
