@@ -11,7 +11,7 @@ import java.text.ParseException;
  * @version 1.0
  * @since 2020
  */
-public class AccessPeriod {
+public class AccessPeriod { 
     /**
      * Year is the key variable which has to be unique
      */
@@ -25,7 +25,7 @@ public class AccessPeriod {
      */
     Date endDate;
     /**
-     * Formatter to define the format of our date and time object. 
+     * Formatter to define the format of our date and time objects. 
      */
     SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy HH:mm");
 

@@ -11,12 +11,21 @@ public class LoginInterface {
     
 
     
+    
+    /** 
+     * @return String
+     */
     public String readPassword() {
         Console console = System.console();
         String enteredPassword = new String(console.readPassword("Please enter your password: "));
         return enteredPassword;
     }
 
+    
+    /** 
+     * @throws IOException
+     * @throws ParseException
+     */
     public void StartupInterface() throws IOException, ParseException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Option 1: Login as Student");
@@ -33,6 +42,10 @@ public class LoginInterface {
         }
     }
 
+    
+    /** 
+     * @throws IOException
+     */
     public void StudentLoginInterface() throws IOException {
         //initialize acccess period list
        
@@ -76,6 +89,11 @@ public class LoginInterface {
        
     }
 
+    
+    /** 
+     * @throws IOException
+     * @throws ParseException
+     */
     public void AdminLoginInterface() throws IOException, ParseException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Login as Admin:");

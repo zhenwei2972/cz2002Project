@@ -9,6 +9,10 @@ import java.text.SimpleDateFormat;
 
 public class Database {
 
+    
+    /** 
+     * @return List<Lesson>
+     */
     public List<Lesson> LessonListDatabase() {
         List<Lesson> fulllessonlist = new ArrayList<Lesson>();
         ArrayList<String> list = new ArrayList<String>();
@@ -33,6 +37,11 @@ public class Database {
         return fulllessonlist;
     }
 
+    
+    /** 
+     * @param fullLessonList
+     * @throws IOException
+     */
     public void UpdateLessonDatabase(List<Lesson> fullLessonList) throws IOException {
         FileWriter myWriter = new FileWriter("Database\\lesson.txt");
         // Index, Coursecode, Coursename, AU, Day, starttime, endtime, classtype
@@ -48,6 +57,10 @@ public class Database {
         myWriter.close();
     }
 
+    
+    /** 
+     * @return List<Admin>
+     */
     public List<Admin> AdminUserDatabase() {
         List<Admin> fullAdminList = new ArrayList<Admin>();
         ArrayList<String> list = new ArrayList<String>();
@@ -69,6 +82,11 @@ public class Database {
         return fullAdminList;
     }
 
+    
+    /** 
+     * @param fullAdminList
+     * @throws IOException
+     */
     public void UpdateAdminDatabase(List<Admin> fullAdminList) throws IOException {
         FileWriter myWriter = new FileWriter("Database\\admin.txt");
         // username, password
@@ -83,6 +101,10 @@ public class Database {
         myWriter.close();
     }
 
+    
+    /** 
+     * @return List<Student>
+     */
     public List<Student> StudentDatabase() {
         List<Student> fullStudentList = new ArrayList<Student>();
         ArrayList<String> list = new ArrayList<String>();
@@ -104,6 +126,11 @@ public class Database {
         return fullStudentList;
     }
 
+    
+    /** 
+     * @param fullStudentList
+     * @throws IOException
+     */
     public void UpdateStudentDatabase(List<Student> fullStudentList) throws IOException {
         FileWriter myWriter = new FileWriter("Database\\student.txt");
         // MatricNo, Username, Password, PartTimeStudent (true / false)
@@ -119,6 +146,10 @@ public class Database {
         myWriter.close();
     }
 
+    
+    /** 
+     * @return List<Course>
+     */
     public List<Course> CourseListDatabase() {
         List<Course> fullcourselist = new ArrayList<Course>();
         ArrayList<String> list = new ArrayList<String>();
@@ -140,6 +171,11 @@ public class Database {
         return fullcourselist;
     }
 
+    
+    /** 
+     * @param fullCourseList
+     * @throws IOException
+     */
     public void UpdateCourseDatabase(List<Course> fullCourseList) throws IOException {
         FileWriter myWriter = new FileWriter("Database\\course.txt");
         // index, coursecode, vacancy, waitlist
@@ -155,6 +191,10 @@ public class Database {
         myWriter.close();
     }
 
+    
+    /** 
+     * @return List<AccessPeriod>
+     */
     public List<AccessPeriod> AccessPeriodDatabase() {
         List<AccessPeriod> fullAccessPeriodlist = new ArrayList<AccessPeriod>();
         ArrayList<String> list = new ArrayList<String>();
@@ -177,6 +217,11 @@ public class Database {
         return fullAccessPeriodlist;
     }
 
+    
+    /** 
+     * @param fullAccessPeriodlist
+     * @throws IOException
+     */
     public void UpdateAccessListDatabase(List<AccessPeriod> fullAccessPeriodlist) throws IOException {
         FileWriter myWriter = new FileWriter("Database\\accessperiod.txt");
         // index, coursecode, vacancy, waitlist

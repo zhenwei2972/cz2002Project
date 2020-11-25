@@ -19,6 +19,12 @@ public class LoginManager {
         return (checkLogin.size() > 0) ? true : false;
     };
 
+    
+    /** 
+     * @param year
+     * @param accessPeriods
+     * @return AccessPeriod
+     */
     public AccessPeriod GetAccessPeriod(String year, List<AccessPeriod> accessPeriods) {
         List<AccessPeriod> result = new ArrayList<AccessPeriod>();
         result =accessPeriods.stream().filter(x -> year.equals(x.getYear())).collect(Collectors.toList());
@@ -27,6 +33,11 @@ public class LoginManager {
         }
         return null;
     }
+     
+     /** 
+      * @param ap
+      * @return boolean
+      */
      boolean validateAccessPeriod(AccessPeriod ap){
         return ap.AccessPeriodCheck();
     }
@@ -41,6 +52,13 @@ public class LoginManager {
         return (checkLogin.size() > 0) ? true : false;
     };
 
+    
+    /** 
+     * @param year
+     * @param accessPeriodList
+     * @param startDateTime
+     * @param endDateTime
+     */
     public void updateAccessPeriod(String year,List<AccessPeriod> accessPeriodList,Date startDateTime,Date endDateTime){
         AccessPeriod currentAP = GetAccessPeriod(year, accessPeriodList);
         System.out.println("Updated access period for "+year+" from "+startDateTime+" to "+endDateTime);

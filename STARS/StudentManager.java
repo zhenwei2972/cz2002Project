@@ -322,19 +322,28 @@ public class StudentManager {
      * will 1st do a check for target and id if target have registered the index
      * if exist will do a swap
      */
-    public void SwapCourse(Student current, Student target, Course course, int modid) {
+    public void SwapCourse(Student current, Student target, Course course, int modid,String password) {
         List<Course> result = new ArrayList<Course>();
         List<Course> courselist = target.getCourse();
         result = courseMgmt.byIndex.Invoke(courselist, Integer.toString(modid));
+        if(!(target.getPassword().equals(password)))
+        {
+            System.out.println("Invalid Password");
+            return;
+        }
         if (result.isEmpty()) {
             System.out.println(
                     "Student" + target.getUsername() + " does not have " + course.getCourseCode() + ":" + modid);
             return;
         } else {
-            this.AddCourse(course, target);
+    
             this.RemoveCourse(result.get(0), target);
             this.RemoveCourse(course, current);
+            System.out.println("Swapping course for student 1 (Skip Wait list)");
             this.AddCourse(result.get(0), current);
+            System.out.println("Swapping coures for student 2 (Skip Wait list)");
+            this.AddCourse(course, target);
+           
         }
     }
     /**

@@ -140,11 +140,16 @@ public class StudentInterface {
                     }
                     break;
                 case "6":
+                    String username ="";
+                    String password ="";
+                    String peerCourseIndex ="";
                     System.out.println("\nSwop Index Number with Another Student");
-                    System.out.println("\nEnter other student's matriculation number");
-                    matricNo = sc.next();
+                    System.out.println("\nEnter other student's username");
+                    username = sc.next();
+                    System.out.println("\nEnter other student's password");
+                    password = sc.next();
                     // get other student's corresponding object
-                    System.out.println("\nEnter a course index");
+                    System.out.println("\nEnter your current course index");
                     courseIndex = sc.next();
                     try {
                         intCheck = Integer.parseInt(courseIndex);
@@ -152,9 +157,29 @@ public class StudentInterface {
                         System.out.println("invalid input, must enter a valid course index number(Integer)");
                         break;
                     }
-                    Student secondStudent = studentMgmt.GetStudent(Integer.parseInt(matricNo), students);
+
+                    System.out.println("\nEnter peer's course index");
+                    peerCourseIndex = sc.next();
+                    try {
+                        intCheck = Integer.parseInt(peerCourseIndex);
+                    } catch (NumberFormatException ex) {
+                        System.out.println("invalid input, must enter a valid course index number(Integer)");
+                        break;
+                    }
+                    
+                    Student secondStudent = studentMgmt.GetStudentByUserName(username, students);
+                    if(secondStudent== null)
+                    {
+                        System.out.println("\nWrong Username / 2nd student does not exist");
+                        break;
+                    }
+                    //pre-add course for demo purpose 
+                    System.out.println("\nPre-initializing student 2 with a course to showcase swap working.");
+                    Course secondCourse = studentMgmt.GetCourse(Integer.parseInt(peerCourseIndex), courses);
+                    studentMgmt.AddCourse(secondCourse, waitlist, secondStudent);
+                    //end of demo code
                     currentCourse = studentMgmt.GetCourse(Integer.parseInt(courseIndex), courses);
-                    studentMgmt.SwapCourse(currentStudent, secondStudent, currentCourse, Integer.parseInt(courseIndex));
+                    studentMgmt.SwapCourse(currentStudent, secondStudent, currentCourse, Integer.parseInt(peerCourseIndex),password);
                     break;
                 case "7":
                     System.out.println("\nPrinting all available courses");

@@ -8,6 +8,11 @@ import javax.activation.*;
 
 public class Mail {
 
+   
+   /** 
+    * @param recepient
+    * @throws MessagingException
+    */
    public void sendMail(String recepient) throws MessagingException {
       Properties prop = new Properties();
       prop.put("mail.smtp.auth", "true");
@@ -29,6 +34,13 @@ public class Mail {
       System.out.println("Course added successfully, confirmation has been sent by email");
    }
 
+   
+   /** 
+    * @param session
+    * @param myAccountEmail
+    * @param recepient
+    * @return Message
+    */
    private Message prepareMessage(Session session, String myAccountEmail, String recepient) {
       try {
          Message msg = new MimeMessage(session);
