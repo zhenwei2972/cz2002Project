@@ -3,11 +3,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * This is the UI/UX for the student menu
+ * there is check for invalid entries
+ * @author Team Stars
+ * @version 1.0
+ * @since 2020
+ */
 public class StudentInterface {
+    /**
+     * CourseManager for filtering list of course
+     */
     CourseManager courseMgmt = new CourseManager();
+    /**
+     * StudentManager for filtering list of student
+     */
     StudentManager studentMgmt = new StudentManager();
 
+    /**
+     * this funtions is to print the main menu and checks all the valid entries
+     * handling the calling of object functions
+     * @param currentStudent is an student object from login
+     * @param db is the database class to load all student and course
+     * @throws IOException is the trace for database reading exception
+     */
     public void StudentMenuLogic(Student currentStudent, Database db) throws IOException {
         String num = "", courseIndex = "", matricNo;
         Console console = System.console();
