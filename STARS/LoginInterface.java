@@ -23,11 +23,18 @@ public class LoginInterface {
      * to load in data for Admin accounts
      */
     List<AccessPeriod> accessPeriodList = ctrl.AccessPeriodDatabase();
-    
+    /**
+     * creation of waitlist
+     */
     WaitList waitList = new WaitList();
-
+    /**
+     * creation of courses
+     */
     List<Course> allCourses =   ctrl.CourseListDatabase();
 
+    /**
+     * creation of lessons
+     */
     List<Lesson> lessonList = ctrl.LessonListDatabase();
     
     /** 

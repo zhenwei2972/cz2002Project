@@ -22,7 +22,12 @@ public class StudentInterface {
     private List<Student> students;
     private List<Course> courses;
     private WaitList waitlist;
-    
+    /**
+     * Constructor for student interface
+     * @param fullStudentList2 as the list of student
+     * @param coursesInput as the list of course
+     * @param waitListInput as the wait list
+     */
     public StudentInterface(List<Student> fullStudentList2,List<Course>coursesInput,WaitList waitListInput) {
         this.students = fullStudentList2;
         this.courses = coursesInput;

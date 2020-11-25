@@ -241,6 +241,13 @@ public class Database {
         });
         myWriter.close();
     }
+    /**
+     * This function to prepopulate Student with courses
+     * @param fullStudentList as the student list
+     * @param fullCourseList as the course list
+     * @param sm as the studentmanager
+     * @param waitList as the waitlist
+     */
     public void PrepopulateStudentCourses(List<Student> fullStudentList,List<Course> fullCourseList,StudentManager sm,WaitList waitList){
           //populate student1 with course 10271, so can drop later to add student2 from waitlist to course.
        System.out.println("Pre-initializing data");

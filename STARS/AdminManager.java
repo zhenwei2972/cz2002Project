@@ -30,6 +30,10 @@ public class AdminManager {
      * @param fullStudentList is the entire list of student accounts
      */
     LoginManager loginMgmt = new LoginManager();
+    /**
+     * register new student function
+     * @param fullStudentList as student list
+     */
     public void addStudent(List<Student> fullStudentList) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Student's Matriculation Number");
@@ -91,6 +95,11 @@ public class AdminManager {
         }
     }
 
+    /**
+     * a Functional interface is not other than a abstract method, which we are able polymorph into different methods
+     * This method only works on Java 8 onwards
+     * usage for displays
+     * */
     @FunctionalInterface
     interface StudentDiplay {
         public void Display(List<Student> list);
@@ -239,7 +248,7 @@ public class AdminManager {
      * a check for creating student to make sure there is no duplicated matric id
      * 
      * @param fullStudentList the entire list of student
-     * @param matricNo        the matric id to be created
+     * @param matricNo as the matric id to be created
      * @return a boolean. False when it is not existed. True when it exist.
      */
     private boolean checkExistingStudent(List<Student> fullStudentList, String matricNo) {

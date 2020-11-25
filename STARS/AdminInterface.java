@@ -14,6 +14,10 @@ import java.util.Date;
  * @since 2020
  */
 public class AdminInterface {
+    /**
+     * declaration of variable
+     * list and waitlist passin by reference
+     */
     private Console console = System.console();
     private AdminManager adminController = new AdminManager();
     private Database db = new Database();
@@ -23,7 +27,12 @@ public class AdminInterface {
     private List<Student> students;
     private List<Course> courses;
     private List<Lesson> lessonList;
-
+    /**
+     * AdminInterface constructor
+     * @param fullStudentList2 as student list
+     * @param coursesInput as course list
+     * @param lessonList as lesson list
+     */
     public AdminInterface(List<Student> fullStudentList2, List<Course> coursesInput, List<Lesson> lessonList) {
         this.students = fullStudentList2;
         this.courses = coursesInput;

@@ -84,12 +84,20 @@ public class LoginManager {
         currentAP.setEndDate(endDateTime);
 
     }
-
+    /**
+     * Function that hashes the password
+     * @param password as the password
+     * @return the string of hashed password
+     */
     public String passwordHashing(String password) {
         String securedPassword = sha512Hashing(password);
         return securedPassword;
     }
-
+    /**
+     * Function that encrypts the password using UTF-8 as encryptor
+     * @param base as pasword
+     * @return the hashed string.
+     */
     private String sha512Hashing(String base) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-512");
